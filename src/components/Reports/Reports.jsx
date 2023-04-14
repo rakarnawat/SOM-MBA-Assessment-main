@@ -88,10 +88,19 @@ function Reports() {
                 }
                 {
                     PBShow && (
-                        <div className="RightSection">
-                            {/**Graphs can be added here */}
-                            <h1>PB Clicked</h1>
-                        </div> 
+                        <div>
+                            <div className="PBserach">
+                                <h1>Search Students</h1>
+                            </div>
+                            <div className="PBRightSection">
+                                {/**Graphs can be added here */}
+                                <h1>Personal Belief Student Grpahs</h1>
+                            </div> 
+                            <div className="PBRightRecords">
+                                {/**Graphs can be added here */}
+                                <h1>Student details in text</h1>
+                            </div> 
+                        </div>
                     )
                 }
                 {
