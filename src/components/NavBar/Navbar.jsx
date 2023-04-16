@@ -66,11 +66,11 @@ function Navbar() {
               <div className={`dropDown ${openProfile? 'active' : 'inactive'}`}>
                 <div className='menuStyle'>
                     <div className="Dropdownlabel">UserName</div><hr></hr>
-                    <button onClick={profileRoute} className='ProfileBtn' >Profile</button>
+                    {/* <button onClick={profileRoute} className='ProfileBtn' >Profile</button> */}
                     <button onClick={dahboardRoute} className='DashboardBtn1' >Dashboard</button>
-                    <button onClick={reportRoute} className='ReportsBtn1' >Reports</button>
-                    <button onClick={aboutUsRoute} className='AboutUsBtn1' >About Us</button>
-                    <button onClick={logoutRoute} className='LogoutBtn' >Logout</button>
+                    {/* <button onClick={reportRoute} className='ReportsBtn1' >Reports</button> */}
+                    {/* <button onClick={aboutUsRoute} className='AboutUsBtn1' >About Us</button> */}
+                    <button onClick={logoutRoute} className='NAVLogoutBtn' >Logout</button>
                 </div>
               </div>
 

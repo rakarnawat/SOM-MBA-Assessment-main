@@ -131,7 +131,7 @@
     color: #000000;
 }
 
-.ProfileBtn:hover, .LogoutBtn:hover , .DashboardBtn1:hover, .ReportsBtn1:hover, .AboutUsBtn1:hover {
+.ProfileBtn:hover, .NAVLogoutBtn:hover , .DashboardBtn1:hover, .ReportsBtn1:hover, .AboutUsBtn1:hover {
     color: white;
     background-color: #005941;
     border-radius: 8px;

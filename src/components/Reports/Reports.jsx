@@ -105,16 +105,36 @@ function Reports() {
                 }
                 {
                     CAShow && (
-                        <div className="RightSection">
-                            <h1>CA Clicked</h1>
-                        </div> 
+                        <div>
+                            <div className="PBserach">
+                                <h1>Search Students</h1>
+                            </div>
+                            <div className="PBRightSection">
+                                {/**Graphs can be added here */}
+                                <h1>Critical Analysis Student Grpahs</h1>
+                            </div> 
+                            <div className="PBRightRecords">
+                                {/**Graphs can be added here */}
+                                <h1>Student details in text</h1>
+                            </div> 
+                        </div>
                     )
                 }
                 {
                     DDShow && (
-                        <div className="RightSection">
-                            <h1>DD Clicked</h1>
-                        </div> 
+                        <div>
+                            <div className="PBserach">
+                                <h1>Search Students</h1>
+                            </div>
+                            <div className="PBRightSection">
+                                {/**Graphs can be added here */}
+                                <h1>Difficult Decisions Student Grpahs</h1>
+                            </div> 
+                            <div className="PBRightRecords">
+                                {/**Graphs can be added here */}
+                                <h1>Student details in text</h1>
+                            </div> 
+                        </div>
                     )
                 }
                 {
@@ -126,9 +146,14 @@ function Reports() {
                 }
                 {
                     SRShow && (
-                        <div className="RightSection">
-                            <h1>SR Clicked</h1>
-                        </div> 
+                        <div>
+                        <div className="Dasht1Section">
+                            <h1>search student here</h1>
+                        </div>
+                        <div className="DashtSection">
+                            <h1>Student Records</h1>
+                        </div>
+                        </div>
                     )
                 }
                 
