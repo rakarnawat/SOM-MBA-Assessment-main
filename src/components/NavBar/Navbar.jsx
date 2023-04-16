@@ -31,22 +31,23 @@ function Navbar() {
   });
   
   let navigate = useNavigate(); 
-  const profileRoute = () =>{ 
-  let path = `/profile`; 
-  navigate(path);
-  }
+  
+  // const profileRoute = () =>{ 
+  // let path = `/profile`; 
+  // navigate(path);
+  // }
   const dahboardRoute = () =>{ 
     let path = `/SelectionScreen`; 
     navigate(path);
   }
-  const reportRoute = () =>{ 
-    let path = `/reports`; 
-    navigate(path);
-  }
-  const aboutUsRoute = () =>{ 
-    let path = `/aboutUs`; 
-    navigate(path);
-  }
+  // const reportRoute = () =>{ 
+  //   let path = `/reports`; 
+  //   navigate(path);
+  // }
+  // const aboutUsRoute = () =>{ 
+  //   let path = `/aboutUs`; 
+  //   navigate(path);
+  // }
   const logoutRoute = () =>{ 
     let path = `/`; 
     navigate(path);
