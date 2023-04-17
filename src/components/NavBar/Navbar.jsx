@@ -37,7 +37,7 @@ function Navbar() {
   // navigate(path);
   // }
   const dahboardRoute = () =>{ 
-    let path = `/SelectionScreen`; 
+    let path = `/reports`; 
     navigate(path);
   }
   // const reportRoute = () =>{ 
