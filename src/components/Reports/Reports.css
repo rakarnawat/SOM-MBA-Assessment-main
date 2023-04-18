@@ -79,7 +79,7 @@
 }
 .LogoutBtn:hover{
     background-color: #1a735d;
-    border-radius: 30px;
+    border-radius: 3vw;
     
 }
 .TitleText, .LogoutBtn {
@@ -110,7 +110,7 @@
     background: #F8F8F8;   
     box-sizing: border-box;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 30px;
+    border-radius: 2vw;
 }
 .Dasht1Section{
     background-color: rgb(209, 209, 209);
@@ -124,7 +124,7 @@
     background: #F8F8F8;   
     box-sizing: border-box;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 30px;
+    border-radius: 2vw;
 }
 /*---------PB-----------------------------------------------------------*/
 .PBserach{
@@ -139,7 +139,7 @@
     background: #F8F8F8;   
     box-sizing: border-box;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 30px;
+    border-radius: 2vw;
     text-indent: 2%;
 }
 .PBRightSection{
@@ -154,7 +154,7 @@
     background: #F8F8F8;   
     box-sizing: border-box;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 30px;
+    border-radius: 2vw;
     text-indent: 2%;
 }
 .PBRightRecords{
@@ -169,7 +169,7 @@
     background: #F8F8F8;   
     box-sizing: border-box;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 30px;
+    border-radius: 2vw;
     text-indent: 2%;
 }
 
@@ -198,7 +198,7 @@
     /* background: #F8F8F8;     */
     box-sizing: border-box;
     /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
-    border-radius: 30px;
+    /* border-radius: 30px; */
     column-count: 4;
     column-gap: 2vw;
 }
@@ -212,7 +212,7 @@
 
     background: #FFFFFF;
     box-shadow: 0px 4.10567px 4.10567px rgba(0, 0, 0, 0.25);
-    border-radius: 34.8982px;
+    border-radius: 1.7vw;
     border: none;
     background-image: url("../images/situation1.jpg");
     background-repeat: no-repeat;
@@ -236,7 +236,7 @@ transform: scale(1.1);
 
     background: #FFFFFF;
     box-shadow: 0px 4.10567px 4.10567px rgba(0, 0, 0, 0.25);
-    border-radius: 34.8982px;
+    border-radius: 1.7vw;
     border: none;
     background-image: url("../images/situation2.jpeg");
     background-repeat: no-repeat;
@@ -259,7 +259,7 @@ transform: scale(1.1);
 
     background: #FFFFFF;
     box-shadow: 0px 4.10567px 4.10567px rgba(0, 0, 0, 0.25);
-    border-radius: 34.8982px;
+    border-radius: 1.7vw;
     border: none;
     background-image: url("../images/evaluation1.jpg");
     background-repeat: no-repeat;
@@ -282,7 +282,7 @@ transform: scale(1.1);
 
     background: #FFFFFF;
     box-shadow: 0px 4.10567px 4.10567px rgba(0, 0, 0, 0.25);
-    border-radius: 34.8982px;
+    border-radius: 1.7vw;
     border: none;
     background-image: url("../images/evaluation2.jpg");
     background-repeat: no-repeat;
