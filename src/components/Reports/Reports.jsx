@@ -1,10 +1,10 @@
-import React, {useState} from "react";
+import React, {useState , useRef} from "react";
 import "./Reports.css";
 
 import { useNavigate } from "react-router-dom";
 
+import searchLogo from "../images/search-icon.svg";
 
-import juicy_business from "../images/juicy-business-coach-explains-the-material-to-the-woman.gif";
 
 
 function Reports() {
@@ -64,11 +64,8 @@ function Reports() {
         let path = `/`; 
         navigate(path);
     }
-    const reportsBtnClick = () =>{ 
-        let path = `/BIReports`; 
-        navigate(path);
-    }
     
+    const inputRef = useRef(null);
     return(
         <div className="ReportsMainContainer">
             <div className="LeftSection">
@@ -101,16 +98,30 @@ function Reports() {
             {/* <div className="DashtSection">
                
             </div> */}
-            <div >
+            <div>
                 {
                     DashShow && (
                         <div>
                         <div className="DashtSection">
                             <h1>Dashboard</h1>
                         </div>
-                        <div className="Dasht1Section">
-                            <h1>search here</h1>
-                        </div>
+                        <form action="/DashReports">
+                            <div className="DashSearchBar">
+                                <div className="BIReports1">
+                                    <input
+                                    ref={inputRef}
+                                    required
+                                    pattern="[b,B]{1}[0-9]{8}"
+                                    type="text"
+                                    placeholder="Please enter Student's B-Number"
+                                    />
+                                </div>
+                                <div className="BIReports">
+                                <img src={searchLogo} alt="Avatar" className="searchImage" />
+                                <button className="BIReports2" >Search Student Reports</button>
+                                </div>
+                            </div>
+                            </form>
                         </div>
                         
                     )
@@ -118,9 +129,23 @@ function Reports() {
                 {
                     PBShow && (
                         <div>
-                            <div className="PBserach">
-                                <h1>Search Students</h1>
+                            <form action="/DashReports">
+                            <div className="DashSearchBar">
+                                <div className="BIReports1">
+                                    <input
+                                    ref={inputRef}
+                                    required
+                                    pattern="[b,B]{1}[0-9]{8}"
+                                    type="text"
+                                    placeholder="Please enter Student's B-Number"
+                                    />
+                                </div>
+                                <div className="BIReports">
+                                <img src={searchLogo} alt="Avatar" className="searchImage" />
+                                <button className="BIReports2" >Search Student Reports</button>
+                                </div>
                             </div>
+                            </form>
                             <div className="PBRightSection">
                                 {/**Graphs can be added here */}
                                 <h1>Personal Belief Student Grpahs</h1>
@@ -135,9 +160,23 @@ function Reports() {
                 {
                     CAShow && (
                         <div>
-                            <div className="PBserach">
-                                <h1>Search Students</h1>
+                            <form action="/DashReports">
+                            <div className="DashSearchBar">
+                                <div className="BIReports1">
+                                    <input
+                                    ref={inputRef}
+                                    required
+                                    pattern="[b,B]{1}[0-9]{8}"
+                                    type="text"
+                                    placeholder="Please enter Student's B-Number"
+                                    />
+                                </div>
+                                <div className="BIReports">
+                                <img src={searchLogo} alt="Avatar" className="searchImage" />
+                                <button className="BIReports2" >Search Student Reports</button>
+                                </div>
                             </div>
+                            </form>
                             <div className="PBRightSection">
                                 {/**Graphs can be added here */}
                                 <h1>Critical Analysis Student Grpahs</h1>
@@ -152,9 +191,23 @@ function Reports() {
                 {
                     DDShow && (
                         <div>
-                            <div className="PBserach">
-                                <h1>Search Students</h1>
+                            <form action="/DashReports">
+                            <div className="DashSearchBar">
+                                <div className="BIReports1">
+                                    <input
+                                    ref={inputRef}
+                                    required
+                                    pattern="[b,B]{1}[0-9]{8}"
+                                    type="text"
+                                    placeholder="Please enter Student's B-Number"
+                                    />
+                                </div>
+                                <div className="BIReports">
+                                <img src={searchLogo} alt="Avatar" className="searchImage" />
+                                <button className="BIReports2" >Search Student Reports</button>
+                                </div>
                             </div>
+                            </form>
                             <div className="PBRightSection">
                                 {/**Graphs can be added here */}
                                 <h1>Difficult Decisions Student Grpahs</h1>
@@ -169,58 +222,74 @@ function Reports() {
                 {
                     BIShow && (
                         <div className="BIMain">
-                            <div>
-                                <button className="BIReports" onClick={reportsBtnClick}>Behavioral Interview Reports</button>
-                            </div>
-                        <div className="BISection">
-                            <div className="s1card">
-                                <img src={juicy_business} alt="Avatar" className="s1Image" />
-                                <div className="s1Selection">
-                                    <h1 className="s1Title">Simulation 1</h1>
-                                    
-                                    <form id="form" className="s1StartBtnForm" action="/simulation1">
-                                        <div className="s1StartButton">
-                                            <input className="s1StartText" type="submit"  value=">"></input>
-                                        </div>
-                                    </form>
+                            <form action="/BIReports">
+                            <div className="BISearchBar">
+                                <div className="BIReports1">
+                                    <input
+                                    ref={inputRef}
+                                    required
+                                    pattern="[b,B]{1}[0-9]{8}"
+                                    type="text"
+                                    placeholder="Please enter Student's B-Number"
+                                    />
+                                </div>
+                                <div className="BIReports">
+                                <img src={searchLogo} alt="Avatar" className="searchImage" />
+                                <button className="BIReports2" >Behavioral Interview Reports</button>
                                 </div>
                             </div>
-                            <div className="s1card">
-                                <img src={juicy_business} alt="Avatar" className="s1Image" />
+                            </form>
+                            
+                        <div className="BISection">
+                            <form id="form" className="s1StartBtnForm" action="/simulation1">
+                                <button className="s1card">
+                                {/* <img src={juicy_business} alt="Avatar" className="s1Image" /> */}
+                                    <div className="s1Selection">
+                                        <h1 className="s1Title">Simulation 1</h1>
+                                    
+                                        {/* <div className="s1StartButton">
+                                            <input className="s1StartText" type="submit"  value=">"></input>
+                                        </div> */}
+                                    </div>
+                                </button>
+                                    </form>
+                            <form id="form" className="s1StartBtnForm" action="/simulation1">
+                            <button className="s2card">
+                                {/* <img src={juicy_business} alt="Avatar" className="s1Image" /> */}
                                 <div className="s1Selection">
                                     <h1 className="s1Title">Simulation 2</h1>
                                     
-                                    <form id="form" className="s1StartBtnForm" action="/simulation1">
-                                        <div className="s1StartButton">
+                                        {/* <div className="s1StartButton">
                                             <input className="s1StartText" type="submit" value=">"></input>
-                                        </div>
-                                    </form>
+                                        </div> */}
                                 </div>
-                            </div>
-                            <div className="s1card">
-                                <img src={juicy_business} alt="Avatar" className="s1Image" />
+                            </button>
+                            </form>
+                            <form id="form" className="s1StartBtnForm" action="/simulation1">
+                            <button className="e1card">
+                                {/* <img src={juicy_business} alt="Avatar" className="s1Image" /> */}
                                 <div className="s1Selection">
                                     <h1 className="s1Title">Evaluation 1</h1>
                                     
-                                    <form id="form" className="s1StartBtnForm" action="/simulation1">
-                                        <div className="s1StartButton">
-                                            <input className="s1StartText" type="submit" value=">"></input>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div className="s1card">
-                                <img src={juicy_business} alt="Avatar" className="s1Image" />
-                                <div className="s1Selection">
-                                    <h1 className="s1Title">Evaluation 2</h1>
                                     
-                                    <form id="form" className="s1StartBtnForm" action="/simulation1">
-                                        <div className="s1StartButton">
+                                        {/* <div className="s1StartButton">
                                             <input className="s1StartText" type="submit" value=">"></input>
-                                        </div>
-                                    </form>
+                                        </div> */}
                                 </div>
-                            </div>
+                            </button>
+                            </form>
+                            <form id="form" className="s1StartBtnForm" action="/simulation1">
+                                <button className="e2card">
+                                    {/* <img src={juicy_business} alt="Avatar" className="s1Image" /> */}
+                                    <div className="s1Selection">
+                                        <h1 className="s1Title">Evaluation 2</h1>
+                                        
+                                            {/* <div className="s1StartButton">
+                                                <input className="s1StartText" type="submit" value=">"></input>
+                                            </div> */}
+                                    </div>
+                                </button>
+                            </form>
                         </div>
                     </div>
                         
@@ -230,9 +299,23 @@ function Reports() {
                 {
                     SRShow && (
                         <div>
-                        <div className="Dasht1Section">
-                            <h1>search student here</h1>
-                        </div>
+                        <form action="/SRReports">
+                            <div className="DashSearchBar">
+                                <div className="BIReports1">
+                                    <input
+                                    ref={inputRef}
+                                    required
+                                    pattern="[b,B]{1}[0-9]{8}"
+                                    type="text"
+                                    placeholder="Please enter Student's B-Number"
+                                    />
+                                </div>
+                                <div className="BIReports">
+                                <img src={searchLogo} alt="Avatar" className="searchImage" />
+                                <button className="BIReports2" >Search Student's Reports</button>
+                                </div>
+                            </div>
+                            </form>
                         <div className="DashtSection">
                             <h1>Student Records</h1>
                         </div>
