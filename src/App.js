@@ -8,6 +8,7 @@ import ForgotPassword from "./components/UserAuth/ForgotPassword";
 import "../src/components/NavBar/NavbarStyles.css";
 import BUSOMIcon from "./components/images/BUBCLSLogo.png";
 import Reports from "./components/Reports/Reports";
+import Simulation1 from "./components/Quiz/Simulation1/Simulation1";
 
 /**React Router */
 const router = createBrowserRouter([
@@ -50,6 +51,15 @@ const router = createBrowserRouter([
       <div>
         <Navbar />
         <Reports />
+      </div>
+    ),
+  },
+  {
+    path: "/Simulation1",
+    element: (
+      <div>
+        <Navbar />
+        <Simulation1 />
       </div>
     ),
   },

@@ -278,7 +278,7 @@ function Reports() {
                                 </div>
                             </button>
                             </form>
-                            <form id="form" className="s1StartBtnForm" action="/simulation1">
+                            <form id="form" className="s1StartBtnForm" action="/Simulation1">
                                 <button className="e2card">
                                     {/* <img src={juicy_business} alt="Avatar" className="s1Image" /> */}
                                     <div className="s1Selection">
