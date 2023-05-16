@@ -57,7 +57,7 @@ function Navbar() {
           <>
           <nav className="NavbarItems">
             <div>
-            <a target="_self" href="/SelectionScreen" rel="noreferrer"><img src={BUSOMIcon} className="BUSOMImageClass" alt=""/></a>
+            <a target="_self" href="/reports" rel="noreferrer"><img src={BUSOMIcon} className="BUSOMImageClass" alt=""/></a>
             </div>
             <div ref={domNode} >
               <div onClick={() => {setOpenProfile(!openProfile)}}>
