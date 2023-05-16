@@ -1,5 +1,5 @@
 import React, {useState , useRef} from "react";
-import "./Reports.css";
+import "./SidePanel.css";
 
 import { useNavigate } from "react-router-dom";
 
@@ -7,7 +7,7 @@ import searchLogo from "../images/search-icon.svg";
 
 
 
-function Reports() {
+function SidePanel() {
 
     let navigate = useNavigate();
 
@@ -241,7 +241,7 @@ function Reports() {
                             </form>
                             
                         <div className="BISection">
-                            <form id="form" className="s1StartBtnForm" action="/simulation1">
+                            <form id="form" className="s1StartBtnForm" action="/Simulation1">
                                 <button className="s1card">
                                 {/* <img src={juicy_business} alt="Avatar" className="s1Image" /> */}
                                     <div className="s1Selection">
@@ -253,7 +253,7 @@ function Reports() {
                                     </div>
                                 </button>
                                     </form>
-                            <form id="form" className="s1StartBtnForm" action="/simulation1">
+                            <form id="form" className="s1StartBtnForm" action="/Simulation2">
                             <button className="s2card">
                                 {/* <img src={juicy_business} alt="Avatar" className="s1Image" /> */}
                                 <div className="s1Selection">
@@ -265,7 +265,7 @@ function Reports() {
                                 </div>
                             </button>
                             </form>
-                            <form id="form" className="s1StartBtnForm" action="/simulation1">
+                            <form id="form" className="s1StartBtnForm" action="/Evaluation1">
                             <button className="e1card">
                                 {/* <img src={juicy_business} alt="Avatar" className="s1Image" /> */}
                                 <div className="s1Selection">
@@ -278,7 +278,7 @@ function Reports() {
                                 </div>
                             </button>
                             </form>
-                            <form id="form" className="s1StartBtnForm" action="/Simulation1">
+                            <form id="form" className="s1StartBtnForm" action="/Evaluation2">
                                 <button className="e2card">
                                     {/* <img src={juicy_business} alt="Avatar" className="s1Image" /> */}
                                     <div className="s1Selection">
@@ -328,4 +328,4 @@ function Reports() {
     );
 }
 
-export default Reports;
+export default SidePanel;

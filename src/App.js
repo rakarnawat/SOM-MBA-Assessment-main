@@ -7,7 +7,7 @@ import Signup from "./components/UserAuth/Signup";
 import ForgotPassword from "./components/UserAuth/ForgotPassword";
 import "../src/components/NavBar/NavbarStyles.css";
 import BUSOMIcon from "./components/images/BUBCLSLogo.png";
-import Reports from "./components/Reports/Reports";
+import SidePanel from "./components/SidePanel/SidePanel";
 import Simulation1 from "./components/Quiz/Simulation1/Simulation1";
 
 /**React Router */
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
     element: (
       <div>
         <Navbar />
-        <Reports />
+        <SidePanel />
       </div>
     ),
   },
