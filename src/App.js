@@ -9,6 +9,9 @@ import "../src/components/NavBar/NavbarStyles.css";
 import BUSOMIcon from "./components/images/BUBCLSLogo.png";
 import SidePanel from "./components/SidePanel/SidePanel";
 import Simulation1 from "./components/Quiz/Simulation1/Simulation1";
+import Simulation2 from "./components/Quiz/Simulation2/Simulation2";
+import Evaluation1 from "./components/Quiz/Evaluation1/Evaluation1";
+import Evaluation2 from "./components/Quiz/Evaluation2/Evaluation2";
 
 /**React Router */
 const router = createBrowserRouter([
@@ -60,6 +63,33 @@ const router = createBrowserRouter([
       <div>
         <Navbar />
         <Simulation1 />
+      </div>
+    ),
+  },
+  {
+    path: "/Simulation20",
+    element: (
+      <div>
+        <Navbar />
+        <Simulation2 />
+      </div>
+    ),
+  },
+  {
+    path: "/Evaluation10",
+    element: (
+      <div>
+        <Navbar />
+        <Evaluation1 />
+      </div>
+    ),
+  },
+  {
+    path: "/Evaluation20",
+    element: (
+      <div>
+        <Navbar />
+        <Evaluation2 />
       </div>
     ),
   },
