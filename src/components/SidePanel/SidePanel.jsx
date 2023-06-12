@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import searchLogo from "../images/search-icon.svg";
 import { ReportPB } from "./reportPB";
 import axios from "axios";
+import { ReportDD } from "./reportDD";
 
 function SidePanel() {
   let navigate = useNavigate();
@@ -27,6 +28,7 @@ function SidePanel() {
   const [bNumIsValid, setBNumValid] = useState(false);
 
   const [graphPBShow, setPBGraphShow] = useState(false);
+  const [graphDDSHow, setDDGraphShow] = useState(false);
   const [student, setStudent] = useState();
   const [isUserValid, setUserValid] = useState(false);
 
@@ -184,6 +186,17 @@ function SidePanel() {
       setPBGraphShow(true);
     } else {
       setPBGraphShow(false);
+    }
+  };
+
+  const ddBnumSearchSubmit = (event) => {
+    event.preventDefault();
+    if (bNumIsValid) {
+      setUserValid(false);
+      getUserDets(bNum);
+      setDDGraphShow(true);
+    } else {
+      setDDGraphShow(false);
     }
   };
 
@@ -361,24 +374,39 @@ function SidePanel() {
                   <input
                     ref={inputRef}
                     required
-                    pattern="[b,B]{1}[0-9]{8}"
+                    // pattern="[b,B]{1}[0-9]{8}"
                     type="text"
                     placeholder="Please enter Student's B-Number"
+                    onChange={bNumChangeHandler}
                   />
                 </div>
                 <div className="BIReports">
                   <img src={searchLogo} alt="Avatar" className="searchImage" />
-                  <button className="BIReports2">Search Student Reports</button>
+                  <button className="BIReports2" onClick={ddBnumSearchSubmit}>
+                    Search Student Reports
+                  </button>
                 </div>
               </div>
             </form>
             <div className="PBRightSection">
               {/**Graphs can be added here */}
               <h1>Difficult Decisions Student Grpahs</h1>
+              <h3>DD</h3>
+              {graphDDSHow && <ReportDD bnum={bNum} />}
             </div>
             <div className="PBRightRecords">
               {/**Graphs can be added here */}
               <h1>Student details in text</h1>
+              {isUserValid ? (
+                <div>
+                  <p>{student.firstName}</p>
+                  <p>{student.lastName}</p>
+                  <p>{student.emailId}</p>
+                  <p>{student.bingNumber}</p>
+                </div>
+              ) : (
+                <p>Getting User details</p>
+              )}
             </div>
           </div>
         )}

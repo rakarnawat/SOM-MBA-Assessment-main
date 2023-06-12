@@ -176,6 +176,7 @@ export const ReportPB = (props) => {
         },
         comments: {},
       });
+      console.log(pbData);
       setCommentsData(comments);
       setLoading(true);
       // return scoreArr;
