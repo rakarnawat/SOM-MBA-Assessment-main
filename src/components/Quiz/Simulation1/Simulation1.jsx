@@ -332,7 +332,7 @@ const Simulation1 = () => {
   // console.log(Simulation1Data[1].Q)
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const [showS1Score, setShowS1Score] = React.useState(false);
-  let [s1Score, setS1Score] = React.useState(0);
+  //let [s1Score, setS1Score] = React.useState(0);
   const [selectedOptionO1, setSelectedOptionO1] = React.useState(null);
   const [selectedOptionO2, setSelectedOptionO2] = React.useState(null);
   const [selectedOptionO3, setSelectedOptionO3] = React.useState(null);
@@ -348,19 +348,19 @@ const Simulation1 = () => {
 }
 
   const handleO1AnswerButtonClick = (idx) =>{
-    setS1Score((prevScore) => prevScore + parseInt(idx));
+    //setS1Score((prevScore) => prevScore + parseInt(idx));
     setSelectedOptionO1(idx);
   }
   const handleO2AnswerButtonClick = (idx) =>{
-    setS1Score((prevScore) => prevScore + parseInt(idx));
+    //setS1Score((prevScore) => prevScore + parseInt(idx));
     setSelectedOptionO2(idx);
   }
   const handleO3AnswerButtonClick = (idx) =>{
-    setS1Score((prevScore) => prevScore + parseInt(idx));
+    //setS1Score((prevScore) => prevScore + parseInt(idx));
     setSelectedOptionO3(idx);
   }
   const handleO4AnswerButtonClick = (idx) =>{
-    setS1Score((prevScore) => prevScore + parseInt(idx));
+    //setS1Score((prevScore) => prevScore + parseInt(idx));
     setSelectedOptionO4(idx);
   }
 
@@ -394,15 +394,17 @@ const Simulation1 = () => {
       <div className="Simulation1MainFrame">
         {showS1Score ? (
           <div className="ScoreClass">
-            <div className="S1Score">You Scored : {s1Score}</div>
-            <button className="HomeButton" onClick={() => navigate("/reports")}> Home </button>
+            {/* <div className="S1Score">You Scored : {s1Score}</div> */}
+            <div className="S1Score"><h1>You Have completed Simulation1! <h4>(1/4)</h4></h1></div>
+            <button className="HomeButton" onClick={() => navigate("/Simulation2")}> Simulation 2</button>
           </div>
         ) : (
           <>
             <div >
               <h1 className="SimulationQ1Titles">{Simulation1Data[currentQuestion].Q}</h1>
+              <h4>Note: Evaluate the following questions as if you were the group leader</h4>
               <br></br>
-              <h3 className="SimulationQ1Question">{Simulation1Data[currentQuestion].question1}</h3>
+              <h3 className="Simulation1Q1Question">{Simulation1Data[currentQuestion].question1}</h3>
             </div>
             <div>
               {
@@ -410,8 +412,8 @@ const Simulation1 = () => {
                 return (
                   <>
                     <div key={simulation1Data.idx}>
-                    <button onClick={() => handleO1AnswerButtonClick(simulation1Data.idx)} className={`SimulationQ1Option ${
-                  selectedOptionO1 === simulation1Data.idx ? "selected" : ""}`} >{simulation1Data.value}</button>
+                    <button onClick={() => handleO1AnswerButtonClick(simulation1Data.idx)} className={`Simulation1Q1Option ${
+                  selectedOptionO1 === simulation1Data.idx ? "selected" : ""}`} ><p className="S1OptionsText">{simulation1Data.value}</p></button>
                     </div>
                   </>
               );})}
@@ -420,7 +422,7 @@ const Simulation1 = () => {
             
             <div >
               <br></br>
-              <h3 className="SimulationQ1Question">{Simulation1Data[currentQuestion].question2}</h3>
+              <h3 className="Simulation1Q1Question">{Simulation1Data[currentQuestion].question2}</h3>
             </div>
             <div>
               {
@@ -428,7 +430,7 @@ const Simulation1 = () => {
                 return (
                   <>
                     <div key={simulation1Data.idx}>
-                    <button onClick={() => handleO2AnswerButtonClick(simulation1Data.idx)} className={`SimulationQ1Option ${
+                    <button onClick={() => handleO2AnswerButtonClick(simulation1Data.idx)} className={`Simulation1Q1Option ${
                   selectedOptionO2 === simulation1Data.idx ? "selected" : ""}`}>{simulation1Data.value}</button>
                     </div>
                   </>
@@ -438,7 +440,7 @@ const Simulation1 = () => {
             
             <div >
               <br></br>
-              <h3 className="SimulationQ1Question">{Simulation1Data[currentQuestion].question3}</h3>
+              <h3 className="Simulation1Q1Question">{Simulation1Data[currentQuestion].question3}</h3>
             </div>
             <div>
               {
@@ -446,7 +448,7 @@ const Simulation1 = () => {
                 return (
                   <>
                     <div key={simulation1Data.idx}>
-                    <button onClick={() => handleO3AnswerButtonClick(simulation1Data.idx)} className={`SimulationQ1Option ${
+                    <button onClick={() => handleO3AnswerButtonClick(simulation1Data.idx)} className={`Simulation1Q1Option ${
                   selectedOptionO3 === simulation1Data.idx ? "selected" : ""}`}>{simulation1Data.value}</button>
                     </div>
                   </>
@@ -456,7 +458,7 @@ const Simulation1 = () => {
             
             <div >
               <br></br>
-              <h3 className="SimulationQ1Question">{Simulation1Data[currentQuestion].question4}</h3>
+              <h3 className="Simulation1Q1Question">{Simulation1Data[currentQuestion].question4}</h3>
             </div>
             <div>
               {
@@ -464,7 +466,7 @@ const Simulation1 = () => {
                 return (
                   <>
                     <div key={simulation1Data.idx}>
-                    <button onClick={() => handleO4AnswerButtonClick(simulation1Data.idx)} className={`SimulationQ1Option ${
+                    <button onClick={() => handleO4AnswerButtonClick(simulation1Data.idx)} className={`Simulation1Q1Option ${
                   selectedOptionO4 === simulation1Data.idx ? "selected" : ""}`}>{simulation1Data.value}</button>
                     </div>
                   </>
@@ -474,7 +476,7 @@ const Simulation1 = () => {
             
             <div >
               <br></br>
-              <h3 className="SimulationQ1Question">{Simulation1Data[currentQuestion].Observation}</h3>
+              <h3 className="Simulation1Q1Question">{Simulation1Data[currentQuestion].Observation}</h3>
               <textarea className="s1ObservationTextClass" name="s1ObservvationText" id="s1ObservationID" cols="40" rows="10"></textarea>
             </div>
             {/* ----------------------------Btn-------------------------------- */}
