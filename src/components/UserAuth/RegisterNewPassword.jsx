@@ -2,7 +2,7 @@ import React from "react";
 import "../UserAuth/ForgotPasswordStyles.css";
 import Binghamton_University_pic from "../images/Binghamton-University-pic.jpg";
 
-export default function ForgotPassword() {
+export default function RegisterNewPassword() {
   return (
     <div className="LoginMainComponent">
       <div className="ImageSlider">
@@ -13,25 +13,24 @@ export default function ForgotPassword() {
         />
       </div>
       <div className="UserAuth">
-        <form id="loginForm" action="/RegisterNewPassword">
+        <form id="loginForm" action="/">
           <h1 className="headingTitle">Login</h1>
           <p className="headText">Welcome to Leadership Assesment Program</p>
-          <label htmlFor="email" className="userName">
-            B-mail
+          <label htmlFor="text" className="userName">
+            New Password
           </label>
           <div className="userNameInput">
             <input
-              type={"email"}
+              type={"text"}
               //className="userNameInput"
-              placeholder="xyz@binghamton.edu"
-              id="email"
-              name="email"
+              placeholder="************"
+              id="text"
+              name="text"
               required
-              pattern="^[a-zA-Z0-9]+@binghamton\.edu$"
             />
           </div>
           <label htmlFor="password" className="password">
-            Token {"(12-digit)"}
+            Confirm Password
           </label>
           <div className="passInput">
             <input

@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./components/UserAuth/Login";
 import Signup from "./components/UserAuth/Signup";
 import ForgotPassword from "./components/UserAuth/ForgotPassword";
+import RegisterNewPassword from "./components/UserAuth/RegisterNewPassword";
 import "../src/components/NavBar/NavbarStyles.css";
 import BUSOMIcon from "./components/images/BUBCLSLogo.png";
 import SidePanel from "./components/SidePanel/SidePanel";
@@ -45,6 +46,17 @@ const router = createBrowserRouter([
           <a target="_self" href="/SelectionScreen" rel="noreferrer"><img src={BUSOMIcon} className="BUSOMImageClass" alt=""/></a>
         </div>
         <ForgotPassword />
+      </div>
+    ),
+  },
+  {
+    path: "/RegisterNewPassword",
+    element: (
+      <div>
+        <div className="NavbarItems">
+          <a target="_self" href="/RegisterNewPassword" rel="noreferrer"><img src={BUSOMIcon} className="BUSOMImageClass" alt=""/></a>
+        </div>
+        <RegisterNewPassword />
       </div>
     ),
   },

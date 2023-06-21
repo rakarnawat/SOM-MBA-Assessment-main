@@ -15,7 +15,7 @@ export default function Signup() {
         />
       </div>
       <div className="UserAuth">
-        <form id="loginForm" action="/SelectionScreen">
+        <form id="loginForm" action="/reports">
           <h1 className="headingTitle">Signup</h1>
           <p className="headText">Welcome to Leadership Assesment Program</p>
           
