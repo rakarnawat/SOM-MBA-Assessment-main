@@ -22,41 +22,48 @@ function SidePanel() {
     const [CAShow,setCAShow] = useState(false)
     const [DDShow,setDDShow] = useState(false)
     const [BIShow,setBIShow] = useState(false)
+    const [BIStudentFormShow,setBIStudentFormShow] = useState(true)
     const [SRShow,setSRShow] = useState(false)
     
     const ShowDash =()=>{
         if(DashShow === true){setDashShow(true)}
-        else{setDashShow(true); setPBShow(false); setCAShow(false); setDDShow(false); setBIShow(false); setSRShow(false);}
+        else{setBIStudentFormShow(true); setDashShow(true); setPBShow(false); setCAShow(false); setDDShow(false); setBIShow(false); setSRShow(false);}
         setDashActive(true); setPBActive(false); setCAActive(false); setDDActive(false); setBIActive(false); setSRActive(false);
     } 
     
     const ShowPB =()=>{
         if(PBShow === true){setPBShow(true)}
-        else{setPBShow(true); setCAShow(false); setDDShow(false); setBIShow(false); setSRShow(false); setDashShow(false);}
+        else{setBIStudentFormShow(true); setPBShow(true); setCAShow(false); setDDShow(false); setBIShow(false); setSRShow(false); setDashShow(false);}
         setDashActive(false); setPBActive(true); setCAActive(false); setDDActive(false); setBIActive(false); setSRActive(false);
     }
     
     const ShowCA =()=>{
         if(CAShow === true){setCAShow(true)}
-        else{setCAShow(true); setPBShow(false); setDDShow(false); setBIShow(false); setSRShow(false); setDashShow(false);}
+        else{setBIStudentFormShow(true); setCAShow(true); setPBShow(false); setDDShow(false); setBIShow(false); setSRShow(false); setDashShow(false);}
         setDashActive(false); setPBActive(false); setCAActive(true); setDDActive(false); setBIActive(false); setSRActive(false);
     }
     
     const ShowDD =()=>{
         if(DDShow === true){setDDShow(true)}
-        else{setDDShow(true); setPBShow(false); setCAShow(false); setBIShow(false); setSRShow(false); setDashShow(false);}
+        else{setBIStudentFormShow(true); setDDShow(true); setPBShow(false); setCAShow(false); setBIShow(false); setSRShow(false); setDashShow(false);}
         setDashActive(false); setPBActive(false); setCAActive(false); setDDActive(true); setBIActive(false); setSRActive(false);
     }
     
     const ShowBI =()=>{
-        if(BIShow === true){setBIShow(true)}
+        if(BIShow === true){setBIShow(true); setBIStudentFormShow(true);}
         else{setBIShow(true); setPBShow(false); setCAShow(false); setDDShow(false); setSRShow(false); setDashShow(false);}
         setDashActive(false); setPBActive(false); setCAActive(false); setDDActive(false); setBIActive(true); setSRActive(false);
     }
     
+    const handleBIStudentInfoSumbit = () =>{
+        if(BIShow === true){setBIShow(true); setBIStudentFormShow(false);}
+        else{setBIStudentFormShow(false); setBIShow(true); setPBShow(false); setCAShow(false); setDDShow(false); setSRShow(false); setDashShow(false);}
+        setDashActive(false); setPBActive(false); setCAActive(false); setDDActive(false); setBIActive(true); setSRActive(false);
+    }
+
     const ShowSR =()=>{
         if(SRShow === true){setSRShow(true)}
-        else{setSRShow(true); setPBShow(false); setCAShow(false); setBIShow(false); setDDShow(false); setDashShow(false);}
+        else{setBIStudentFormShow(true); setSRShow(true); setPBShow(false); setCAShow(false); setBIShow(false); setDDShow(false); setDashShow(false);}
         setDashActive(false); setPBActive(false); setCAActive(false); setDDActive(false); setBIActive(false); setSRActive(true);
     }
 
@@ -239,7 +246,26 @@ function SidePanel() {
                                 </div>
                             </div>
                             </form>
-                            
+                       { BIStudentFormShow ? (
+                        <div className="BIStudentInfoMainFrame">
+                            <div className="BIStudentsInfoTitle">Enter Students Details</div>
+                        <form className="BIStudentinfoForm" onsubmit="return false">   
+                            <div className="BINameDiv">
+                                <label className="BIFNameLabel" for="fname">First name:</label>
+                                <input className="BIFNameInput" type="text" id="fname" placeholder="ABC"/>
+                            </div>
+                            <div className="BINameDiv">
+                                <label className="BILNameLabel" for="lname">Last name:</label>
+                                <input className="BILNameInput" type="text" id="lname" placeholder="XYZ"/>
+                            </div>
+                            <div className="BINameDiv">
+                                <label className="BIBNumberLabel" for="bNumber">B-Number:</label>
+                                <input className="BIBNumberInput" type="text" id="bNumber" required pattern="[b,B]{1}[0-9]{8}" placeholder="B-00000000"/>
+                            </div>
+                            <button className="BISubmitBtn" type="submit" onClick={handleBIStudentInfoSumbit} value="Submit">Submit</button>
+                        </form>
+                        </div>
+                       ):(   
                         <div className="BISection">
                             <form id="form" className="s1StartBtnForm" action="/Simulation1">
                                 <button className="s1card">
@@ -252,7 +278,7 @@ function SidePanel() {
                                         </div> */}
                                     </div>
                                 </button>
-                                    </form>
+                            </form>
                             <form id="form" className="s1StartBtnForm" action="/Simulation2">
                             <button className="s2card">
                                 {/* <img src={juicy_business} alt="Avatar" className="s1Image" /> */}
@@ -291,6 +317,7 @@ function SidePanel() {
                                 </button>
                             </form>
                         </div>
+                        )}
                     </div>
                         
                          
