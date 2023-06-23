@@ -177,11 +177,12 @@
 .BIMain{
     position: absolute;
     top: 1vw;
-    height: 41vw;
+    height: 96%;
     overflow: auto;
     width: 81vw;
     left: 17vw;
     display: flex;
+    overflow: auto;
     /* background-color: #30FFC7; */
 }
 .BISection{

@@ -37,16 +37,6 @@ export default function Signup() {
               placeholder="Enter Last Name"
             />
           </div>
-          <label className="BNumber">B-Number</label>
-          <div className="BNumberInputText">
-            <input
-              ref={inputRef}
-              required
-              pattern="[b,B]{1}[0-9]{8}"
-              type="text"
-              placeholder="Please enter your B-Number"
-            />
-          </div>
           <label htmlFor="email" className="userName1">
             B-mail
           </label>

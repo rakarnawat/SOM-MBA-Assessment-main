@@ -30,10 +30,15 @@ export default function ForgotPassword() {
               pattern="^[a-zA-Z0-9]+@binghamton\.edu$"
             />
           </div>
-          <label htmlFor="password" className="password">
+          <div className="GenerateTokenDiv">
+            <button className="GenerateTokenButton"><p>Generate Token</p></button>
+          </div>
+          </form>
+          <form id="loginForm" action="/RegisterNewPassword">
+          <label htmlFor="password" className="TokenLabel">
             Token {"(12-digit)"}
           </label>
-          <div className="passInput">
+          <div className="TokenInput">
             <input
               //type={"date"}
               //className="passInput"
@@ -43,12 +48,12 @@ export default function ForgotPassword() {
               required
             />
           </div>
-          <div className="LoginButton">
+          <div className="FPLoginButton">
             <input className="ForgotPasswordSubmitBtn" type="submit" value="Submit"></input>
           </div>
         </form>
         <form id="signupForm" action="/Signup">
-          <div className="NewUserDiv" type="submit">
+          <div className="FPNewUserDiv" type="submit">
             <input
               className="NewUserClass"
               type="submit"
@@ -60,7 +65,7 @@ export default function ForgotPassword() {
         <form id="ForgotPasswordForm" action="/">
           <div type="submit">
             <input
-              className="ForgotPasswordClass"
+              className="FPForgotPasswordClass"
               type="submit"
               value="Existing User? Login"
             ></input>
