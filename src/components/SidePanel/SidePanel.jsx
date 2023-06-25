@@ -68,7 +68,14 @@ function SidePanel() {
         else{setBIStudentFormShow(true); setSRShow(true); setPBShow(false); setCAShow(false); setBIShow(false); setDDShow(false); setDashShow(false);}
         setDashActive(false); setPBActive(false); setCAActive(false); setDDActive(false); setBIActive(false); setSRActive(true); setShowPDFBtn(false);
     }
+    const delay = ms => new Promise(
+        resolve => setTimeout(resolve, ms)
+      );
+    const handlePDFClick = async event => {
+        await delay(1000);
+        setShowPDFBtn(false)
 
+    }
     const logoutRoute = () =>{ 
         let path = `/`; 
         navigate(path);
@@ -104,9 +111,6 @@ function SidePanel() {
                 </button>
                 <button onClick={logoutRoute} className='LogoutBtn' >Logout</button>
             </div>
-            {/* <div className="DashtSection">
-               
-            </div> */}
             <div>
                 {
                     DashShow && (
@@ -133,7 +137,7 @@ function SidePanel() {
                                 {showPDFBtn && (
                                     <><img src={downloadPDF} alt="Avatar" className="searchImage" />
                                     <PDFDownloadLink className="PDFV01" document={<PdfV01/>} fileName={"B00123456"+"_MBA_Assessment_Report"}>
-                                    {({loading}) => (loading ? <button className="BIReports2" >loading PDF...</button>: <button className="BIReports2" >Download PDF</button>)}
+                                    {({loading}) => (loading ? <button className="BIReports2" >loading PDF...</button>: <button className="BIReports2" onClick={handlePDFClick}>Download PDF</button>)}
                                     </PDFDownloadLink></>
                                 )}
                                 </div>
@@ -354,7 +358,7 @@ function SidePanel() {
                                 {showPDFBtn && (
                                     <><img src={downloadPDF} alt="Avatar" className="searchImage" />
                                     <PDFDownloadLink className="PDFV01" document={<PdfV01/>} fileName={"B00123456"+"_MBA_Assessment_Report"}>
-                                    {({loading}) => (loading ? <button className="BIReports2" >loading PDF...</button>: <button className="BIReports2" >Download PDF</button>)}
+                                    {({loading}) => (loading ? <button className="BIReports2" >loading PDF...</button>: <button className="BIReports2" onClick={handlePDFClick}>Download PDF</button>)}
                                     </PDFDownloadLink></>
                                 )}
                                 
