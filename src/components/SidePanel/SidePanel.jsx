@@ -2,7 +2,7 @@ import React, {useState , useRef} from "react";
 import "./SidePanel.css";
 
 import { useNavigate } from "react-router-dom";
-
+import downloadPDF from "../images/downloadPDF.svg";
 import searchLogo from "../images/search-icon.svg";
 import PdfV01 from "../PDFFiles/PdfV01";
 import { PDFDownloadLink } from "@react-pdf/renderer";
@@ -25,47 +25,48 @@ function SidePanel() {
     const [BIShow,setBIShow] = useState(false)
     const [BIStudentFormShow,setBIStudentFormShow] = useState(true)
     const [SRShow,setSRShow] = useState(false)
+    const [showPDFBtn,setShowPDFBtn]=useState(false)
     
     const ShowDash =()=>{
         if(DashShow === true){setDashShow(true)}
         else{setBIStudentFormShow(true); setDashShow(true); setPBShow(false); setCAShow(false); setDDShow(false); setBIShow(false); setSRShow(false);}
-        setDashActive(true); setPBActive(false); setCAActive(false); setDDActive(false); setBIActive(false); setSRActive(false);
+        setDashActive(true); setPBActive(false); setCAActive(false); setDDActive(false); setBIActive(false); setSRActive(false); setShowPDFBtn(false);
     } 
     
     const ShowPB =()=>{
         if(PBShow === true){setPBShow(true)}
         else{setBIStudentFormShow(true); setPBShow(true); setCAShow(false); setDDShow(false); setBIShow(false); setSRShow(false); setDashShow(false);}
-        setDashActive(false); setPBActive(true); setCAActive(false); setDDActive(false); setBIActive(false); setSRActive(false);
+        setDashActive(false); setPBActive(true); setCAActive(false); setDDActive(false); setBIActive(false); setSRActive(false); setShowPDFBtn(false);
     }
     
     const ShowCA =()=>{
         if(CAShow === true){setCAShow(true)}
         else{setBIStudentFormShow(true); setCAShow(true); setPBShow(false); setDDShow(false); setBIShow(false); setSRShow(false); setDashShow(false);}
-        setDashActive(false); setPBActive(false); setCAActive(true); setDDActive(false); setBIActive(false); setSRActive(false);
+        setDashActive(false); setPBActive(false); setCAActive(true); setDDActive(false); setBIActive(false); setSRActive(false); setShowPDFBtn(false);
     }
     
     const ShowDD =()=>{
         if(DDShow === true){setDDShow(true)}
         else{setBIStudentFormShow(true); setDDShow(true); setPBShow(false); setCAShow(false); setBIShow(false); setSRShow(false); setDashShow(false);}
-        setDashActive(false); setPBActive(false); setCAActive(false); setDDActive(true); setBIActive(false); setSRActive(false);
+        setDashActive(false); setPBActive(false); setCAActive(false); setDDActive(true); setBIActive(false); setSRActive(false); setShowPDFBtn(false);
     }
     
     const ShowBI =()=>{
         if(BIShow === true){setBIShow(true); setBIStudentFormShow(true);}
         else{setBIShow(true); setPBShow(false); setCAShow(false); setDDShow(false); setSRShow(false); setDashShow(false);}
-        setDashActive(false); setPBActive(false); setCAActive(false); setDDActive(false); setBIActive(true); setSRActive(false);
+        setDashActive(false); setPBActive(false); setCAActive(false); setDDActive(false); setBIActive(true); setSRActive(false); setShowPDFBtn(false);
     }
     
     const handleBIStudentInfoSumbit = () =>{
         if(BIShow === true){setBIShow(true); setBIStudentFormShow(false);}
         else{setBIStudentFormShow(false); setBIShow(true); setPBShow(false); setCAShow(false); setDDShow(false); setSRShow(false); setDashShow(false);}
-        setDashActive(false); setPBActive(false); setCAActive(false); setDDActive(false); setBIActive(true); setSRActive(false);
+        setDashActive(false); setPBActive(false); setCAActive(false); setDDActive(false); setBIActive(true); setSRActive(false); setShowPDFBtn(false);
     }
 
     const ShowSR =()=>{
         if(SRShow === true){setSRShow(true)}
         else{setBIStudentFormShow(true); setSRShow(true); setPBShow(false); setCAShow(false); setBIShow(false); setDDShow(false); setDashShow(false);}
-        setDashActive(false); setPBActive(false); setCAActive(false); setDDActive(false); setBIActive(false); setSRActive(true);
+        setDashActive(false); setPBActive(false); setCAActive(false); setDDActive(false); setBIActive(false); setSRActive(true); setShowPDFBtn(false);
     }
 
     const logoutRoute = () =>{ 
@@ -113,7 +114,7 @@ function SidePanel() {
                         <div className="DashtSection">
                             <h1>Dashboard</h1>
                         </div>
-                        <form action="/DashReports">
+                        <form>
                             <div className="DashSearchBar">
                                 <div className="BIReports1">
                                     <input
@@ -125,8 +126,16 @@ function SidePanel() {
                                     />
                                 </div>
                                 <div className="BIReports">
-                                <img src={searchLogo} alt="Avatar" className="searchImage" />
-                                <button className="BIReports2" >Search Student Reports</button>
+                                
+                                {!showPDFBtn && (
+                                <><img src={searchLogo} alt="Avatar" className="searchImage" />
+                                <button className="BIReports2" onClick={()=>setShowPDFBtn(true)}>Search Student Reports</button></>)}
+                                {showPDFBtn && (
+                                    <><img src={downloadPDF} alt="Avatar" className="searchImage" />
+                                    <PDFDownloadLink className="PDFV01" document={<PdfV01/>} fileName={"B00123456"+"_MBA_Assessment_Report"}>
+                                    {({loading}) => (loading ? <button className="BIReports2" >loading PDF...</button>: <button className="BIReports2" >Download PDF</button>)}
+                                    </PDFDownloadLink></>
+                                )}
                                 </div>
                             </div>
                             </form>
@@ -327,7 +336,7 @@ function SidePanel() {
                 {
                     SRShow && (
                         <div>
-                        <form action="/SRReports">
+                        {/* <form> */}
                             <div className="DashSearchBar">
                                 <div className="BIReports1">
                                     <input
@@ -339,18 +348,26 @@ function SidePanel() {
                                     />
                                 </div>
                                 <div className="BIReports">
-                                <img src={searchLogo} alt="Avatar" className="searchImage" />
-                                <button className="BIReports2" >Search Student's Reports</button>
+                                {!showPDFBtn && (
+                                <><img src={searchLogo} alt="Avatar" className="searchImage" />
+                                <button className="BIReports2" onClick={()=>setShowPDFBtn(true)}>Search Student Reports</button></>)}
+                                {showPDFBtn && (
+                                    <><img src={downloadPDF} alt="Avatar" className="searchImage" />
+                                    <PDFDownloadLink className="PDFV01" document={<PdfV01/>} fileName={"B00123456"+"_MBA_Assessment_Report"}>
+                                    {({loading}) => (loading ? <button className="BIReports2" >loading PDF...</button>: <button className="BIReports2" >Download PDF</button>)}
+                                    </PDFDownloadLink></>
+                                )}
+                                
                                 </div>
                                 
                             </div>
-                            </form>
+                            {/* </form> */}
                             {/* <form><button type="submit" formaction="/PdfV01" className="PDFV01" >Search Student's Reports</button></form> */}
-                            <div>
-                                <PDFDownloadLink className="PDFV01" document={<PdfV01/>} fileName={"B00123456"+"_MBA_Assessment_Report"}>
-                                {({loading}) => (loading ? <button>loading PDF...</button>: <button>Download</button>)}
+                            {/* <div>
+                            <PDFDownloadLink className="PDFV01" document={<PdfV01/>} fileName={"B00123456"+"_MBA_Assessment_Report"}>
+                                {({loading}) => (loading ? <button className="BIReports2" >loading PDF...</button>: <button className="BIReports2" >Download</button>)}
                                 </PDFDownloadLink>
-                            </div>
+                            </div> */}
                             
                         <div className="DashtSection">
                             <h1>Student Records</h1>

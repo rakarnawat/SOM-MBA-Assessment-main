@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
   },
   title:{
     fontSize:12,
+    fontFamily: "Times-Roman",
   },
   horiLine: {
     width:1000,
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
     top: '15%',
     left: '5%',
     opacity: 0.06,
-    
+    margin:10,
   },
   sname:{
     position:'relative',
@@ -37,10 +38,12 @@ const styles = StyleSheet.create({
     left:0,
     fontSize:18,
     fontWeight:600,
+    fontFamily: "Times-Roman",
   },
   bNumber: {
     fontSize:14,
     fontWeight:400,
+    fontFamily: "Times-Roman",
   },
   date:{
     top: 23,
@@ -69,7 +72,7 @@ const styles = StyleSheet.create({
   comment:{
     left:65,
     fontSize: 16,
-    fontWeight:600,
+    fontWeight:400,
     textAlign: "justify",
     fontFamily: "Times-Roman",
     flexWrap:'wrap',
@@ -96,7 +99,7 @@ const styles = StyleSheet.create({
 const PdfV01 = () => {
     return (
         //Comment PDFViwer when not in use
-    //   <PDFViewer style={styles.viewer}>  
+      //  <PDFViewer style={styles.viewer}>  
     <Document>
       <Page size="A4" style={styles.body}>
         <Text style={styles.title} fixed>LEADERSHIP ASSESSMENT REPORT</Text>
@@ -147,7 +150,8 @@ const PdfV01 = () => {
         />
       </Page>
     </Document>
-    // </PDFViewer>
+     //</PDFViewer>
+     // comment PDFViewer
   );
 };
 

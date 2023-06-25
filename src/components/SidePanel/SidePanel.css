@@ -445,7 +445,7 @@ transform: scale(1.1);
 .searchImage{
     width: 1.5vw;
     height: 1.5vw;
-    left: 0.8vw;
+    left: 1vw;
     position: relative;
     display:flex;
     top:2.7vw;
@@ -459,8 +459,9 @@ body:has(.BIReports:hover) .searchImage{
 }
 
 .BIReports2{
+    position: relative;
     height: 3vw;
-    left: 0.1vw;
+    left: 0.3vw;
     background-color: #f8f8f800;
     font-family: 'Lato';
     font-style: normal;
