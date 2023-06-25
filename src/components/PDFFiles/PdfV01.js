@@ -99,7 +99,7 @@ const PdfV01 = () => {
     //   <PDFViewer style={styles.viewer}>  
     <Document>
       <Page size="A4" style={styles.body}>
-        <Text style={styles.title} fixed>MBA ASSESSMENT REPORT</Text>
+        <Text style={styles.title} fixed>LEADERSHIP ASSESSMENT REPORT</Text>
         <Svg style={styles.svgLine} fixed><Line x1="0" y1="3" x2="0" y2="3" strokeWidth={1} stroke="rgb(0,0,0)" /></Svg>
         <Text style={styles.sname}>Smith Alex <Text style={styles.bNumber}> ( B00123456 )</Text></Text>
         <Text style={styles.date}>JULY 31, 2023</Text>
