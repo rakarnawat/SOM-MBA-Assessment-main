@@ -13,6 +13,8 @@ import Simulation1 from "./components/Quiz/Simulation1/Simulation1";
 import Simulation2 from "./components/Quiz/Simulation2/Simulation2";
 import Evaluation1 from "./components/Quiz/Evaluation1/Evaluation1";
 import Evaluation2 from "./components/Quiz/Evaluation2/Evaluation2";
+import PdfV01 from "./components/PDFFiles/PdfV01";
+// import { PDFDownloadLink } from "@react-pdf/renderer";
 
 /**React Router */
 const router = createBrowserRouter([
@@ -66,6 +68,17 @@ const router = createBrowserRouter([
       <div>
         <Navbar />
         <SidePanel />
+      </div>
+    ),
+  },
+  {
+    path: "/PdfV01",
+    element: (
+      <div>
+        {/* <PDFDownloadLink document={<PdfV01></PdfV01>} fileName="FORM">
+          {({loading}) => (loading ? <button>loading PDF...</button>: <button>Download</button>)}
+        </PDFDownloadLink> */}
+        <PdfV01></PdfV01>
       </div>
     ),
   },

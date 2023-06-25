@@ -4,7 +4,8 @@ import "./SidePanel.css";
 import { useNavigate } from "react-router-dom";
 
 import searchLogo from "../images/search-icon.svg";
-
+import PdfV01 from "../PDFFiles/PdfV01";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 
 
 function SidePanel() {
@@ -249,7 +250,7 @@ function SidePanel() {
                        { BIStudentFormShow ? (
                         <div className="BIStudentInfoMainFrame">
                             <div className="BIStudentsInfoTitle">Enter Students Details</div>
-                        <form className="BIStudentinfoForm" onsubmit="return false">   
+                        <form className="BIStudentinfoForm">   
                             <div className="BINameDiv">
                                 <label className="BIFNameLabel" for="fname">First name:</label>
                                 <input className="BIFNameInput" type="text" id="fname" placeholder="ABC"/>
@@ -341,8 +342,16 @@ function SidePanel() {
                                 <img src={searchLogo} alt="Avatar" className="searchImage" />
                                 <button className="BIReports2" >Search Student's Reports</button>
                                 </div>
+                                
                             </div>
                             </form>
+                            {/* <form><button type="submit" formaction="/PdfV01" className="PDFV01" >Search Student's Reports</button></form> */}
+                            <div>
+                                <PDFDownloadLink className="PDFV01" document={<PdfV01/>} fileName={"B00123456"+"_MBA_Assessment_Report"}>
+                                {({loading}) => (loading ? <button>loading PDF...</button>: <button>Download</button>)}
+                                </PDFDownloadLink>
+                            </div>
+                            
                         <div className="DashtSection">
                             <h1>Student Records</h1>
                         </div>
