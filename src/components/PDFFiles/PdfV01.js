@@ -71,11 +71,13 @@ const styles = StyleSheet.create({
   },
   comment:{
     left:65,
-    fontSize: 16,
+    marginRight:100,
+    fontSize: 14,
     fontWeight:400,
     textAlign: "justify",
     fontFamily: "Times-Roman",
     flexWrap:'wrap',
+    color: '#525252'
   },
   pageNumber: {
     position: "absolute",
@@ -99,7 +101,7 @@ const styles = StyleSheet.create({
 const PdfV01 = () => {
     return (
         //Comment PDFViwer when not in use
-      //  <PDFViewer style={styles.viewer}>  
+    // <PDFViewer style={styles.viewer}>  
     <Document>
       <Page size="A4" style={styles.body}>
         <Text style={styles.title} fixed>LEADERSHIP ASSESSMENT REPORT</Text>
@@ -108,19 +110,19 @@ const PdfV01 = () => {
         <Text style={styles.date}>JULY 31, 2023</Text>
         <Image style={styles.bIcon} src={BIcon} fixed></Image>
         <Text style={styles.Score}> 08 </Text><Text style={styles.text}>Idealized Influence and Inspiration </Text>
-        <Text style={styles.comment}>comment................</Text>
+        <Text style={styles.comment}>Vigorously encouraged me (us) to develop my (our) strengths, made many suggestions and proposals and plans for developing my (our) strengths</Text>
         <Text style={styles.Score}> 04 </Text><Text style={styles.text}>Intellectual Stimulation </Text>
-        <Text style={styles.comment}>comment................</Text>
+        <Text style={styles.comment}>Encouraged me (us) somewhat to develop my (our) strengths</Text>
         <Text style={styles.Score}> 05 </Text><Text style={styles.text}>Individualized Consideration </Text>
-        <Text style={styles.comment}>comment................</Text>
+        <Text style={styles.comment}>Showed contempt for my (our) self development, indicated I (we) was (were) incapable of development, said I (we) did not have any strengths, or did not make any mention of my (us) developing my (our) strengths</Text>
         <Text style={styles.Score}> 07 </Text><Text style={styles.text}>Transactional Leadership </Text>
-        <Text style={styles.comment}>comment................</Text>
+        <Text style={styles.comment}>Clearly enjoys change.  Solicits new ideas from others and acts on them to help produce change.</Text>
         <Text style={styles.Score}> 02 </Text><Text style={styles.text}>Open to Change/New Ideas </Text>
-        <Text style={styles.comment}>comment................</Text>
+        <Text style={styles.comment}>Expressed an interest in trying new things.  Considers alternative approaches to or ways of doing things.</Text>
         <Text style={styles.Score}> 06 </Text><Text style={styles.text}>Sharing Responsibility </Text>
-        <Text style={styles.comment}>comment................</Text>
+        <Text style={styles.comment}>Unwilling to consider alternative approaches or ways of doing things.  Prefers to stick with what has worked in the past rather than try new ideas.</Text>
         <Text style={styles.Score}> 06 </Text><Text style={styles.text}>Seeking More Information </Text>
-        <Text style={styles.comment}>comment................</Text>
+        <Text style={styles.comment}>Unwilling to consider alternative approaches or ways of doing things.  Prefers to stick with what has worked in the past rather than try new ideas.</Text>
         <Text style={styles.Score}> 07 </Text><Text style={styles.text}>Logical Reasoning </Text>
         <Text style={styles.comment}>comment................</Text>
         <Text style={styles.Score}> 09 </Text><Text style={styles.text}>Decisiveness </Text>
@@ -150,7 +152,7 @@ const PdfV01 = () => {
         />
       </Page>
     </Document>
-     //</PDFViewer>
+    // </PDFViewer>
      // comment PDFViewer
   );
 };
