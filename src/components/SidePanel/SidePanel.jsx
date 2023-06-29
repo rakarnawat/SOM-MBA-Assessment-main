@@ -293,11 +293,12 @@ function SidePanel() {
                                     </div>
                                 </button>
                             </form>
-                            <form id="form" className="s1StartBtnForm" action="/Simulation2">
-                            <button className="s2card">
+                            <form id="form" className="s1StartBtnForm" action="/Evaluation1">
+                            <button className="e1card">
                                 {/* <img src={juicy_business} alt="Avatar" className="s1Image" /> */}
                                 <div className="s1Selection">
-                                    <h1 className="s1Title">Simulation 2</h1>
+                                    <h1 className="s1Title">Evaluation 1</h1>
+                                    
                                     
                                         {/* <div className="s1StartButton">
                                             <input className="s1StartText" type="submit" value=">"></input>
@@ -305,12 +306,11 @@ function SidePanel() {
                                 </div>
                             </button>
                             </form>
-                            <form id="form" className="s1StartBtnForm" action="/Evaluation1">
-                            <button className="e1card">
+                            <form id="form" className="s1StartBtnForm" action="/Simulation2">
+                            <button className="s2card">
                                 {/* <img src={juicy_business} alt="Avatar" className="s1Image" /> */}
                                 <div className="s1Selection">
-                                    <h1 className="s1Title">Evaluation 1</h1>
-                                    
+                                    <h1 className="s1Title">Simulation 2</h1>
                                     
                                         {/* <div className="s1StartButton">
                                             <input className="s1StartText" type="submit" value=">"></input>

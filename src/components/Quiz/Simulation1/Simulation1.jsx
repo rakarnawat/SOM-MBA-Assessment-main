@@ -396,7 +396,7 @@ const Simulation1 = () => {
           <div className="ScoreClass">
             {/* <div className="S1Score">You Scored : {s1Score}</div> */}
             <div className="S1Score"><h1>You Have completed Simulation1! <h4>(1/4)</h4></h1></div>
-            <button className="HomeButton" onClick={() => navigate("/Simulation2")}> Simulation 2</button>
+            <button className="HomeButton" onClick={() => navigate("/Evaluation1")}> Evaluation 1</button>
           </div>
         ) : (
           <>

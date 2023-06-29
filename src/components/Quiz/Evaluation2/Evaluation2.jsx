@@ -95,6 +95,8 @@ const Evaluation2Data = [
           ],
           
     Observation: "Observations",
+    SeekingMoreInfo: "Seeking More Information",
+    SharingResponsibility: "Sharing Responsibility",
     },
   ];
 
@@ -203,7 +205,17 @@ const Evaluation2 = () => {
             <div >
               <br></br>
               <h3 className="SimulationQ1Question">{Evaluation2Data[currentQuestion].Observation}</h3>
-              <textarea className="E2ObservationTextClass" name="E2ObservvationText" id="E2ObservationID" cols="40" rows="10"></textarea>
+              <textarea className="E2ObservationTextClass" name="E2ObservvationText" id="E2ObservationID" cols="40" rows="10" required></textarea>
+
+              <div className="SeekingMoreInfoDiv">
+              <h3 className="EvaluationSeekingQuestion">{Evaluation2Data[currentQuestion].SeekingMoreInfo}</h3>
+
+              <input className="SeekingMoreInfo" type="Number" min={0} max={10} required></input>
+              </div>
+              <div className="SeekingMoreInfoDiv">
+              <h3 className="EvaluationSeekingQuestion">{Evaluation2Data[currentQuestion].SharingResponsibility}</h3>
+              <input className="SeekingMoreInfo" type="Number"  min={0} max={10} required></input>
+              </div>
             </div>
             {/* ----------------------------Btn-------------------------------- */}
             <br></br>

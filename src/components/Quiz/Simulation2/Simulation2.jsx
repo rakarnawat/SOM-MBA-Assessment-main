@@ -395,8 +395,8 @@ const Simulation2 = () => {
         {showS1Score ? (
           <div className="ScoreClass">
             {/* <div className="S1Score">You Scored : {s1Score}</div> */}
-            <div className="S1Score"><h1>You Have completed Simulation2! <h4>(2/4)</h4></h1></div>
-            <button className="HomeButton" onClick={() => navigate("/Evaluation1")}> Evaluation 1 </button>
+            <div className="S1Score"><h1>You Have completed Simulation2! <h4>(3/4)</h4></h1></div>
+            <button className="HomeButton" onClick={() => navigate("/Evaluation2")}> Evaluation 2 </button>
           </div>
         ) : (
           <>
