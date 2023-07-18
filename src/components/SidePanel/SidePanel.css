@@ -69,7 +69,7 @@
     width: 80%;
     height: 5%;
     left: 10%;
-    top: 22vw;
+    top: 42%;
     overflow: auto;
     box-sizing: border-box;
     background-color: #37373700;
@@ -177,11 +177,12 @@
 .BIMain{
     position: absolute;
     top: 1vw;
-    height: 41vw;
+    height: 96%;
     overflow: auto;
     width: 81vw;
     left: 17vw;
     display: flex;
+    overflow: auto;
     /* background-color: #30FFC7; */
 }
 .BISection{
@@ -444,7 +445,7 @@ transform: scale(1.1);
 .searchImage{
     width: 1.5vw;
     height: 1.5vw;
-    left: 0.8vw;
+    left: 1vw;
     position: relative;
     display:flex;
     top:2.7vw;
@@ -458,8 +459,9 @@ body:has(.BIReports:hover) .searchImage{
 }
 
 .BIReports2{
+    position: relative;
     height: 3vw;
-    left: 0.1vw;
+    left: 0.3vw;
     background-color: #f8f8f800;
     font-family: 'Lato';
     font-style: normal;
@@ -474,3 +476,86 @@ body:has(.BIReports:hover) .searchImage{
     border: none;
 }
 
+.BIStudentInfoMainFrame{
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20vh;
+    margin-left: 15vw;
+    height: 50vh;
+    width: 50vw;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: #f8f8f8e2;
+    border-radius: 2vw;
+}
+.BIStudentsInfoTitle{
+    position: relative;
+    display: flex;
+    vertical-align:middle;
+    margin-left: 15vw;
+    margin-top: 5vh;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.55vw;
+    line-height: 1.4vw;
+    display: flex;
+    align-items: center;
+    text-align: justify;
+    text-indent: 1vw;
+    cursor: default;
+}
+
+.BIStudentinfoForm{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    width: 95%;
+    height: 80%;
+    margin-top: 5vh;
+    margin-left: 0.5vw;
+}
+
+.BIFNameLabel, .BILNameLabel, .BIBNumberLabel, .BIFNameInput, .BILNameInput, .BIBNumberInput{
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.15vw;
+    line-height: 1.4vw;
+    display: flex;
+    align-items: center;
+    text-align: justify;
+    text-indent: 1vw;
+    width: 7vw;
+    height: 6vh;
+    color: #000000;
+}
+
+.BIFNameInput, .BILNameInput,.BIBNumberInput{
+    background-color: #e0e0e087;
+    width: 15vw;
+    height: 5vh;
+    display: flex;
+    margin-top: 0.3vh;
+    border: 1px solid #dbdbdb;
+} 
+.BINameDiv{
+    display: flex;
+}
+
+.BISubmitBtn{
+    position: relative;
+    width: 17vw;
+    height: 5vh;
+    border: none;
+    margin-top: 5vh;
+    background-color: #22856A;
+    color: #F8F8F8;
+    border-radius: 2vw;
+    font-size: 1.3vw;
+}
+
+.PDFV01{
+    position: relative;
+}

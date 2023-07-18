@@ -2,7 +2,7 @@ import React from "react";
 import "../UserAuth/ForgotPasswordStyles.css";
 import Binghamton_University_pic from "../images/Binghamton-University-pic.jpg";
 
-export default function ForgotPassword() {
+export default function RegisterNewPassword() {
   return (
     <div className="LoginMainComponent">
       <div className="ImageSlider">
@@ -13,32 +13,26 @@ export default function ForgotPassword() {
         />
       </div>
       <div className="UserAuth">
-        <form id="loginForm" action="/RegisterNewPassword">
+        <form id="loginForm" action="/">
           <h1 className="headingTitle">Login</h1>
           <p className="headText">Welcome to Leadership Assesment Program</p>
-          <label htmlFor="email" className="userName">
-            B-mail
+          <label htmlFor="text" className="userName">
+            New Password
           </label>
           <div className="userNameInput">
             <input
-              type={"email"}
+              type={"text"}
               //className="userNameInput"
-              placeholder="xyz@binghamton.edu"
-              id="email"
-              name="email"
+              placeholder="************"
+              id="text"
+              name="text"
               required
-              pattern="^[a-zA-Z0-9]+@binghamton\.edu$"
             />
           </div>
-          <div className="GenerateTokenDiv">
-            <button className="GenerateTokenButton"><p>Generate Token</p></button>
-          </div>
-          </form>
-          <form id="loginForm" action="/RegisterNewPassword">
-          <label htmlFor="password" className="TokenLabel">
-            Token {"(12-digit)"}
+          <label htmlFor="password" className="password">
+            Confirm Password
           </label>
-          <div className="TokenInput">
+          <div className="passInput">
             <input
               //type={"date"}
               //className="passInput"
@@ -48,12 +42,12 @@ export default function ForgotPassword() {
               required
             />
           </div>
-          <div className="FPLoginButton">
+          <div className="LoginButton">
             <input className="ForgotPasswordSubmitBtn" type="submit" value="Submit"></input>
           </div>
         </form>
         <form id="signupForm" action="/Signup">
-          <div className="FPNewUserDiv" type="submit">
+          <div className="NewUserDiv" type="submit">
             <input
               className="NewUserClass"
               type="submit"
@@ -65,7 +59,7 @@ export default function ForgotPassword() {
         <form id="ForgotPasswordForm" action="/">
           <div type="submit">
             <input
-              className="FPForgotPasswordClass"
+              className="ForgotPasswordClass"
               type="submit"
               value="Existing User? Login"
             ></input>

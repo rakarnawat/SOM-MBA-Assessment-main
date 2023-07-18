@@ -440,18 +440,23 @@ const Evaluation2 = () => {
   const navigate = useNavigate();
   return (
     <div className="Evaluation2MainFrame">
-      {showS1Score ? (
+      {showE2Score ? (
         <div className="ScoreClass">
-          <div className="S1Score">You Scored : {s1Score}</div>
-          <button className="HomeButton" onClick={() => navigate("/reports")}>
+          {/* <div className="E2Score">You Scored : {E2Score}</div> */}
+          <div className="S1Score">
+            <h1>
+              You Have completed Evaluation2! <h4>(4/4)</h4>
+            </h1>
+          </div>
+          <button className="HomeButton" onClick={() => navigate("/Reports")}>
             {" "}
-            Home{" "}
+            Dashboard{" "}
           </button>
         </div>
       ) : (
         <>
           <div>
-            <h1 className="SimulationQ1Titles">
+            <h1 className="Evaluation2Title">
               {Evaluation2Data[currentQuestion].Q}
             </h1>
             <br></br>
@@ -468,7 +473,7 @@ const Evaluation2 = () => {
                       onClick={() =>
                         handleO1AnswerButtonClick(Evaluation2Data.idx)
                       }
-                      className={`SimulationQ1Option ${
+                      className={`Evaluation2Options ${
                         selectedOptionO1 === Evaluation2Data.idx
                           ? "selected"
                           : ""
@@ -498,7 +503,7 @@ const Evaluation2 = () => {
                       onClick={() =>
                         handleO2AnswerButtonClick(Evaluation2Data.idx)
                       }
-                      className={`SimulationQ1Option ${
+                      className={`Evaluation2Options ${
                         selectedOptionO2 === Evaluation2Data.idx
                           ? "selected"
                           : ""
@@ -513,64 +518,6 @@ const Evaluation2 = () => {
           </div>
           {/* ----------------------------3rd-------------------------------- */}
 
-          <div>
-            <br></br>
-            <h3 className="SimulationQ1Question">
-              {Evaluation2Data[currentQuestion].question3}
-            </h3>
-          </div>
-          <div>
-            {Evaluation2Data[currentQuestion].O3.map((Evaluation2Data) => {
-              return (
-                <>
-                  <div key={Evaluation2Data.idx}>
-                    <button
-                      onClick={() =>
-                        handleO3AnswerButtonClick(Evaluation2Data.idx)
-                      }
-                      className={`SimulationQ1Option ${
-                        selectedOptionO3 === Evaluation2Data.idx
-                          ? "selected"
-                          : ""
-                      }`}
-                    >
-                      {Evaluation2Data.value}
-                    </button>
-                  </div>
-                </>
-              );
-            })}
-          </div>
-          {/* ----------------------------4th-------------------------------- */}
-
-          <div>
-            <br></br>
-            <h3 className="SimulationQ1Question">
-              {Evaluation2Data[currentQuestion].question4}
-            </h3>
-          </div>
-          <div>
-            {Evaluation2Data[currentQuestion].O4.map((Evaluation2Data) => {
-              return (
-                <>
-                  <div key={Evaluation2Data.idx}>
-                    <button
-                      onClick={() =>
-                        handleO4AnswerButtonClick(Evaluation2Data.idx)
-                      }
-                      className={`SimulationQ1Option ${
-                        selectedOptionO4 === Evaluation2Data.idx
-                          ? "selected"
-                          : ""
-                      }`}
-                    >
-                      {Evaluation2Data.value}
-                    </button>
-                  </div>
-                </>
-              );
-            })}
-          </div>
           {/* ----------------------------5th-------------------------------- */}
 
           <div>
@@ -579,9 +526,9 @@ const Evaluation2 = () => {
               {Evaluation2Data[currentQuestion].Observation}
             </h3>
             <textarea
-              className="s1ObservationTextClass"
-              name="s1ObservvationText"
-              id="s1ObservationID"
+              className="E2ObservationTextClass"
+              name="E2ObservvationText"
+              id="E2ObservationID"
               cols="40"
               rows="10"
             ></textarea>

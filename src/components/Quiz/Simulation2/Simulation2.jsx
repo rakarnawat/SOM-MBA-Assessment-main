@@ -442,10 +442,18 @@ const Simulation2 = () => {
     <div className="Simulation2MainFrame">
       {showS1Score ? (
         <div className="ScoreClass">
-          <div className="S1Score">You Scored : {s1Score}</div>
-          <button className="HomeButton" onClick={() => navigate("/reports")}>
+          {/* <div className="S1Score">You Scored : {s1Score}</div> */}
+          <div className="S1Score">
+            <h1>
+              You Have completed Simulation2! <h4>(3/4)</h4>
+            </h1>
+          </div>
+          <button
+            className="HomeButton"
+            onClick={() => navigate("/Evaluation2")}
+          >
             {" "}
-            Home{" "}
+            Evaluation 2{" "}
           </button>
         </div>
       ) : (
@@ -454,6 +462,7 @@ const Simulation2 = () => {
             <h1 className="SimulationQ1Titles">
               {Simulation2Data[currentQuestion].Q}
             </h1>
+            <h4>Note : Evaluate the following questions as if you are Kerry</h4>
             <br></br>
             <h3 className="SimulationQ1Question">
               {Simulation2Data[currentQuestion].question1}

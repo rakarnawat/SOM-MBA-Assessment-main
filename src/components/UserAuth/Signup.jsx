@@ -213,7 +213,7 @@ export default function Signup() {
         />
       </div>
       <div className="UserAuth">
-        <form id="loginForm" action="/SelectionScreen">
+        <form id="loginForm" action="/reports">
           <h1 className="headingTitle">Signup</h1>
           <p className="headText">Welcome to Leadership Assesment Program</p>
 
@@ -239,7 +239,7 @@ export default function Signup() {
               onBlur={validateLNameHandler}
             />
           </div>
-          <label className="BNumber">B-Number</label>
+          {/* <label className="BNumber">B-Number</label>
           <div className="BNumberInputText">
             <input
               ref={inputRef}
@@ -249,7 +249,8 @@ export default function Signup() {
               type="text"
               placeholder="Please enter your B-Number"
             />
-          </div>
+          </div> */}
+
           <label htmlFor="email" className="userName1">
             B-mail
           </label>

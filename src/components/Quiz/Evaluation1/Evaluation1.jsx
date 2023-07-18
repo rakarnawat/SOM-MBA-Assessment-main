@@ -440,18 +440,26 @@ const Evaluation1 = () => {
   const navigate = useNavigate();
   return (
     <div className="Evaluation1MainFrame">
-      {showS1Score ? (
+      {showE1Score ? (
         <div className="ScoreClass">
-          <div className="S1Score">You Scored : {s1Score}</div>
-          <button className="HomeButton" onClick={() => navigate("/reports")}>
+          {/* <div className="E1Score">You Scored : {E1Score}</div> */}
+          <div className="S1Score">
+            <h1>
+              You Have completed Evaluation1! <h4>(3/4)</h4>
+            </h1>
+          </div>
+          <button
+            className="HomeButton"
+            onClick={() => navigate("/Evaluation2")}
+          >
             {" "}
-            Home{" "}
+            Evaluation 2{" "}
           </button>
         </div>
       ) : (
         <>
           <div>
-            <h1 className="SimulationQ1Titles">
+            <h1 className="Evaluation1Title">
               {Evaluation1Data[currentQuestion].Q}
             </h1>
             <br></br>
@@ -468,7 +476,7 @@ const Evaluation1 = () => {
                       onClick={() =>
                         handleO1AnswerButtonClick(Evaluation1Data.idx)
                       }
-                      className={`SimulationQ1Option ${
+                      className={`Evaluation1Options ${
                         selectedOptionO1 === Evaluation1Data.idx
                           ? "selected"
                           : ""
@@ -498,7 +506,7 @@ const Evaluation1 = () => {
                       onClick={() =>
                         handleO2AnswerButtonClick(Evaluation1Data.idx)
                       }
-                      className={`SimulationQ1Option ${
+                      className={`Evaluation1Options ${
                         selectedOptionO2 === Evaluation1Data.idx
                           ? "selected"
                           : ""
@@ -513,64 +521,6 @@ const Evaluation1 = () => {
           </div>
           {/* ----------------------------3rd-------------------------------- */}
 
-          <div>
-            <br></br>
-            <h3 className="SimulationQ1Question">
-              {Evaluation1Data[currentQuestion].question3}
-            </h3>
-          </div>
-          <div>
-            {Evaluation1Data[currentQuestion].O3.map((Evaluation1Data) => {
-              return (
-                <>
-                  <div key={Evaluation1Data.idx}>
-                    <button
-                      onClick={() =>
-                        handleO3AnswerButtonClick(Evaluation1Data.idx)
-                      }
-                      className={`SimulationQ1Option ${
-                        selectedOptionO3 === Evaluation1Data.idx
-                          ? "selected"
-                          : ""
-                      }`}
-                    >
-                      {Evaluation1Data.value}
-                    </button>
-                  </div>
-                </>
-              );
-            })}
-          </div>
-          {/* ----------------------------4th-------------------------------- */}
-
-          <div>
-            <br></br>
-            <h3 className="SimulationQ1Question">
-              {Evaluation1Data[currentQuestion].question4}
-            </h3>
-          </div>
-          <div>
-            {Evaluation1Data[currentQuestion].O4.map((Evaluation1Data) => {
-              return (
-                <>
-                  <div key={Evaluation1Data.idx}>
-                    <button
-                      onClick={() =>
-                        handleO4AnswerButtonClick(Evaluation1Data.idx)
-                      }
-                      className={`SimulationQ1Option ${
-                        selectedOptionO4 === Evaluation1Data.idx
-                          ? "selected"
-                          : ""
-                      }`}
-                    >
-                      {Evaluation1Data.value}
-                    </button>
-                  </div>
-                </>
-              );
-            })}
-          </div>
           {/* ----------------------------5th-------------------------------- */}
 
           <div>
@@ -579,9 +529,9 @@ const Evaluation1 = () => {
               {Evaluation1Data[currentQuestion].Observation}
             </h3>
             <textarea
-              className="s1ObservationTextClass"
-              name="s1ObservvationText"
-              id="s1ObservationID"
+              className="E1ObservationTextClass"
+              name="E1ObservvationText"
+              id="E1ObservationID"
               cols="40"
               rows="10"
             ></textarea>
