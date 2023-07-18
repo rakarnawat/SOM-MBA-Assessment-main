@@ -87,7 +87,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/Simulation20",
+        path: "/Simulation2",
         element: (
           <div>
             <Navbar />
@@ -96,7 +96,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/Evaluation10",
+        path: "/Evaluation1",
         element: (
           <div>
             <Navbar />
@@ -105,7 +105,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/Evaluation20",
+        path: "/Evaluation2",
         element: (
           <div>
             <Navbar />
