@@ -9,7 +9,7 @@ import "../UserAuth/SignupStyles.css";
 import {
   firstNameReducer,
   lastNameReducer,
-  bNumberReducer,
+  // bNumberReducer,
   passwordReducer,
   userNameReducer,
 } from "./AuthReducers";
@@ -37,10 +37,10 @@ export default function Signup() {
     isValid: null,
   });
 
-  const [bNumState, dispatchBNum] = useReducer(bNumberReducer, {
-    value: "",
-    isValid: null,
-  });
+  // const [bNumState, dispatchBNum] = useReducer(bNumberReducer, {
+  //   value: "",
+  //   isValid: null,
+  // });
 
   const [userNameState, dispatchUserName] = useReducer(userNameReducer, {
     value: "",
@@ -54,7 +54,7 @@ export default function Signup() {
 
   const { isValid: fNameIsValid } = fNameState;
   const { isValid: lNameIsValid } = lNameState;
-  const { isValid: bNumIsValid } = bNumState;
+  // const { isValid: bNumIsValid } = bNumState;
   const { isValid: userNameIsValid } = userNameState;
   const { value: enteredPassword, isValid: passIsValid } = passwordState;
 
@@ -65,7 +65,7 @@ export default function Signup() {
       if (
         fNameIsValid &&
         lNameIsValid &&
-        bNumIsValid &&
+        // bNumIsValid &&
         userNameIsValid &&
         passIsValid &&
         enteredPassword === enteredConfirmPassword
@@ -73,13 +73,15 @@ export default function Signup() {
         setFormIsValid(
           fNameIsValid &&
             lNameIsValid &&
-            bNumIsValid &&
+            // bNumIsValid &&
             userNameIsValid &&
             passIsValid
         );
         if (formIsValid) {
           console.log("FORM OK");
         }
+      } else {
+        console.log("FORM NOT OK");
       }
     }, 500);
 
@@ -90,7 +92,7 @@ export default function Signup() {
   }, [
     fNameIsValid,
     lNameIsValid,
-    bNumIsValid,
+    // bNumIsValid,
     userNameIsValid,
     passIsValid,
     formIsValid,
@@ -117,14 +119,14 @@ export default function Signup() {
     });
   };
 
-  const bNumChangeHandler = (event) => {
-    // var regexConst = /^B\d{8}$/;
-    // console.log(regexConst.test(event.target.value));
-    dispatchBNum({
-      type: "USER_INPUT",
-      val: event.target.value,
-    });
-  };
+  // const bNumChangeHandler = (event) => {
+  //   // var regexConst = /^B\d{8}$/;
+  //   // console.log(regexConst.test(event.target.value));
+  //   dispatchBNum({
+  //     type: "USER_INPUT",
+  //     val: event.target.value,
+  //   });
+  // };
 
   const userNameChangeHandler = (event) => {
     // console.log(event.target.value);
@@ -156,10 +158,10 @@ export default function Signup() {
     // console.log(formIsValid);
   };
 
-  const validateBNumHandler = () => {
-    dispatchBNum({ type: "INPUT_BLUR" });
-    // console.log(formIsValid);
-  };
+  // const validateBNumHandler = () => {
+  //   dispatchBNum({ type: "INPUT_BLUR" });
+  //   // console.log(formIsValid);
+  // };
 
   const validateUserName = () => {
     dispatchUserName({ type: "INPUT_BLUR" });
@@ -184,7 +186,7 @@ export default function Signup() {
       authCtx
         .onSignup(
           userNameState.value,
-          bNumState.value,
+          "",
           fNameState.value,
           lNameState.value,
           passwordState.value,
