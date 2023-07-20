@@ -1,6 +1,6 @@
 // import { Grid } from "@material-ui/core";
 import "./Simulation2.css";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import * as React from "react";
 // import Simulation2Data from "./Simulation2Data";
 const Simulation2Data = [
@@ -378,6 +378,10 @@ const Simulation2Data = [
 
 const Simulation2 = () => {
   // console.log(Simulation2Data[1].Q)
+  const location = useLocation();
+  const [questionsList, setQuestionsList] = React.useState(location.state);
+  console.log(questionsList);
+  const [currQues, setCurrQues] = React.useState(0);
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const [showS1Score, setShowS1Score] = React.useState(false);
   let [s1Score, setS1Score] = React.useState(0);
@@ -396,24 +400,41 @@ const Simulation2 = () => {
   }
 
   const handleO1AnswerButtonClick = (idx) => {
+    console.log(idx);
     setS1Score((prevScore) => prevScore + parseInt(idx));
     setSelectedOptionO1(idx);
   };
   const handleO2AnswerButtonClick = (idx) => {
+    console.log(idx);
     setS1Score((prevScore) => prevScore + parseInt(idx));
     setSelectedOptionO2(idx);
   };
   const handleO3AnswerButtonClick = (idx) => {
+    console.log(idx);
     setS1Score((prevScore) => prevScore + parseInt(idx));
     setSelectedOptionO3(idx);
   };
   const handleO4AnswerButtonClick = (idx) => {
+    console.log(idx);
     setS1Score((prevScore) => prevScore + parseInt(idx));
     setSelectedOptionO4(idx);
   };
 
   const handleNextButonClick = () => {
     const nextQuestion = currentQuestion + 1;
+    const nextQues = currQues + 4;
+    // console.log(nextQues);
+    if (nextQues < questionsList.length) {
+      getS1TextAreaValue();
+      setCurrQues(nextQues);
+      setSelectedOptionO1(null);
+      setSelectedOptionO2(null);
+      setSelectedOptionO3(null);
+      setSelectedOptionO4(null);
+      eraseText();
+    } else {
+      setShowS1Score(true);
+    }
     if (nextQuestion < Simulation2Data.length) {
       getS1TextAreaValue();
       setCurrentQuestion(nextQuestion);
@@ -428,6 +449,14 @@ const Simulation2 = () => {
   };
   const handlePrevButonClick = () => {
     const prevQuestion = currentQuestion - 1;
+    const prevQues = currQues - 4;
+    if (prevQues >= 0) {
+      setCurrQues(prevQues);
+      eraseText();
+      //console.log(currentQuestion);
+    } else {
+      alert("You have reached start of the Quiz!");
+    }
     if (prevQuestion >= 0) {
       setCurrentQuestion(prevQuestion);
       eraseText();
@@ -469,7 +498,26 @@ const Simulation2 = () => {
             </h3>
           </div>
           <div>
-            {Simulation2Data[currentQuestion].O1.map((Simulation2Data) => {
+            {questionsList[currQues].options.map((dat, idx) => {
+              if (dat.idx !== "None") {
+                // console.log(questionsList[currQues]);
+                return (
+                  <>
+                    <div key={idx + 1}>
+                      <button
+                        onClick={() => handleO1AnswerButtonClick(idx + 1)}
+                        className={`SimulationQ1Option ${
+                          selectedOptionO1 === idx + 1 ? "selected" : ""
+                        }`}
+                      >
+                        {dat.idx}
+                      </button>
+                    </div>
+                  </>
+                );
+              }
+            })}
+            {/* {Simulation2Data[currentQuestion].O1.map((Simulation2Data) => {
               return (
                 <>
                   <div key={Simulation2Data.idx}>
@@ -488,7 +536,7 @@ const Simulation2 = () => {
                   </div>
                 </>
               );
-            })}
+            })} */}
           </div>
           {/* ----------------------------2nd-------------------------------- */}
 
@@ -499,7 +547,26 @@ const Simulation2 = () => {
             </h3>
           </div>
           <div>
-            {Simulation2Data[currentQuestion].O2.map((Simulation2Data) => {
+            {questionsList[currQues + 1].options.map((dat, idx) => {
+              if (dat.idx !== "None") {
+                // console.log(questionsList[currQues]);
+                return (
+                  <>
+                    <div key={idx + 1}>
+                      <button
+                        onClick={() => handleO2AnswerButtonClick(idx + 1)}
+                        className={`SimulationQ1Option ${
+                          selectedOptionO2 === idx + 1 ? "selected" : ""
+                        }`}
+                      >
+                        {dat.idx}
+                      </button>
+                    </div>
+                  </>
+                );
+              }
+            })}
+            {/* {Simulation2Data[currentQuestion].O2.map((Simulation2Data) => {
               return (
                 <>
                   <div key={Simulation2Data.idx}>
@@ -518,7 +585,7 @@ const Simulation2 = () => {
                   </div>
                 </>
               );
-            })}
+            })} */}
           </div>
           {/* ----------------------------3rd-------------------------------- */}
 
@@ -529,7 +596,26 @@ const Simulation2 = () => {
             </h3>
           </div>
           <div>
-            {Simulation2Data[currentQuestion].O3.map((Simulation2Data) => {
+            {questionsList[currQues + 2].options.map((dat, idx) => {
+              if (dat.idx !== "None") {
+                // console.log(questionsList[currQues]);
+                return (
+                  <>
+                    <div key={idx + 1}>
+                      <button
+                        onClick={() => handleO3AnswerButtonClick(idx + 1)}
+                        className={`SimulationQ1Option ${
+                          selectedOptionO3 === idx + 1 ? "selected" : ""
+                        }`}
+                      >
+                        {dat.idx}
+                      </button>
+                    </div>
+                  </>
+                );
+              }
+            })}
+            {/* {Simulation2Data[currentQuestion].O3.map((Simulation2Data) => {
               return (
                 <>
                   <div key={Simulation2Data.idx}>
@@ -548,7 +634,7 @@ const Simulation2 = () => {
                   </div>
                 </>
               );
-            })}
+            })} */}
           </div>
           {/* ----------------------------4th-------------------------------- */}
 
@@ -559,7 +645,26 @@ const Simulation2 = () => {
             </h3>
           </div>
           <div>
-            {Simulation2Data[currentQuestion].O4.map((Simulation2Data) => {
+            {questionsList[currQues + 3].options.map((dat, idx) => {
+              if (dat.idx !== "None") {
+                // console.log(questionsList[currQues]);
+                return (
+                  <>
+                    <div key={idx + 1}>
+                      <button
+                        onClick={() => handleO4AnswerButtonClick(idx + 1)}
+                        className={`SimulationQ1Option ${
+                          selectedOptionO4 === idx + 1 ? "selected" : ""
+                        }`}
+                      >
+                        {dat.idx}
+                      </button>
+                    </div>
+                  </>
+                );
+              }
+            })}
+            {/* {Simulation2Data[currentQuestion].O4.map((Simulation2Data) => {
               return (
                 <>
                   <div key={Simulation2Data.idx}>
@@ -578,7 +683,7 @@ const Simulation2 = () => {
                   </div>
                 </>
               );
-            })}
+            })} */}
           </div>
           {/* ----------------------------5th-------------------------------- */}
 

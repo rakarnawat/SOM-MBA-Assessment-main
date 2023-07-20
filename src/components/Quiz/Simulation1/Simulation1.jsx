@@ -1,7 +1,8 @@
 // import { Grid } from "@material-ui/core";
 import "./Simulation1.css";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import * as React from "react";
+import axios from "axios";
 // import Simulation1Data from "./Simulation1Data";
 const Simulation1Data = [
   {
@@ -377,7 +378,11 @@ const Simulation1Data = [
 ];
 
 const Simulation1 = () => {
+  const location = useLocation();
   // console.log(Simulation1Data[1].Q)
+  const [questionsList, setQuestionsList] = React.useState(location.state);
+  console.log(questionsList);
+  const [currQues, setCurrQues] = React.useState(0);
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const [showS1Score, setShowS1Score] = React.useState(false);
   let [s1Score, setS1Score] = React.useState(0);
@@ -396,24 +401,41 @@ const Simulation1 = () => {
   }
 
   const handleO1AnswerButtonClick = (idx) => {
-    setS1Score((prevScore) => prevScore + parseInt(idx));
+    console.log(idx);
+    // setS1Score((prevScore) => prevScore + parseInt(idx));
     setSelectedOptionO1(idx);
   };
   const handleO2AnswerButtonClick = (idx) => {
-    setS1Score((prevScore) => prevScore + parseInt(idx));
+    console.log(idx);
+    // setS1Score((prevScore) => prevScore + parseInt(idx));
     setSelectedOptionO2(idx);
   };
   const handleO3AnswerButtonClick = (idx) => {
-    setS1Score((prevScore) => prevScore + parseInt(idx));
+    console.log(idx);
+    // setS1Score((prevScore) => prevScore + parseInt(idx));
     setSelectedOptionO3(idx);
   };
   const handleO4AnswerButtonClick = (idx) => {
-    setS1Score((prevScore) => prevScore + parseInt(idx));
+    console.log(idx);
+    // setS1Score((prevScore) => prevScore + parseInt(idx));
     setSelectedOptionO4(idx);
   };
 
   const handleNextButonClick = () => {
     const nextQuestion = currentQuestion + 1;
+    const nextQues = currQues + 4;
+    // console.log(nextQues);
+    if (nextQues < questionsList.length) {
+      getS1TextAreaValue();
+      setCurrQues(nextQues);
+      setSelectedOptionO1(null);
+      setSelectedOptionO2(null);
+      setSelectedOptionO3(null);
+      setSelectedOptionO4(null);
+      eraseText();
+    } else {
+      setShowS1Score(true);
+    }
     if (nextQuestion < Simulation1Data.length) {
       getS1TextAreaValue();
       setCurrentQuestion(nextQuestion);
@@ -428,6 +450,14 @@ const Simulation1 = () => {
   };
   const handlePrevButonClick = () => {
     const prevQuestion = currentQuestion - 1;
+    const prevQues = currQues - 4;
+    if (prevQues >= 0) {
+      setCurrQues(prevQues);
+      eraseText();
+      //console.log(currentQuestion);
+    } else {
+      alert("You have reached start of the Quiz!");
+    }
     if (prevQuestion >= 0) {
       setCurrentQuestion(prevQuestion);
       eraseText();
@@ -469,10 +499,28 @@ const Simulation1 = () => {
             <br></br>
             <h3 className="Simulation1Q1Question">
               {Simulation1Data[currentQuestion].question1}
+              {/* {questionsList[currQues].idNameNum} */}
             </h3>
           </div>
           <div>
-            {Simulation1Data[currentQuestion].O1.map((simulation1Data) => {
+            {questionsList[currQues].options.map((dat, idx) => {
+              if (dat.idx !== "None") {
+                // console.log(questionsList[currQues]);
+                return (
+                  <div key={idx + 1}>
+                    <button
+                      onClick={() => handleO1AnswerButtonClick(idx + 1)}
+                      className={`SimulationQ1Option ${
+                        selectedOptionO1 === idx + 1 ? "selected" : ""
+                      }`}
+                    >
+                      {dat.idx}
+                    </button>
+                  </div>
+                );
+              }
+            })}
+            {/* {Simulation1Data[currentQuestion].O1.map((simulation1Data) => {
               return (
                 <>
                   <div key={simulation1Data.idx}>
@@ -480,7 +528,7 @@ const Simulation1 = () => {
                       onClick={() =>
                         handleO1AnswerButtonClick(simulation1Data.idx)
                       }
-                      className={`Simulation1Q1Option ${
+                      className={`SimulationQ1Option ${
                         selectedOptionO1 === simulation1Data.idx
                           ? "selected"
                           : ""
@@ -491,7 +539,7 @@ const Simulation1 = () => {
                   </div>
                 </>
               );
-            })}
+            })} */}
           </div>
           {/* ----------------------------2nd-------------------------------- */}
 
@@ -502,7 +550,24 @@ const Simulation1 = () => {
             </h3>
           </div>
           <div>
-            {Simulation1Data[currentQuestion].O2.map((simulation1Data) => {
+            {questionsList[currQues + 1].options.map((dat, idx) => {
+              if (dat.idx !== "None") {
+                // console.log(questionsList[currQues]);
+                return (
+                  <div key={idx + 1}>
+                    <button
+                      onClick={() => handleO2AnswerButtonClick(idx + 1)}
+                      className={`SimulationQ1Option ${
+                        selectedOptionO2 === idx + 1 ? "selected" : ""
+                      }`}
+                    >
+                      {dat.idx}
+                    </button>
+                  </div>
+                );
+              }
+            })}
+            {/* {Simulation1Data[currentQuestion].O2.map((simulation1Data) => {
               return (
                 <>
                   <div key={simulation1Data.idx}>
@@ -510,7 +575,7 @@ const Simulation1 = () => {
                       onClick={() =>
                         handleO2AnswerButtonClick(simulation1Data.idx)
                       }
-                      className={`Simulation1Q1Option ${
+                      className={`SimulationQ1Option ${
                         selectedOptionO2 === simulation1Data.idx
                           ? "selected"
                           : ""
@@ -521,7 +586,7 @@ const Simulation1 = () => {
                   </div>
                 </>
               );
-            })}
+            })} */}
           </div>
           {/* ----------------------------3rd-------------------------------- */}
 
@@ -532,7 +597,24 @@ const Simulation1 = () => {
             </h3>
           </div>
           <div>
-            {Simulation1Data[currentQuestion].O3.map((simulation1Data) => {
+            {questionsList[currQues + 2].options.map((dat, idx) => {
+              if (dat.idx !== "None") {
+                // console.log(questionsList[currQues]);
+                return (
+                  <div key={idx + 1}>
+                    <button
+                      onClick={() => handleO3AnswerButtonClick(idx + 1)}
+                      className={`SimulationQ1Option ${
+                        selectedOptionO3 === idx + 1 ? "selected" : ""
+                      }`}
+                    >
+                      {dat.idx}
+                    </button>
+                  </div>
+                );
+              }
+            })}
+            {/* {Simulation1Data[currentQuestion].O3.map((simulation1Data) => {
               return (
                 <>
                   <div key={simulation1Data.idx}>
@@ -551,7 +633,7 @@ const Simulation1 = () => {
                   </div>
                 </>
               );
-            })}
+            })} */}
           </div>
           {/* ----------------------------4th-------------------------------- */}
 
@@ -562,7 +644,24 @@ const Simulation1 = () => {
             </h3>
           </div>
           <div>
-            {Simulation1Data[currentQuestion].O4.map((simulation1Data) => {
+            {questionsList[currQues + 3].options.map((dat, idx) => {
+              if (dat.idx !== "None") {
+                // console.log(questionsList[currQues]);
+                return (
+                  <div key={idx + 1}>
+                    <button
+                      onClick={() => handleO4AnswerButtonClick(idx + 1)}
+                      className={`SimulationQ1Option ${
+                        selectedOptionO4 === idx + 1 ? "selected" : ""
+                      }`}
+                    >
+                      <p className="S1OptionsText">{dat.idx}</p>
+                    </button>
+                  </div>
+                );
+              }
+            })}
+            {/* {Simulation1Data[currentQuestion].O4.map((simulation1Data) => {
               return (
                 <>
                   <div key={simulation1Data.idx}>
@@ -581,14 +680,15 @@ const Simulation1 = () => {
                   </div>
                 </>
               );
-            })}
+            })} */}
           </div>
           {/* ----------------------------5th-------------------------------- */}
 
           <div>
             <br></br>
             <h3 className="Simulation1Q1Question">
-              {Simulation1Data[currentQuestion].Observation}
+              {/* {Simulation1Data[currentQuestion].Observation} */}
+              Observations
             </h3>
             <textarea
               className="s1ObservationTextClass"

@@ -1,6 +1,6 @@
 // import { Grid } from "@material-ui/core";
 import "./Evaluation2.css";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import * as React from "react";
 // import Evaluation2Data from "./Evaluation2Data";
 const Evaluation2Data = [
@@ -121,6 +121,11 @@ const Evaluation2Data = [
 
 const Evaluation2 = () => {
   // console.log(Evaluation2Data[1].Q)
+  const location = useLocation();
+  // console.log(Simulation1Data[1].Q)
+  const [questionsList, setQuestionsList] = React.useState(location.state);
+  console.log(questionsList);
+  const [currQues, setCurrQues] = React.useState(0);
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const [showE2Score, setShowE2Score] = React.useState(false);
   //let [E2Score, setE2Score] = React.useState(0);
@@ -147,6 +152,18 @@ const Evaluation2 = () => {
 
   const handleNextButonClick = () => {
     const nextQuestion = currentQuestion + 1;
+    const nextQues = currQues + 1;
+    // console.log(nextQues);
+    if (nextQues < questionsList.length) {
+      getE2TextAreaValue();
+      setCurrQues(nextQues);
+      setSelectedOptionO1(null);
+      setSelectedOptionO2(null);
+      eraseText();
+    } else {
+      setShowE2Score(true);
+    }
+
     if (nextQuestion < Evaluation2Data.length) {
       getE2TextAreaValue();
       setCurrentQuestion(nextQuestion);
@@ -159,6 +176,14 @@ const Evaluation2 = () => {
   };
   const handlePrevButonClick = () => {
     const prevQuestion = currentQuestion - 1;
+    const prevQues = currQues - 1;
+    if (prevQues >= 0) {
+      setCurrQues(prevQues);
+      eraseText();
+      //console.log(currentQuestion);
+    } else {
+      alert("You have reached start of the Quiz!");
+    }
     if (prevQuestion >= 0) {
       setCurrentQuestion(prevQuestion);
       eraseText();
@@ -192,11 +217,28 @@ const Evaluation2 = () => {
             </h1>
             <br></br>
             <h3 className="SimulationQ1Question">
-              {Evaluation2Data[currentQuestion].question1}
+              {/* {Evaluation2Data[currentQuestion].question1} */}
+              {questionsList[currQues].idNameNum}
             </h3>
           </div>
           <div>
-            {Evaluation2Data[currentQuestion].O1.map((Evaluation2Data) => {
+            {questionsList[currQues].options.map((dat, idx) => {
+              return (
+                <>
+                  <div key={idx + 1}>
+                    <button
+                      onClick={() => handleO1AnswerButtonClick(idx + 1)}
+                      className={`Evaluation2Options ${
+                        selectedOptionO1 === idx + 1 ? "selected" : ""
+                      }`}
+                    >
+                      {`${idx + 1} ${dat.idx}`}
+                    </button>
+                  </div>
+                </>
+              );
+            })}
+            {/* {Evaluation2Data[currentQuestion].O1.map((Evaluation2Data) => {
               return (
                 <>
                   <div key={Evaluation2Data.idx}>
@@ -215,7 +257,7 @@ const Evaluation2 = () => {
                   </div>
                 </>
               );
-            })}
+            })} */}
           </div>
           {/* ----------------------------2nd-------------------------------- */}
 
@@ -226,7 +268,23 @@ const Evaluation2 = () => {
             </h3>
           </div>
           <div>
-            {Evaluation2Data[currentQuestion].O2.map((Evaluation2Data) => {
+            {questionsList[currQues + 1].options.map((dat, idx) => {
+              return (
+                <>
+                  <div key={idx + 1}>
+                    <button
+                      onClick={() => handleO2AnswerButtonClick(idx + 1)}
+                      className={`Evaluation2Options ${
+                        selectedOptionO2 === idx + 1 ? "selected" : ""
+                      }`}
+                    >
+                      {`${idx + 1} ${dat.idx}`}
+                    </button>
+                  </div>
+                </>
+              );
+            })}
+            {/* {Evaluation2Data[currentQuestion].O2.map((Evaluation2Data) => {
               return (
                 <>
                   <div key={Evaluation2Data.idx}>
@@ -245,7 +303,7 @@ const Evaluation2 = () => {
                   </div>
                 </>
               );
-            })}
+            })} */}
           </div>
           {/* ----------------------------3rd-------------------------------- */}
 

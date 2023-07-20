@@ -1,6 +1,6 @@
 // import { Grid } from "@material-ui/core";
 import "./Evaluation1.css";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import * as React from "react";
 // import Evaluation1Data from "./Evaluation1Data";
 const Evaluation1Data = [
@@ -121,6 +121,11 @@ const Evaluation1Data = [
 
 const Evaluation1 = () => {
   // console.log(Evaluation1Data[1].Q)
+  const location = useLocation();
+  // console.log(Simulation1Data[1].Q)
+  const [questionsList, setQuestionsList] = React.useState(location.state);
+  console.log(questionsList);
+  const [currQues, setCurrQues] = React.useState(0);
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const [showE1Score, setShowE1Score] = React.useState(false);
   //let [E1Score, setE1Score] = React.useState(0);
@@ -147,6 +152,17 @@ const Evaluation1 = () => {
 
   const handleNextButonClick = () => {
     const nextQuestion = currentQuestion + 1;
+    const nextQues = currQues + 1;
+    // console.log(nextQues);
+    if (nextQues < questionsList.length) {
+      getE1TextAreaValue();
+      setCurrQues(nextQues);
+      setSelectedOptionO1(null);
+      setSelectedOptionO2(null);
+      eraseText();
+    } else {
+      setShowE1Score(true);
+    }
     if (nextQuestion < Evaluation1Data.length) {
       getE1TextAreaValue();
       setCurrentQuestion(nextQuestion);
@@ -157,8 +173,17 @@ const Evaluation1 = () => {
       setShowE1Score(true);
     }
   };
+
   const handlePrevButonClick = () => {
     const prevQuestion = currentQuestion - 1;
+    const prevQues = currQues - 1;
+    if (prevQues >= 0) {
+      setCurrQues(prevQues);
+      eraseText();
+      //console.log(currentQuestion);
+    } else {
+      alert("You have reached start of the Quiz!");
+    }
     if (prevQuestion >= 0) {
       setCurrentQuestion(prevQuestion);
       eraseText();
@@ -195,11 +220,28 @@ const Evaluation1 = () => {
             </h1>
             <br></br>
             <h3 className="SimulationQ1Question">
-              {Evaluation1Data[currentQuestion].question1}
+              {/* {Evaluation1Data[currentQuestion].question1} */}
+              {questionsList[currQues].idNameNum}
             </h3>
           </div>
           <div>
-            {Evaluation1Data[currentQuestion].O1.map((Evaluation1Data) => {
+            {questionsList[currQues].options.map((dat, idx) => {
+              return (
+                <>
+                  <div key={idx + 1}>
+                    <button
+                      onClick={() => handleO1AnswerButtonClick(idx + 1)}
+                      className={`Evaluation1Options ${
+                        selectedOptionO1 === idx + 1 ? "selected" : ""
+                      }`}
+                    >
+                      {`${idx + 1} ${dat.idx}`}
+                    </button>
+                  </div>
+                </>
+              );
+            })}
+            {/* {Evaluation1Data[currentQuestion].O1.map((Evaluation1Data) => {
               return (
                 <>
                   <div key={Evaluation1Data.idx}>
@@ -218,18 +260,35 @@ const Evaluation1 = () => {
                   </div>
                 </>
               );
-            })}
+            })} */}
           </div>
           {/* ----------------------------2nd-------------------------------- */}
 
           <div>
             <br></br>
             <h3 className="SimulationQ1Question">
-              {Evaluation1Data[currentQuestion].question2}
+              {questionsList[currQues + 1].idNameNum}
+              {/* {Evaluation1Data[currentQuestion].question2} */}
             </h3>
           </div>
           <div>
-            {Evaluation1Data[currentQuestion].O2.map((Evaluation1Data) => {
+            {questionsList[currQues + 1].options.map((dat, idx) => {
+              return (
+                <>
+                  <div key={idx + 1}>
+                    <button
+                      onClick={() => handleO2AnswerButtonClick(idx + 1)}
+                      className={`Evaluation1Options ${
+                        selectedOptionO2 === idx + 1 ? "selected" : ""
+                      }`}
+                    >
+                      {`${idx + 1} ${dat.idx}`}
+                    </button>
+                  </div>
+                </>
+              );
+            })}
+            {/* {Evaluation1Data[currentQuestion].O2.map((Evaluation1Data) => {
               return (
                 <>
                   <div key={Evaluation1Data.idx}>
@@ -248,7 +307,7 @@ const Evaluation1 = () => {
                   </div>
                 </>
               );
-            })}
+            })} */}
           </div>
           {/* ----------------------------3rd-------------------------------- */}
 
@@ -257,7 +316,8 @@ const Evaluation1 = () => {
           <div>
             <br></br>
             <h3 className="SimulationQ1Question">
-              {Evaluation1Data[currentQuestion].Observation}
+              {/* {Evaluation1Data[currentQuestion].Observation} */}
+              Observations
             </h3>
             <textarea
               className="E1ObservationTextClass"
@@ -269,7 +329,8 @@ const Evaluation1 = () => {
             ></textarea>
             <div className="SeekingMoreInfoDiv">
               <h3 className="EvaluationSeekingQuestion">
-                {Evaluation1Data[currentQuestion].SeekingMoreInfo}
+                {/* {Evaluation1Data[currentQuestion].SeekingMoreInfo} */}
+                Seeking More Information
               </h3>
 
               <input
@@ -282,7 +343,8 @@ const Evaluation1 = () => {
             </div>
             <div className="SeekingMoreInfoDiv">
               <h3 className="EvaluationSeekingQuestion">
-                {Evaluation1Data[currentQuestion].SharingResponsibility}
+                {/* {Evaluation1Data[currentQuestion].SharingResponsibility} */}
+                Sharing Responsibility
               </h3>
               <input
                 className="SeekingMoreInfo"

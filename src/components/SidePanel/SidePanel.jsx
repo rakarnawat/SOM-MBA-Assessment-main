@@ -9,6 +9,7 @@ import axios from "axios";
 import { ReportDD } from "./reportDD";
 import PdfV01 from "../PDFFiles/PdfV01";
 import { PDFDownloadLink } from "@react-pdf/renderer";
+import BIMenus from "./BIMenus";
 
 function SidePanel() {
   let navigate = useNavigate();
@@ -35,6 +36,9 @@ function SidePanel() {
   const [graphDDSHow, setDDGraphShow] = useState(false);
   const [student, setStudent] = useState();
   const [isUserValid, setUserValid] = useState(false);
+  const [enteredFName, setEnteredFName] = useState("");
+  const [enteredLName, setEnteredLName] = useState("");
+  const [enteredDetails, setEnteredDetails] = useState({});
 
   const ShowDash = () => {
     if (DashShow === true) {
@@ -141,26 +145,46 @@ function SidePanel() {
     setShowPDFBtn(false);
   };
 
-  const handleBIStudentInfoSumbit = () => {
-    if (BIShow === true) {
-      setBIShow(true);
-      setBIStudentFormShow(false);
-    } else {
-      setBIStudentFormShow(false);
-      setBIShow(true);
-      setPBShow(false);
-      setCAShow(false);
-      setDDShow(false);
-      setSRShow(false);
-      setDashShow(false);
-    }
-    setDashActive(false);
-    setPBActive(false);
-    setCAActive(false);
-    setDDActive(false);
-    setBIActive(true);
-    setSRActive(false);
-    setShowPDFBtn(false);
+  const handleBIStudentInfoSumbit = async (event) => {
+    event.preventDefault();
+    const baseUrl = "http://localhost:8440/login-register/login/";
+    const url = `${baseUrl}getUser/${bNum}`;
+
+    await axios
+      .get(url)
+      .then((res) => {
+        if (res.data.validationIndicator === "Valid") {
+          console.log(res.data);
+          setEnteredDetails({
+            bingNumber: bNum,
+          });
+          console.log(enteredDetails);
+          if (BIShow === true) {
+            setBIShow(true);
+            setBIStudentFormShow(false);
+          } else {
+            setBIStudentFormShow(false);
+            setBIShow(true);
+            setPBShow(false);
+            setCAShow(false);
+            setDDShow(false);
+            setSRShow(false);
+            setDashShow(false);
+          }
+          setDashActive(false);
+          setPBActive(false);
+          setCAActive(false);
+          setDDActive(false);
+          setBIActive(true);
+          setSRActive(false);
+          setShowPDFBtn(false);
+        } else {
+          alert("Details are incorrect");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const ShowSR = () => {
@@ -203,6 +227,16 @@ function SidePanel() {
       setUserValid(false);
     }
     console.log(bNumIsValid);
+  };
+
+  const fNameChangeHandler = (event) => {
+    console.log(enteredFName);
+    setEnteredFName(event.target.value);
+  };
+
+  const lNameChangeHandler = (event) => {
+    console.log(enteredLName);
+    setEnteredLName(event.target.value);
   };
 
   const getUserDets = async (bnumber) => {
@@ -524,7 +558,7 @@ function SidePanel() {
                 </div>
                 <form className="BIStudentinfoForm">
                   <div className="BINameDiv">
-                    <label className="BIFNameLabel" for="fname">
+                    <label className="BIFNameLabel" htmlFor="fname">
                       First name:
                     </label>
                     <input
@@ -532,10 +566,11 @@ function SidePanel() {
                       type="text"
                       id="fname"
                       placeholder="ABC"
+                      onChange={fNameChangeHandler}
                     />
                   </div>
                   <div className="BINameDiv">
-                    <label className="BILNameLabel" for="lname">
+                    <label className="BILNameLabel" htmlFor="lname">
                       Last name:
                     </label>
                     <input
@@ -543,10 +578,11 @@ function SidePanel() {
                       type="text"
                       id="lname"
                       placeholder="XYZ"
+                      onChange={lNameChangeHandler}
                     />
                   </div>
                   <div className="BINameDiv">
-                    <label className="BIBNumberLabel" for="bNumber">
+                    <label className="BIBNumberLabel" htmlFor="bNumber">
                       B-Number:
                     </label>
                     <input
@@ -556,6 +592,7 @@ function SidePanel() {
                       required
                       pattern="[b,B]{1}[0-9]{8}"
                       placeholder="B-00000000"
+                      onChange={bNumChangeHandler}
                     />
                   </div>
                   <button
@@ -569,72 +606,73 @@ function SidePanel() {
                 </form>
               </div>
             ) : (
-              <div className="BISection">
-                <form
-                  id="form"
-                  className="s1StartBtnForm"
-                  action="/Simulation1"
-                >
-                  <button className="s1card">
-                    {/* <img src={juicy_business} alt="Avatar" className="s1Image" /> */}
-                    <div className="s1Selection">
-                      <h1 className="s1Title">Simulation 1</h1>
+              // <div className="BISection">
+              //   <form
+              //     id="form"
+              //     className="s1StartBtnForm"
+              //     action="/Simulation1"
+              //   >
+              //     <button className="s1card">
+              //       {/* <img src={juicy_business} alt="Avatar" className="s1Image" /> */}
+              //       <div className="s1Selection">
+              //         <h1 className="s1Title">Simulation 1</h1>
 
-                      {/* <div className="s1StartButton">
-                                            <input className="s1StartText" type="submit"  value=">"></input>
-                                        </div> */}
-                    </div>
-                  </button>
-                </form>
-                <form
-                  id="form"
-                  className="s1StartBtnForm"
-                  action="/Evaluation1"
-                >
-                  <button className="e1card">
-                    {/* <img src={juicy_business} alt="Avatar" className="s1Image" /> */}
-                    <div className="s1Selection">
-                      <h1 className="s1Title">Evaluation 1</h1>
+              //         {/* <div className="s1StartButton">
+              //                               <input className="s1StartText" type="submit"  value=">"></input>
+              //                           </div> */}
+              //       </div>
+              //     </button>
+              //   </form>
+              //   <form
+              //     id="form"
+              //     className="s1StartBtnForm"
+              //     action="/Evaluation1"
+              //   >
+              //     <button className="e1card">
+              //       {/* <img src={juicy_business} alt="Avatar" className="s1Image" /> */}
+              //       <div className="s1Selection">
+              //         <h1 className="s1Title">Evaluation 1</h1>
 
-                      {/* <div className="s1StartButton">
-                                            <input className="s1StartText" type="submit" value=">"></input>
-                                        </div> */}
-                    </div>
-                  </button>
-                </form>
-                <form
-                  id="form"
-                  className="s1StartBtnForm"
-                  action="/Simulation2"
-                >
-                  <button className="s2card">
-                    {/* <img src={juicy_business} alt="Avatar" className="s1Image" /> */}
-                    <div className="s1Selection">
-                      <h1 className="s1Title">Simulation 2</h1>
+              //         {/* <div className="s1StartButton">
+              //                               <input className="s1StartText" type="submit" value=">"></input>
+              //                           </div> */}
+              //       </div>
+              //     </button>
+              //   </form>
+              //   <form
+              //     id="form"
+              //     className="s1StartBtnForm"
+              //     action="/Simulation2"
+              //   >
+              //     <button className="s2card">
+              //       {/* <img src={juicy_business} alt="Avatar" className="s1Image" /> */}
+              //       <div className="s1Selection">
+              //         <h1 className="s1Title">Simulation 2</h1>
 
-                      {/* <div className="s1StartButton">
-                                            <input className="s1StartText" type="submit" value=">"></input>
-                                        </div> */}
-                    </div>
-                  </button>
-                </form>
-                <form
-                  id="form"
-                  className="s1StartBtnForm"
-                  action="/Evaluation2"
-                >
-                  <button className="e2card">
-                    {/* <img src={juicy_business} alt="Avatar" className="s1Image" /> */}
-                    <div className="s1Selection">
-                      <h1 className="s1Title">Evaluation 2</h1>
+              //         {/* <div className="s1StartButton">
+              //                               <input className="s1StartText" type="submit" value=">"></input>
+              //                           </div> */}
+              //       </div>
+              //     </button>
+              //   </form>
+              //   <form
+              //     id="form"
+              //     className="s1StartBtnForm"
+              //     action="/Evaluation2"
+              //   >
+              //     <button className="e2card">
+              //       {/* <img src={juicy_business} alt="Avatar" className="s1Image" /> */}
+              //       <div className="s1Selection">
+              //         <h1 className="s1Title">Evaluation 2</h1>
 
-                      {/* <div className="s1StartButton">
-                                                <input className="s1StartText" type="submit" value=">"></input>
-                                            </div> */}
-                    </div>
-                  </button>
-                </form>
-              </div>
+              //         {/* <div className="s1StartButton">
+              //                                   <input className="s1StartText" type="submit" value=">"></input>
+              //                               </div> */}
+              //       </div>
+              //     </button>
+              //   </form>
+              // </div>
+              <BIMenus />
             )}
           </div>
         )}
