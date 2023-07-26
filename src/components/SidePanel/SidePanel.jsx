@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import "./SidePanel.css";
 
 import { useNavigate } from "react-router-dom";
@@ -672,7 +672,7 @@ function SidePanel() {
               //     </button>
               //   </form>
               // </div>
-              <BIMenus />
+              <BIMenus bnumber={bNum} />
             )}
           </div>
         )}

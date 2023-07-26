@@ -379,8 +379,16 @@ const Simulation2Data = [
 const Simulation2 = () => {
   // console.log(Simulation2Data[1].Q)
   const location = useLocation();
-  const [questionsList, setQuestionsList] = React.useState(location.state);
-  console.log(questionsList);
+  const [questionsList, setQuestionsList] = React.useState(
+    location.state.simulationQuestions
+  );
+  const evaluationQuestions = location.state.evaluationQuestions;
+
+  const [answerObject, setAnswerObject] = React.useState(
+    location.state.answers
+  );
+
+  const [sim2Answers, setSim2Answers] = React.useState({});
   const [currQues, setCurrQues] = React.useState(0);
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const [showS1Score, setShowS1Score] = React.useState(false);
@@ -390,7 +398,7 @@ const Simulation2 = () => {
   const [selectedOptionO3, setSelectedOptionO3] = React.useState(null);
   const [selectedOptionO4, setSelectedOptionO4] = React.useState(null);
 
-  function getS1TextAreaValue() {
+  function getS1TextAreaValue(event) {
     var textarea = document.getElementById("s1ObservationID");
     var observationtext = textarea.value;
     console.log(Simulation2Data[currentQuestion].Q, observationtext);
@@ -400,24 +408,363 @@ const Simulation2 = () => {
   }
 
   const handleO1AnswerButtonClick = (idx) => {
-    console.log(idx);
+    // console.log(idx);
     setS1Score((prevScore) => prevScore + parseInt(idx));
+    if (currQues < 4) {
+      setSim2Answers((prevObj) => {
+        return {
+          ...prevObj,
+          idealizedInfluence2Score1: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     idealizedInfluence1Score1: idx,
+      //   };
+      // });
+    } else if (currQues >= 4 && currQues < 8) {
+      setSim2Answers((prevObj) => {
+        return {
+          ...prevObj,
+          inspirationalMotivation2Score1: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     inspirationalMotivation1Score1: idx,
+      //   };
+      // });
+    } else if (currQues >= 8 && currQues < 12) {
+      setSim2Answers((prevObj) => {
+        return {
+          ...prevObj,
+          intellectualStimulation2Score1: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     intellectualStimulation1Score1: idx,
+      //   };
+      // });
+    } else if (currQues >= 12 && currQues < 16) {
+      setSim2Answers((prevObj) => {
+        return {
+          ...prevObj,
+          individualizedConsideration2Score1: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     individualizedConsideration1Score1: idx,
+      //   };
+      // });
+    } else if (currQues >= 16 && currQues < 20) {
+      setSim2Answers((prevObj) => {
+        return {
+          ...prevObj,
+          contingentReward2Score1: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     contingentReward1Score1: idx,
+      //   };
+      // });
+    }
+    console.log(sim2Answers);
     setSelectedOptionO1(idx);
   };
   const handleO2AnswerButtonClick = (idx) => {
-    console.log(idx);
+    // console.log(idx);
     setS1Score((prevScore) => prevScore + parseInt(idx));
+    if (currQues < 4) {
+      setSim2Answers((prevObj) => {
+        return {
+          ...prevObj,
+          idealizedInfluence2Score2: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     idealizedInfluence1Score2: idx,
+      //   };
+      // });
+    } else if (currQues >= 4 && currQues < 8) {
+      setSim2Answers((prevObj) => {
+        return {
+          ...prevObj,
+          inspirationalMotivation2Score2: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     inspirationalMotivation1Score2: idx,
+      //   };
+      // });
+    } else if (currQues >= 8 && currQues < 12) {
+      setSim2Answers((prevObj) => {
+        return {
+          ...prevObj,
+          intellectualStimulation2Score2: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     intellectualStimulation1Score2: idx,
+      //   };
+      // });
+    } else if (currQues >= 12 && currQues < 16) {
+      setSim2Answers((prevObj) => {
+        return {
+          ...prevObj,
+          individualizedConsideration2Score2: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     individualizedConsideration1Score2: idx,
+      //   };
+      // });
+    } else if (currQues >= 16 && currQues < 20) {
+      setSim2Answers((prevObj) => {
+        return {
+          ...prevObj,
+          contingentReward2Score2: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     contingentReward1Score2: idx,
+      //   };
+      // });
+    }
+    console.log(sim2Answers);
     setSelectedOptionO2(idx);
   };
   const handleO3AnswerButtonClick = (idx) => {
-    console.log(idx);
+    // console.log(idx);
     setS1Score((prevScore) => prevScore + parseInt(idx));
+    if (currQues < 4) {
+      setSim2Answers((prevObj) => {
+        return {
+          ...prevObj,
+          idealizedInfluence2Score3: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     idealizedInfluence1Score3: idx,
+      //   };
+      // });
+    } else if (currQues >= 4 && currQues < 8) {
+      setSim2Answers((prevObj) => {
+        return {
+          ...prevObj,
+          inspirationalMotivation2Score3: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     inspirationalMotivation1Score3: idx,
+      //   };
+      // });
+    } else if (currQues >= 8 && currQues < 12) {
+      setSim2Answers((prevObj) => {
+        return {
+          ...prevObj,
+          intellectualStimulation2Score3: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     intellectualStimulation1Score3: idx,
+      //   };
+      // });
+    } else if (currQues >= 12 && currQues < 16) {
+      setSim2Answers((prevObj) => {
+        return {
+          ...prevObj,
+          individualizedConsideration2Score3: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     individualizedConsideration1Score3: idx,
+      //   };
+      // });
+    } else if (currQues >= 16 && currQues < 20) {
+      setSim2Answers((prevObj) => {
+        return {
+          ...prevObj,
+          contingentReward2Score3: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     contingentReward1Score3: idx,
+      //   };
+      // });
+    }
+    console.log(sim2Answers);
     setSelectedOptionO3(idx);
   };
   const handleO4AnswerButtonClick = (idx) => {
-    console.log(idx);
+    // console.log(idx);
     setS1Score((prevScore) => prevScore + parseInt(idx));
+    if (currQues < 4) {
+      setSim2Answers((prevObj) => {
+        return {
+          ...prevObj,
+          idealizedInfluence2Score4: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     idealizedInfluence1Score4: idx,
+      //   };
+      // });
+    } else if (currQues >= 4 && currQues < 8) {
+      setSim2Answers((prevObj) => {
+        return {
+          ...prevObj,
+          inspirationalMotivation2Score4: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     inspirationalMotivation1Score4: idx,
+      //   };
+      // });
+    } else if (currQues >= 8 && currQues < 12) {
+      setSim2Answers((prevObj) => {
+        return {
+          ...prevObj,
+          intellectualStimulation2Score4: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     intellectualStimulation1Score4: idx,
+      //   };
+      // });
+    } else if (currQues >= 12 && currQues < 16) {
+      setSim2Answers((prevObj) => {
+        return {
+          ...prevObj,
+          individualizedConsideration2Score4: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     individualizedConsideration1Score4: idx,
+      //   };
+      // });
+    } else if (currQues >= 16 && currQues < 20) {
+      setSim2Answers((prevObj) => {
+        return {
+          ...prevObj,
+          contingentReward2Score4: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     contingentReward1Score4: idx,
+      //   };
+      // });
+    }
+    console.log(sim2Answers);
     setSelectedOptionO4(idx);
+  };
+
+  const handleObservations = (event) => {
+    if (currQues < 4) {
+      setSim2Answers((prevObj) => {
+        return {
+          ...prevObj,
+          idealizedInfluence2observation: event.target.value,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     idealizedInfluence1observation: event.target.value,
+      //   };
+      // });
+    } else if (currQues >= 4 && currQues < 8) {
+      setSim2Answers((prevObj) => {
+        return {
+          ...prevObj,
+          inspirationalMotivation2Observation: event.target.value,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     inspirationalMotivation1Observation: event.target.value,
+      //   };
+      // });
+    } else if (currQues >= 8 && currQues < 12) {
+      setSim2Answers((prevObj) => {
+        return {
+          ...prevObj,
+          intellectualStimulation2Observation: event.target.value,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     intellectualStimulation1Observation: event.target.value,
+      //   };
+      // });
+    } else if (currQues >= 12 && currQues < 16) {
+      setSim2Answers((prevObj) => {
+        return {
+          ...prevObj,
+          individualizedConsideration2Observation: event.target.value,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     individualizedConsideration1Observation: event.target.value,
+      //   };
+      // });
+    } else if (currQues >= 16 && currQues < 20) {
+      setSim2Answers((prevObj) => {
+        return {
+          ...prevObj,
+          contingentReward2Observation: event.target.value,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     contingentReward1Observation: event.target.value,
+      //   };
+      // });
+    }
+
+    console.log(sim2Answers);
   };
 
   const handleNextButonClick = () => {
@@ -433,6 +780,13 @@ const Simulation2 = () => {
       setSelectedOptionO4(null);
       eraseText();
     } else {
+      setAnswerObject((prevObj) => {
+        return {
+          ...prevObj,
+          sim2SectionComplete: true,
+          sim2Answers,
+        };
+      });
       setShowS1Score(true);
     }
     if (nextQuestion < Simulation2Data.length) {
@@ -444,6 +798,13 @@ const Simulation2 = () => {
       setSelectedOptionO4(null);
       eraseText();
     } else {
+      setAnswerObject((prevObj) => {
+        return {
+          ...prevObj,
+          sim2SectionComplete: true,
+          sim2Answers,
+        };
+      });
       setShowS1Score(true);
     }
   };
@@ -479,7 +840,16 @@ const Simulation2 = () => {
           </div>
           <button
             className="HomeButton"
-            onClick={() => navigate("/Evaluation2")}
+            onClick={() => {
+              console.log(answerObject);
+              navigate("/Evaluation2", {
+                state: {
+                  simulationQuestions: questionsList,
+                  evaluationQuestions: evaluationQuestions,
+                  answers: answerObject,
+                },
+              });
+            }}
           >
             {" "}
             Evaluation 2{" "}
@@ -698,6 +1068,7 @@ const Simulation2 = () => {
               id="s1ObservationID"
               cols="40"
               rows="10"
+              onChange={handleObservations}
             ></textarea>
           </div>
           {/* ----------------------------Btn-------------------------------- */}

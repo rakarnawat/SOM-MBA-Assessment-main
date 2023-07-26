@@ -1,15 +1,19 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const BIMenus = () => {
+const BIMenus = ({ bnumber }) => {
+  console.log(bnumber);
   const [questionsList, setQuestionsList] = useState([]);
   const [simulationQuestions, setSimulationQuestions] = useState([]);
   const [evaluationQuestions, setEvaluationQuestions] = useState([]);
   const [isLoading, setIsLoading] = useState();
+  const [answerObject, setAnswerObject] = useState({
+    bingNumber: bnumber,
+  });
   const navigate = useNavigate();
 
-  React.useEffect(() => {
+  useEffect(() => {
     const baseUrl = "http://localhost:8080/bbim/bi/";
     const url = `${baseUrl}getQuestions`;
     setIsLoading(true);
@@ -36,25 +40,41 @@ const BIMenus = () => {
 
   const sim1BtnHandler = () => {
     navigate("/Simulation1", {
-      state: simulationQuestions,
+      state: {
+        simulationQuestions: simulationQuestions,
+        evaluationQuestions: evaluationQuestions,
+        answers: answerObject,
+      },
     });
   };
 
   const sim2BtnHandler = () => {
     navigate("/Simulation2", {
-      state: simulationQuestions,
+      state: {
+        simulationQuestions: simulationQuestions,
+        evaluationQuestions: evaluationQuestions,
+        answers: answerObject,
+      },
     });
   };
 
   const eval1BtnHandler = () => {
     navigate("/Evaluation1", {
-      state: evaluationQuestions,
+      state: {
+        simulationQuestions: simulationQuestions,
+        evaluationQuestions: evaluationQuestions,
+        answers: answerObject,
+      },
     });
   };
 
   const eval2BtnHandler = () => {
     navigate("/Evaluation2", {
-      state: evaluationQuestions,
+      state: {
+        simulationQuestions: simulationQuestions,
+        evaluationQuestions: evaluationQuestions,
+        answers: answerObject,
+      },
     });
   };
 

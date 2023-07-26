@@ -123,8 +123,16 @@ const Evaluation1 = () => {
   // console.log(Evaluation1Data[1].Q)
   const location = useLocation();
   // console.log(Simulation1Data[1].Q)
-  const [questionsList, setQuestionsList] = React.useState(location.state);
-  console.log(questionsList);
+  const [questionsList, setQuestionsList] = React.useState(
+    location.state.evaluationQuestions
+  );
+  // console.log(questionsList);
+  const simulationQuestions = location.state.simulationQuestions;
+  const [answerObject, setAnswerObject] = React.useState(
+    location.state.answers
+  );
+  const [eval1Answers, setEval1Answers] = React.useState({});
+  console.log(eval1Answers);
   const [currQues, setCurrQues] = React.useState(0);
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const [showE1Score, setShowE1Score] = React.useState(false);
@@ -132,10 +140,24 @@ const Evaluation1 = () => {
   const [selectedOptionO1, setSelectedOptionO1] = React.useState(null);
   const [selectedOptionO2, setSelectedOptionO2] = React.useState(null);
 
-  function getE1TextAreaValue() {
-    var textarea = document.getElementById("E1ObservationID");
-    var observationtext = textarea.value;
-    console.log(Evaluation1Data[currentQuestion].Q, observationtext);
+  function getE1TextAreaValue(event) {
+    event.preventDefault();
+    // var textarea = document.getElementById("E1ObservationID");
+    // var observationtext = textarea.value;
+    // console.log(Evaluation1Data[currentQuestion].Q, observationtext);
+    // console.log(event.target.value);
+    setEval1Answers((prevObj) => {
+      return {
+        ...prevObj,
+        adaptToChange1Observation: event.target.value,
+      };
+    });
+    // setAnswerObject((prevObj) => {
+    //   return {
+    //     ...prevObj,
+    //     adaptToChange1Observation: event.target.value,
+    //   };
+    // });
   }
   function eraseText() {
     document.getElementById("E1ObservationID").value = "";
@@ -143,10 +165,35 @@ const Evaluation1 = () => {
 
   const handleO1AnswerButtonClick = (idx) => {
     //setE1Score((prevScore) => prevScore + parseInt(idx));
+    // console.log(idx);
+    setEval1Answers((prevObj) => {
+      return {
+        ...prevObj,
+        adaptToChange1Score1: idx,
+      };
+    });
+    // setAnswerObject((prevObj) => {
+    //   return {
+    //     ...prevObj,
+    //     adaptToChange1Score1: idx,
+    //   };
+    // });
     setSelectedOptionO1(idx);
   };
   const handleO2AnswerButtonClick = (idx) => {
     //setE1Score((prevScore) => prevScore + parseInt(idx));
+    setEval1Answers((prevObj) => {
+      return {
+        ...prevObj,
+        adaptToChange1Score2: idx,
+      };
+    });
+    // setAnswerObject((prevObj) => {
+    //   return {
+    //     ...prevObj,
+    //     adaptToChange1Score2: idx,
+    //   };
+    // });
     setSelectedOptionO2(idx);
   };
 
@@ -155,22 +202,39 @@ const Evaluation1 = () => {
     const nextQues = currQues + 1;
     // console.log(nextQues);
     if (nextQues < questionsList.length) {
-      getE1TextAreaValue();
+      // getE1TextAreaValue();
       setCurrQues(nextQues);
       setSelectedOptionO1(null);
       setSelectedOptionO2(null);
       eraseText();
     } else {
+      setAnswerObject((prevObj) => {
+        return {
+          ...prevObj,
+          eval1SectionComplete: true,
+          eval1Answers,
+        };
+      });
       setShowE1Score(true);
+      console.log(answerObject);
     }
     if (nextQuestion < Evaluation1Data.length) {
-      getE1TextAreaValue();
+      // getE1TextAreaValue();
       setCurrentQuestion(nextQuestion);
       setSelectedOptionO1(null);
       setSelectedOptionO2(null);
       eraseText();
     } else {
       setShowE1Score(true);
+      setAnswerObject((prevObj) => {
+        return {
+          ...prevObj,
+          eval1SectionComplete: true,
+          eval1Answers,
+        };
+      });
+      setShowE1Score(true);
+      console.log(answerObject);
     }
   };
 
@@ -193,6 +257,40 @@ const Evaluation1 = () => {
     }
   };
 
+  const handleSeekingInfo = (event) => {
+    event.preventDefault();
+    // console.log(event.target.value);
+    setEval1Answers((prevObj) => {
+      return {
+        ...prevObj,
+        adaptToChange1SeekingMoreInformation: event.target.value,
+      };
+    });
+    // setAnswerObject((prevObj) => {
+    //   return {
+    //     ...prevObj,
+    //     adaptToChange1SeekingMoreInformation: event.target.value,
+    //   };
+    // });
+  };
+
+  const handleSharingInfo = (event) => {
+    event.preventDefault();
+    // console.log(event.target.value);
+    setEval1Answers((prevObj) => {
+      return {
+        ...prevObj,
+        adaptToChange1SharingResponsibility: event.target.value,
+      };
+    });
+    // setAnswerObject((prevObj) => {
+    //   return {
+    //     ...prevObj,
+    //     adaptToChange1SharingResponsibility: event.target.value,
+    //   };
+    // });
+  };
+
   const navigate = useNavigate();
   return (
     <div className="Evaluation1MainFrame">
@@ -206,7 +304,16 @@ const Evaluation1 = () => {
           </div>
           <button
             className="HomeButton"
-            onClick={() => navigate("/Simulation2")}
+            onClick={() => {
+              console.log(answerObject);
+              navigate("/Simulation2", {
+                state: {
+                  simulationQuestions: simulationQuestions,
+                  evaluationQuestions: questionsList,
+                  answers: answerObject,
+                },
+              });
+            }}
           >
             {" "}
             Simulation 2{" "}
@@ -326,6 +433,7 @@ const Evaluation1 = () => {
               cols="40"
               rows="10"
               required
+              onChange={getE1TextAreaValue}
             ></textarea>
             <div className="SeekingMoreInfoDiv">
               <h3 className="EvaluationSeekingQuestion">
@@ -339,6 +447,7 @@ const Evaluation1 = () => {
                 min={0}
                 max={10}
                 required
+                onChange={handleSeekingInfo}
               ></input>
             </div>
             <div className="SeekingMoreInfoDiv">
@@ -352,6 +461,7 @@ const Evaluation1 = () => {
                 min={0}
                 max={10}
                 required
+                onChange={handleSharingInfo}
               ></input>
             </div>
           </div>

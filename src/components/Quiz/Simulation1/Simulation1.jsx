@@ -380,8 +380,18 @@ const Simulation1Data = [
 const Simulation1 = () => {
   const location = useLocation();
   // console.log(Simulation1Data[1].Q)
-  const [questionsList, setQuestionsList] = React.useState(location.state);
-  console.log(questionsList);
+  const [questionsList, setQuestionsList] = React.useState(
+    location.state.simulationQuestions
+  );
+  const evaluationQuestions = location.state.evaluationQuestions;
+
+  const [answerObject, setAnswerObject] = React.useState(
+    location.state.answers
+  );
+
+  const [sim1Answers, setSim1Answers] = React.useState({});
+
+  // console.log(answerObject);
   const [currQues, setCurrQues] = React.useState(0);
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const [showS1Score, setShowS1Score] = React.useState(false);
@@ -401,24 +411,366 @@ const Simulation1 = () => {
   }
 
   const handleO1AnswerButtonClick = (idx) => {
-    console.log(idx);
+    // console.log(idx);
     // setS1Score((prevScore) => prevScore + parseInt(idx));
+    if (currQues < 4) {
+      setSim1Answers((prevObj) => {
+        return {
+          ...prevObj,
+          idealizedInfluence1Score1: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     idealizedInfluence1Score1: idx,
+      //   };
+      // });
+    } else if (currQues >= 4 && currQues < 8) {
+      setSim1Answers((prevObj) => {
+        return {
+          ...prevObj,
+          inspirationalMotivation1Score1: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     inspirationalMotivation1Score1: idx,
+      //   };
+      // });
+    } else if (currQues >= 8 && currQues < 12) {
+      setSim1Answers((prevObj) => {
+        return {
+          ...prevObj,
+          intellectualStimulation1Score1: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     intellectualStimulation1Score1: idx,
+      //   };
+      // });
+    } else if (currQues >= 12 && currQues < 16) {
+      setSim1Answers((prevObj) => {
+        return {
+          ...prevObj,
+          individualizedConsideration1Score1: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     individualizedConsideration1Score1: idx,
+      //   };
+      // });
+    } else if (currQues >= 16 && currQues < 20) {
+      setSim1Answers((prevObj) => {
+        return {
+          ...prevObj,
+          contingentReward1Score1: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     contingentReward1Score1: idx,
+      //   };
+      // });
+    }
+
+    console.log(sim1Answers);
+
     setSelectedOptionO1(idx);
   };
   const handleO2AnswerButtonClick = (idx) => {
     console.log(idx);
     // setS1Score((prevScore) => prevScore + parseInt(idx));
+
+    if (currQues < 4) {
+      setSim1Answers((prevObj) => {
+        return {
+          ...prevObj,
+          idealizedInfluence1Score2: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     idealizedInfluence1Score2: idx,
+      //   };
+      // });
+    } else if (currQues >= 4 && currQues < 8) {
+      setSim1Answers((prevObj) => {
+        return {
+          ...prevObj,
+          inspirationalMotivation1Score2: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     inspirationalMotivation1Score2: idx,
+      //   };
+      // });
+    } else if (currQues >= 8 && currQues < 12) {
+      setSim1Answers((prevObj) => {
+        return {
+          ...prevObj,
+          intellectualStimulation1Score2: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     intellectualStimulation1Score2: idx,
+      //   };
+      // });
+    } else if (currQues >= 12 && currQues < 16) {
+      setSim1Answers((prevObj) => {
+        return {
+          ...prevObj,
+          individualizedConsideration1Score2: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     individualizedConsideration1Score2: idx,
+      //   };
+      // });
+    } else if (currQues >= 16 && currQues < 20) {
+      setSim1Answers((prevObj) => {
+        return {
+          ...prevObj,
+          contingentReward1Score2: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     contingentReward1Score2: idx,
+      //   };
+      // });
+    }
+    console.log(sim1Answers);
     setSelectedOptionO2(idx);
   };
   const handleO3AnswerButtonClick = (idx) => {
     console.log(idx);
     // setS1Score((prevScore) => prevScore + parseInt(idx));
+    if (currQues < 4) {
+      setSim1Answers((prevObj) => {
+        return {
+          ...prevObj,
+          idealizedInfluence1Score3: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     idealizedInfluence1Score3: idx,
+      //   };
+      // });
+    } else if (currQues >= 4 && currQues < 8) {
+      setSim1Answers((prevObj) => {
+        return {
+          ...prevObj,
+          inspirationalMotivation1Score3: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     inspirationalMotivation1Score3: idx,
+      //   };
+      // });
+    } else if (currQues >= 8 && currQues < 12) {
+      setSim1Answers((prevObj) => {
+        return {
+          ...prevObj,
+          intellectualStimulation1Score3: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     intellectualStimulation1Score3: idx,
+      //   };
+      // });
+    } else if (currQues >= 12 && currQues < 16) {
+      setSim1Answers((prevObj) => {
+        return {
+          ...prevObj,
+          individualizedConsideration1Score3: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     individualizedConsideration1Score3: idx,
+      //   };
+      // });
+    } else if (currQues >= 16 && currQues < 20) {
+      setSim1Answers((prevObj) => {
+        return {
+          ...prevObj,
+          contingentReward1Score3: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     contingentReward1Score3: idx,
+      //   };
+      // });
+    }
+    console.log(sim1Answers);
     setSelectedOptionO3(idx);
   };
   const handleO4AnswerButtonClick = (idx) => {
     console.log(idx);
     // setS1Score((prevScore) => prevScore + parseInt(idx));
+    if (currQues < 4) {
+      setSim1Answers((prevObj) => {
+        return {
+          ...prevObj,
+          idealizedInfluence1Score4: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     idealizedInfluence1Score4: idx,
+      //   };
+      // });
+    } else if (currQues >= 4 && currQues < 8) {
+      setSim1Answers((prevObj) => {
+        return {
+          ...prevObj,
+          inspirationalMotivation1Score4: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     inspirationalMotivation1Score4: idx,
+      //   };
+      // });
+    } else if (currQues >= 8 && currQues < 12) {
+      setSim1Answers((prevObj) => {
+        return {
+          ...prevObj,
+          intellectualStimulation1Score4: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     intellectualStimulation1Score4: idx,
+      //   };
+      // });
+    } else if (currQues >= 12 && currQues < 16) {
+      setSim1Answers((prevObj) => {
+        return {
+          ...prevObj,
+          individualizedConsideration1Score4: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     individualizedConsideration1Score4: idx,
+      //   };
+      // });
+    } else if (currQues >= 16 && currQues < 20) {
+      setSim1Answers((prevObj) => {
+        return {
+          ...prevObj,
+          contingentReward1Score4: idx,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     contingentReward1Score4: idx,
+      //   };
+      // });
+    }
+    console.log(sim1Answers);
     setSelectedOptionO4(idx);
+  };
+
+  const handleObservations = (event) => {
+    if (currQues < 4) {
+      setSim1Answers((prevObj) => {
+        return {
+          ...prevObj,
+          idealizedInfluence1observation: event.target.value,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     idealizedInfluence1observation: event.target.value,
+      //   };
+      // });
+    } else if (currQues >= 4 && currQues < 8) {
+      setSim1Answers((prevObj) => {
+        return {
+          ...prevObj,
+          inspirationalMotivation1Observation: event.target.value,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     inspirationalMotivation1Observation: event.target.value,
+      //   };
+      // });
+    } else if (currQues >= 8 && currQues < 12) {
+      setSim1Answers((prevObj) => {
+        return {
+          ...prevObj,
+          intellectualStimulation1Observation: event.target.value,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     intellectualStimulation1Observation: event.target.value,
+      //   };
+      // });
+    } else if (currQues >= 12 && currQues < 16) {
+      setSim1Answers((prevObj) => {
+        return {
+          ...prevObj,
+          individualizedConsideration1Observation: event.target.value,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     individualizedConsideration1Observation: event.target.value,
+      //   };
+      // });
+    } else if (currQues >= 16 && currQues < 20) {
+      setSim1Answers((prevObj) => {
+        return {
+          ...prevObj,
+          contingentReward1Observation: event.target.value,
+        };
+      });
+      // setAnswerObject((prevObj) => {
+      //   return {
+      //     ...prevObj,
+      //     contingentReward1Observation: event.target.value,
+      //   };
+      // });
+    }
+
+    console.log(sim1Answers);
   };
 
   const handleNextButonClick = () => {
@@ -434,6 +786,13 @@ const Simulation1 = () => {
       setSelectedOptionO4(null);
       eraseText();
     } else {
+      setAnswerObject((prevObj) => {
+        return {
+          ...prevObj,
+          sim1SectionComplete: true,
+          sim1Answers,
+        };
+      });
       setShowS1Score(true);
     }
     if (nextQuestion < Simulation1Data.length) {
@@ -480,7 +839,16 @@ const Simulation1 = () => {
           </div>
           <button
             className="HomeButton"
-            onClick={() => navigate("/Evaluation1")}
+            onClick={() => {
+              console.log(answerObject);
+              navigate("/Evaluation1", {
+                state: {
+                  simulationQuestions: questionsList,
+                  evaluationQuestions: evaluationQuestions,
+                  answers: answerObject,
+                },
+              });
+            }}
           >
             {" "}
             Evaluation 1
@@ -696,6 +1064,7 @@ const Simulation1 = () => {
               id="s1ObservationID"
               cols="40"
               rows="10"
+              onChange={handleObservations}
             ></textarea>
           </div>
           {/* ----------------------------Btn-------------------------------- */}

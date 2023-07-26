@@ -2,6 +2,7 @@
 import "./Evaluation2.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import * as React from "react";
+import axios from "axios";
 // import Evaluation2Data from "./Evaluation2Data";
 const Evaluation2Data = [
   {
@@ -123,8 +124,16 @@ const Evaluation2 = () => {
   // console.log(Evaluation2Data[1].Q)
   const location = useLocation();
   // console.log(Simulation1Data[1].Q)
-  const [questionsList, setQuestionsList] = React.useState(location.state);
-  console.log(questionsList);
+  const [questionsList, setQuestionsList] = React.useState(
+    location.state.evaluationQuestions
+  );
+  // console.log(questionsList);
+  const simulationQuestions = location.state.simulationQuestions;
+  const [answerObject, setAnswerObject] = React.useState(
+    location.state.answers
+  );
+  const [eval2Answers, setEval2Answers] = React.useState({});
+  console.log(eval2Answers);
   const [currQues, setCurrQues] = React.useState(0);
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const [showE2Score, setShowE2Score] = React.useState(false);
@@ -132,10 +141,18 @@ const Evaluation2 = () => {
   const [selectedOptionO1, setSelectedOptionO1] = React.useState(null);
   const [selectedOptionO2, setSelectedOptionO2] = React.useState(null);
 
-  function getE2TextAreaValue() {
-    var textarea = document.getElementById("E2ObservationID");
-    var observationtext = textarea.value;
-    console.log(Evaluation2Data[currentQuestion].Q, observationtext);
+  function getE2TextAreaValue(event) {
+    event.preventDefault();
+    // var textarea = document.getElementById("E1ObservationID");
+    // var observationtext = textarea.value;
+    // console.log(Evaluation1Data[currentQuestion].Q, observationtext);
+    // console.log(event.target.value);
+    setEval2Answers((prevObj) => {
+      return {
+        ...prevObj,
+        adaptToChange2Observation: event.target.value,
+      };
+    });
   }
   function eraseText() {
     document.getElementById("E2ObservationID").value = "";
@@ -143,10 +160,22 @@ const Evaluation2 = () => {
 
   const handleO1AnswerButtonClick = (idx) => {
     //setE2Score((prevScore) => prevScore + parseInt(idx));
+    setEval2Answers((prevObj) => {
+      return {
+        ...prevObj,
+        adaptToChange2Score1: idx,
+      };
+    });
     setSelectedOptionO1(idx);
   };
   const handleO2AnswerButtonClick = (idx) => {
     //setE2Score((prevScore) => prevScore + parseInt(idx));
+    setEval2Answers((prevObj) => {
+      return {
+        ...prevObj,
+        adaptToChange2Score2: idx,
+      };
+    });
     setSelectedOptionO2(idx);
   };
 
@@ -155,22 +184,36 @@ const Evaluation2 = () => {
     const nextQues = currQues + 1;
     // console.log(nextQues);
     if (nextQues < questionsList.length) {
-      getE2TextAreaValue();
+      // getE2TextAreaValue();
       setCurrQues(nextQues);
       setSelectedOptionO1(null);
       setSelectedOptionO2(null);
       eraseText();
     } else {
+      setAnswerObject((prevObj) => {
+        return {
+          ...prevObj,
+          eval2SectionComplete: true,
+          eval2Answers,
+        };
+      });
       setShowE2Score(true);
     }
 
     if (nextQuestion < Evaluation2Data.length) {
-      getE2TextAreaValue();
+      // getE2TextAreaValue();
       setCurrentQuestion(nextQuestion);
       setSelectedOptionO1(null);
       setSelectedOptionO2(null);
       eraseText();
     } else {
+      setAnswerObject((prevObj) => {
+        return {
+          ...prevObj,
+          eval2SectionComplete: true,
+          eval2Answers,
+        };
+      });
       setShowE2Score(true);
     }
   };
@@ -193,6 +236,85 @@ const Evaluation2 = () => {
     }
   };
 
+  const handleSeekingInfo = (event) => {
+    event.preventDefault();
+    // console.log(event.target.value);
+    setEval2Answers((prevObj) => {
+      return {
+        ...prevObj,
+        adaptToChange2SeekingMoreInformation: event.target.value,
+      };
+    });
+    // setAnswerObject((prevObj) => {
+    //   return {
+    //     ...prevObj,
+    //     adaptToChange1SeekingMoreInformation: event.target.value,
+    //   };
+    // });
+  };
+
+  const handleSharingInfo = (event) => {
+    event.preventDefault();
+    // console.log(event.target.value);
+    setEval2Answers((prevObj) => {
+      return {
+        ...prevObj,
+        adaptToChange2SharingResponsibility: event.target.value,
+      };
+    });
+    // setAnswerObject((prevObj) => {
+    //   return {
+    //     ...prevObj,
+    //     adaptToChange1SharingResponsibility: event.target.value,
+    //   };
+    // });
+  };
+
+  const baseURL = "http://localhost:8080/bbim/bi/";
+
+  const submitSimEval1 = async () => {
+    const url = `${baseURL}biEvaluation1Data`;
+    const data = {
+      bingNumber: answerObject.bingNumber,
+      ...answerObject.sim1Answers,
+      ...answerObject.eval1Answers,
+    };
+
+    console.log(data);
+    await axios
+      .post(url, data)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const submitSimEval2 = async () => {
+    const url = `${baseURL}biEvaluation2Data`;
+    const data = {
+      bingNumber: answerObject.bingNumber,
+      ...answerObject.sim2Answers,
+      ...answerObject.eval2Answers,
+    };
+
+    console.log(data);
+    await axios
+      .post(url, data)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const submitBIQuiz = () => {
+    submitSimEval1();
+    submitSimEval2();
+  };
+
   const navigate = useNavigate();
   return (
     <div className="Evaluation2MainFrame">
@@ -204,7 +326,25 @@ const Evaluation2 = () => {
               You Have completed Evaluation2! <h4>(4/4)</h4>
             </h1>
           </div>
-          <button className="HomeButton" onClick={() => navigate("/Reports")}>
+          <button
+            className="HomeButton"
+            onClick={() => {
+              // submitSimEval2();
+              // navigate("/Reports");
+              console.log(answerObject);
+              if (
+                answerObject.sim1SectionComplete &&
+                answerObject.sim2SectionComplete &&
+                answerObject.eval1SectionComplete &&
+                answerObject.eval2SectionComplete
+              ) {
+                submitBIQuiz();
+                navigate("/reports");
+              } else {
+                alert("Please Complete all the Interviews first");
+              }
+            }}
+          >
             {" "}
             Dashboard{" "}
           </button>
@@ -321,6 +461,7 @@ const Evaluation2 = () => {
               cols="40"
               rows="10"
               required
+              onChange={getE2TextAreaValue}
             ></textarea>
 
             <div className="SeekingMoreInfoDiv">
@@ -334,6 +475,7 @@ const Evaluation2 = () => {
                 min={0}
                 max={10}
                 required
+                onChange={handleSeekingInfo}
               ></input>
             </div>
             <div className="SeekingMoreInfoDiv">
@@ -346,6 +488,7 @@ const Evaluation2 = () => {
                 min={0}
                 max={10}
                 required
+                onChange={handleSharingInfo}
               ></input>
             </div>
           </div>
