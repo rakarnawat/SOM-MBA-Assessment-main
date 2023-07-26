@@ -804,6 +804,13 @@ const Simulation1 = () => {
       setSelectedOptionO4(null);
       eraseText();
     } else {
+      setAnswerObject((prevObj) => {
+        return {
+          ...prevObj,
+          sim1SectionComplete: true,
+          sim1Answers,
+        };
+      });
       setShowS1Score(true);
     }
   };
