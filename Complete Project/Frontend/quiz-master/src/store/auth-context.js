@@ -133,10 +133,10 @@ export const AuthContextProvider = (props) => {
       .then((response) => {
         console.log(response.data);
         user.role = userRole;
-        localStorage.setItem("userDetails", JSON.stringify(user));
-        localStorage.setItem("isLoggedIn", "1");
+        // localStorage.setItem("userDetails", JSON.stringify(user));
+        // localStorage.setItem("isLoggedIn", "1");
         setLoggedIn(true);
-        islog = true;
+        islog = false;
       })
       .catch((err) => {
         console.log(err);
