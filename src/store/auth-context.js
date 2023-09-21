@@ -10,7 +10,7 @@ export const AuthContext = React.createContext({
 });
 
 export const AuthContextProvider = (props) => {
-  const baseURL = "http://localhost:8440/login-register/";
+  const baseURL = "http://localhost:8080/login-register/";
 
   const [isLoggedIn, setLoggedIn] = useState(false);
 
@@ -83,7 +83,7 @@ export const AuthContextProvider = (props) => {
             islog = false;
             throw new Error("Students can not access the faculty portal");
           } else {
-            console.log("SUCCESS");
+            // console.log("SUCCESS");
             localStorage.setItem("userDetails", JSON.stringify(response.data));
             localStorage.setItem("isLoggedIn", "1");
             setLoggedIn(true);
@@ -92,7 +92,6 @@ export const AuthContextProvider = (props) => {
         }
       })
       .catch((err) => {
-        console.log(err.message);
         alert(err.message);
         islog = false;
       });
@@ -110,17 +109,17 @@ export const AuthContextProvider = (props) => {
   ) => {
     let url = `${baseURL}register/user`;
     if (userRole === USER_ROLE.ADMIN) {
-      console.log("ADMIN Auth");
+      // console.log("ADMIN Auth");
       url = url + `?role=${USER_ROLE.ADMIN}`;
     } else if (userRole === USER_ROLE.FACULTY) {
-      console.log("Faculty Auth");
+      // console.log("Faculty Auth");
       url = url + `?role=${USER_ROLE.FACULTY}`;
     } else if (userRole === USER_ROLE.STUDENT) {
-      console.log("STUD Auth");
+      // console.log("STUD Auth");
       url = url + `?role=${USER_ROLE.STUDENT}`;
     }
 
-    console.log(url);
+    // console.log(url);
 
     const user = {
       emailId: userName,
@@ -138,14 +137,14 @@ export const AuthContextProvider = (props) => {
       .then((response) => {
         console.log(response.data);
         user.role = userRole;
-        console.log(response.data);
+        // console.log(response.data);
         localStorage.setItem("userDetails", JSON.stringify(user));
         localStorage.setItem("isLoggedIn", "1");
         setLoggedIn(true);
         islog = true;
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         alert(err.message);
         islog = false;
       });

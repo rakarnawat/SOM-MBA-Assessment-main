@@ -57,12 +57,12 @@ export default function Login() {
 
   const validateUserNameHandler = () => {
     // setUserNameIsValid(enteredUserName.includes("@binghamton.edu"));
-    console.log(userNameIsValid);
+    // console.log(userNameIsValid);
     dispatchUserName({ type: "INPUT_BLUR" });
   };
 
   const validatePasswordHandler = () => {
-    console.log(passwordIsValid);
+    // console.log(passwordIsValid);
     dispatchPassword({ type: "INPUT_BLUR" });
   };
 

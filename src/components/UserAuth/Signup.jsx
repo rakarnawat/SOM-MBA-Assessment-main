@@ -193,10 +193,13 @@ export default function Signup() {
           userRole
         )
         .then((response) => {
+          console.log(response);
           if (response) {
             navigate("/reports");
           }
         });
+    } else {
+      alert("Form not valid, check your information");
     }
   };
 
@@ -301,7 +304,7 @@ export default function Signup() {
             <input
               className="LoginText1"
               type="submit"
-              value="Login"
+              value="Submit"
               onClick={submitHandler}
             ></input>
           </div>

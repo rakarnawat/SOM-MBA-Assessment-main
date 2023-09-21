@@ -4,6 +4,7 @@ import Binghamton_University_pic from "../images/Binghamton-University-pic.jpg";
 import { tokenReducer, userNameReducer } from "./AuthReducers";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { USER_ROLE } from "../../enums/role_enums";
 
 export default function ForgotPassword() {
   const [formIsValid, setFormIsValid] = useState(false);
@@ -66,7 +67,7 @@ export default function ForgotPassword() {
 
   const generateTokenHandler = async (event) => {
     event.preventDefault();
-    const baseURL = "http://localhost:8440/login-register/";
+    const baseURL = "http://localhost:8080/login-register/";
     const url = `${baseURL}login/generatetoken`;
     const user = {
       email: userNameState.value,
@@ -85,7 +86,7 @@ export default function ForgotPassword() {
 
   const submitBtnHandler = async (event) => {
     event.preventDefault();
-    const baseURL = "http://localhost:8440/login-register/";
+    const baseURL = "http://localhost:8080/login-register/";
     const url = `${baseURL}login/confirmtoken`;
     const user = {
       email: userNameState.value,
@@ -109,6 +110,14 @@ export default function ForgotPassword() {
         console.log(err.message);
         alert(err.message);
       });
+  };
+  const signUpSubmitHandler = (event) => {
+    event.preventDefault();
+    navigate("/Signup", {
+      state: {
+        role: USER_ROLE.FACULTY,
+      },
+    });
   };
 
   return (
@@ -172,16 +181,20 @@ export default function ForgotPassword() {
             ></input>
           </div>
         </form>
-        <form id="signupForm" action="/Signup">
-          <div className="FPNewUserDiv" type="submit">
-            <input
-              className="NewUserClass"
-              type="submit"
-              value="New User?"
-            ></input>
-            <input className="SignupClass" type="submit" value="Signup"></input>
-          </div>
-        </form>
+        <div className="NewUserDiv" type="submit">
+          <input
+            type="button"
+            className="NewUserClass"
+            onClick={signUpSubmitHandler}
+            value="New User?"
+          ></input>
+          <input
+            type="button"
+            className="SignupClass"
+            onClick={signUpSubmitHandler}
+            value="Signup"
+          ></input>
+        </div>
         <form id="ForgotPasswordForm" action="/">
           <div type="submit">
             <input
