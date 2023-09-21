@@ -23,6 +23,7 @@ let useClickOutside = (handler) => {
 };
 
 function Navbar() {
+  const user = JSON.parse(localStorage.getItem("userDetails"));
   const [openProfile, setOpenProfile] = useState(false);
   const authCtx = useContext(AuthContext);
 
@@ -80,7 +81,9 @@ function Navbar() {
 
           <div className={`dropDown ${openProfile ? "active" : "inactive"}`}>
             <div className="menuStyle">
-              <div className="Dropdownlabel">UserName</div>
+              <div className="Dropdownlabel">
+                {user.firstName + " " + user.lastName}
+              </div>
               {/* <button onClick={profileRoute} className="ProfileBtn">
                 Profile
               </button> */}
