@@ -81,8 +81,13 @@ function Navbar() {
 
           <div className={`dropDown ${openProfile ? "active" : "inactive"}`}>
             <div className="menuStyle">
+              {user && (
+                <div className="Dropdownlabel">
+                  {user.firstName + " " + user.lastName}
+                </div>
+              )}
               <div className="Dropdownlabel">
-                {user.firstName + " " + user.lastName}
+                {/* {user.firstName + " " + user.lastName} */}
               </div>
               {/* <button onClick={profileRoute} className="ProfileBtn">
                 Profile
