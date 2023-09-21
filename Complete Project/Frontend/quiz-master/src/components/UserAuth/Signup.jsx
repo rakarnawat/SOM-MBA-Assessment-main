@@ -191,7 +191,7 @@ export default function Signup() {
         )
         .then((response) => {
           if (response) {
-            navigate("/SelectionScreen");
+            navigate("/");
           }
         });
     }

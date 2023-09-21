@@ -10,6 +10,7 @@ import SelectionScreens from "./components/SelectionScreen/SelectionScreens";
 import Login from "./components/UserAuth/Login";
 import Signup from "./components/UserAuth/Signup";
 import ForgotPassword from "./components/UserAuth/ForgotPassword";
+import RegisterNewPassword from "./components/UserAuth/RegisterNewPassword";
 import EndScreen from "./components/endOfQuiz/EndScreen";
 import "../src/components/NavBar/NavbarStyles.css";
 import { AuthContext } from "./store/auth-context";
@@ -76,6 +77,19 @@ const router2 = createBrowserRouter([
         element: (
           <div>
             <SelectionScreens />
+          </div>
+        ),
+      },
+      {
+        path: "/RegisterNewPassword",
+        element: (
+          <div>
+            <div className="NavbarItems">
+              <a target="_self" href="/RegisterNewPassword" rel="noreferrer">
+                <img src={BUSOMIcon} className="BUSOMImageClass" alt="" />
+              </a>
+            </div>
+            <RegisterNewPassword />
           </div>
         ),
       },
