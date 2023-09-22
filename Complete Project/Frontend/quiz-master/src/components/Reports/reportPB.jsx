@@ -143,7 +143,7 @@ export const ReportPB = () => {
       <h1>{user.bingNumber}</h1> */}
       <div className="PB-report-map">
         {isLoading && Object.keys(pbData.Data).length > 0 && (
-          <>
+          <div className="PB-report-data">
           
           <Radar data={pbData.Data} options={config}></Radar>
 
@@ -152,7 +152,7 @@ export const ReportPB = () => {
                 return  <div key={idx}> <ul><li><b>{myPBLabel[idx]} :</b> {val}</li></ul></div>;
               })}
             
-          </>
+          </div>
         )}
       </div>
     </>
