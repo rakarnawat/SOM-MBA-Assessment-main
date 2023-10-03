@@ -1,12 +1,13 @@
-import { React, useState, useReducer, useEffect } from "react";
+import { React, useState, useReducer, useEffect, useContext } from "react";
 import "../UserAuth/ForgotPasswordStyles.css";
 import Binghamton_University_pic from "../../images/Binghamton-University-pic.jpg";
+import { AuthContext } from "../../store/auth-context";
 import { tokenReducer, userNameReducer } from "./AuthReducers";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { USER_ROLE } from "../../enums/role_enums";
 
 export default function ForgotPassword() {
+  const authCtx = useContext(AuthContext);
   const [formIsValid, setFormIsValid] = useState(false);
   const navigate = useNavigate();
   const [userNameState, dispatchUserName] = useReducer(userNameReducer, {
@@ -67,49 +68,71 @@ export default function ForgotPassword() {
 
   const generateTokenHandler = async (event) => {
     event.preventDefault();
-    const baseURL = "http://localhost:8080/login-register/";
-    const url = `${baseURL}login/generatetoken`;
-    const user = {
-      email: userNameState.value,
-    };
-
-    await axios
-      .post(url, user)
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err.message);
-        alert(err.message);
+    if (userNameIsValid) {
+      authCtx.onGenerateToken(userNameState.value).then((response) => {
+        if (response !== "") {
+          console.log(response);
+        }
       });
+    }
+    // const baseURL = "http://localhost:8080/login-register/";
+    // const url = `${baseURL}login/generatetoken`;
+    // const user = {
+    //   email: userNameState.value,
+    // };
+
+    // await axios
+    //   .post(url, user)
+    //   .then((res) => {
+    //     console.log(res.data);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.message);
+    //     alert(err.message);
+    //   });
   };
 
   const submitBtnHandler = async (event) => {
     event.preventDefault();
-    const baseURL = "http://localhost:8080/login-register/";
-    const url = `${baseURL}login/confirmtoken`;
-    const user = {
-      email: userNameState.value,
-      token: tokenState.value,
-    };
-    await axios
-      .post(url, user)
-      .then((res) => {
-        console.log(res.data.isValid);
-        if (res.data.isValid) {
-          navigate("/RegisterNewPassword", {
-            state: {
-              email: userNameState.value,
-            },
-          });
-        } else {
-          alert(res.data.message);
-        }
-      })
-      .catch((err) => {
-        console.log(err.message);
-        alert(err.message);
-      });
+
+    if (userNameIsValid && tokenIsValid) {
+      authCtx
+        .onTokenSubmit(userNameState.value, tokenState.value)
+        .then((response) => {
+          if (response) {
+            navigate("/RegisterNewPassword", {
+              state: {
+                email: userNameState.value,
+              },
+            });
+          }
+        });
+    }
+
+    // const baseURL = "http://localhost:8080/login-register/";
+    // const url = `${baseURL}login/confirmtoken`;
+    // const user = {
+    //   email: userNameState.value,
+    //   token: tokenState.value,
+    // };
+    // await axios
+    //   .post(url, user)
+    //   .then((res) => {
+    //     console.log(res.data.isValid);
+    //     if (res.data.isValid) {
+    //       navigate("/RegisterNewPassword", {
+    //         state: {
+    //           email: userNameState.value,
+    //         },
+    //       });
+    //     } else {
+    //       alert(res.data.message);
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.message);
+    //     alert(err.message);
+    //   });
   };
   const signUpSubmitHandler = (event) => {
     event.preventDefault();

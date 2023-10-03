@@ -1,5 +1,6 @@
-import { React, useReducer, useState, useEffect } from "react";
+import { React, useReducer, useState, useEffect, useContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { AuthContext } from "../../store/auth-context";
 
 import "../UserAuth/ForgotPasswordStyles.css";
 import Binghamton_University_pic from "../../images/Binghamton-University-pic.jpg";
@@ -10,7 +11,7 @@ export default function RegisterNewPassword() {
   const location = useLocation();
   const navigate = useNavigate();
   const email = location.state.email;
-
+  const authCtx = useContext(AuthContext);
   const [formIsValid, setFormIsValid] = useState(false);
 
   const [passwordState, dispatchPassword] = useReducer(passwordReducer, {
@@ -58,25 +59,13 @@ export default function RegisterNewPassword() {
 
   const submitHandler = async (event) => {
     event.preventDefault();
-    if (formIsValid) {
-      const baseURL = "http://localhost:8080/login-register/";
-      const url = `${baseURL}login/newPassword`;
-      const user = {
-        email: email,
-        newPassword: passwordState.value,
-      };
-
-      await axios
-        .post(url, user)
-        .then((res) => {
-          if (res.data.isValid && res.data.status === 200) {
-            navigate("/");
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
+    authCtx
+      .onRegisterNewPassword(email, passwordState.value)
+      .then((response) => {
+        if (response) {
+          navigate("/");
+        }
+      });
   };
 
   return (

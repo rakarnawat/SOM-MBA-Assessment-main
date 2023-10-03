@@ -7,10 +7,13 @@ export const AuthContext = React.createContext({
   onLogout: () => {},
   onLogin: (userName, password) => {},
   onSignup: (userName, password, fName, lName) => {},
+  onGenerateToken: (email) => {},
+  onTokenSubmit: (email, token) => {},
+  onRegisterNewPassword: (email, newPass) => {},
 });
 
 export const AuthContextProvider = (props) => {
-  const baseURL = "http://localhost:8080/login-register/";
+  const baseURL = "http://18.191.178.41:8080/login-register/";
 
   const [isLoggedIn, setLoggedIn] = useState(false);
 
@@ -135,7 +138,7 @@ export const AuthContextProvider = (props) => {
         user.role = userRole;
         // localStorage.setItem("userDetails", JSON.stringify(user));
         // localStorage.setItem("isLoggedIn", "1");
-        setLoggedIn(true);
+        setLoggedIn(false);
         islog = false;
       })
       .catch((err) => {
@@ -147,6 +150,85 @@ export const AuthContextProvider = (props) => {
     return islog;
   };
 
+  const generateTokenHandler = async (email) => {
+    console.log("CALLING");
+    const url = `${baseURL}login/generatetoken`;
+    const user = {
+      email: email,
+    };
+
+    let token = "";
+
+    await axios
+      .post(url, user)
+      .then((res) => {
+        // console.log(res.data);
+        if (res.data === "No Such email found") {
+          throw new Error(res.data);
+        } else {
+          // console.log(res.data);
+          token = res.data;
+        }
+      })
+      .catch((err) => {
+        console.log(err.message);
+        alert(err.message);
+      });
+
+    return token;
+  };
+
+  const tokenSubmitHandler = async (email, token) => {
+    const url = `${baseURL}login/confirmtoken`;
+    const user = {
+      email: email,
+      token: token,
+    };
+
+    let tokenAuthValid = false;
+
+    await axios
+      .post(url, user)
+      .then((res) => {
+        console.log(res.data.isValid);
+        if (res.data.isValid) {
+          tokenAuthValid = res.data.isValid;
+        } else {
+          throw new Error(res.data.message);
+        }
+      })
+      .catch((err) => {
+        console.log(err.message);
+        alert(err.message);
+      });
+
+    return tokenAuthValid;
+  };
+
+  const registerNewPassword = async (email, password) => {
+    const url = `${baseURL}login/newPassword`;
+    const user = {
+      email: email,
+      newPassword: password,
+    };
+
+    let registeredValid = false;
+
+    await axios
+      .post(url, user)
+      .then((res) => {
+        if (res.data.isValid && res.data.status === 200) {
+          // navigate("/");
+          registeredValid = res.data.isValid;
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    return registeredValid;
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -154,6 +236,9 @@ export const AuthContextProvider = (props) => {
         onLogout: logoutHandler,
         onLogin: loginHandler,
         onSignup: signUpHandler,
+        onGenerateToken: generateTokenHandler,
+        onTokenSubmit: tokenSubmitHandler,
+        onRegisterNewPassword: registerNewPassword,
       }}
     >
       {props.children}

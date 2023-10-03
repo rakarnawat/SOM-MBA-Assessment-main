@@ -190,9 +190,7 @@ export default function Signup() {
           userRole
         )
         .then((response) => {
-          if (response) {
-            navigate("/");
-          }
+          navigate("/");
         });
     }
   };
