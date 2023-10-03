@@ -181,9 +181,9 @@ button[id="btnClick"]:focus {
 .PB-report-map{
   position: relative;
   display: block;
-  height: 55vh;
-  width: 95%;
-  margin: 5%;
+  height: 100%;
+  width: 100.5%;
+  margin: 0%;
   margin-right: 10%;
   overflow: auto;
   justify-content: center;
