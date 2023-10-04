@@ -245,5 +245,3 @@ export const AuthContextProvider = (props) => {
     </AuthContext.Provider>
   );
 };
-
-// For merge purposes

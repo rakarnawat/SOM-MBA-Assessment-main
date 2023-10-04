@@ -27,9 +27,8 @@ export const ReportPB = () => {
   const [commentsData, setCommentsData] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const user = JSON.parse(localStorage.getItem("userDetails"));
-  const baseURL = "http://localhost:8442/personal-beliefs/pb/getScores";
+  const baseURL = "http://18.191.178.41:8441/personal-beliefs/pb/getScores";
   const getPBScoreHandler = async () => {
-
     try {
       const response = await axios.get(`${baseURL}/${user.bingNumber}`);
 
@@ -48,7 +47,7 @@ export const ReportPB = () => {
         response.data.teamworkScoreComment,
         response.data.empoweringScoreComment,
       ];
-     
+
       // console.log(comments);
       setLoading(false);
       setPBData({
@@ -87,7 +86,6 @@ export const ReportPB = () => {
           ],
         },
         comments: {},
-        
       });
       setCommentsData(comments);
       setLoading(true);
@@ -121,14 +119,13 @@ export const ReportPB = () => {
         },
       },
     },
-    
   };
 
   useEffect(() => {
     setLoading(false);
     getPBScoreHandler();
     setLoading(true);
-  },[] );
+  }, []);
   const myPBLabel = [
     "Open to Change",
     "Coaching",
@@ -138,20 +135,26 @@ export const ReportPB = () => {
   ];
   return (
     <>
-    
       {/* <h1>PB COMP</h1>
       <h1>{user.bingNumber}</h1> */}
       <div className="PB-report-map">
         {isLoading && Object.keys(pbData.Data).length > 0 && (
           <div className="PB-report-data">
-          
-          <Radar data={pbData.Data} options={config}></Radar>
+            <Radar data={pbData.Data} options={config}></Radar>
 
-              {commentsData.map((val, idx) => {
-                console.log(val);
-                return  <div key={idx}> <ul><li><b>{myPBLabel[idx]} :</b> {val}</li></ul></div>;
-              })}
-            
+            {commentsData.map((val, idx) => {
+              console.log(val);
+              return (
+                <div key={idx}>
+                  {" "}
+                  <ul>
+                    <li>
+                      <b>{myPBLabel[idx]} :</b> {val}
+                    </li>
+                  </ul>
+                </div>
+              );
+            })}
           </div>
         )}
       </div>
