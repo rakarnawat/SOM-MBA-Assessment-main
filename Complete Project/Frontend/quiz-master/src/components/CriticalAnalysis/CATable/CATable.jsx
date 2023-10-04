@@ -7,7 +7,8 @@ import { useNavigate } from "react-router-dom";
 const CATable = () => {
   let navigate = useNavigate();
   const [questions, setQuestions] = useState([]);
-  const baseURL = "http://localhost:8444/critical-thinking/critical-thinking/";
+  const baseURL =
+    "http://18.191.178.41:8442/critical-thinking/critical-thinking/";
   const getQuestionsHandler = async () => {
     await axios
       .get(`${baseURL}getQuestions`)

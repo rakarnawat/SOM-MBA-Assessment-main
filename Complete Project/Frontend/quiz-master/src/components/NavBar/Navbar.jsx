@@ -71,6 +71,7 @@ function Navbar() {
                 setOpenProfile(!openProfile);
               }}
             >
+              {user && <p>{user.firstName + " " + user.lastName}</p>}
               <img
                 src={BUuserLogoIconIcon}
                 className="BUuserLogoImageClass"

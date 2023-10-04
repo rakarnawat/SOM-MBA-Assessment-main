@@ -20,7 +20,7 @@ export const CACorTemplate = (props) => {
 
   const routeChange = (event) => {
     const url =
-      "http://localhost:8444/critical-thinking/critical-thinking/ctData";
+      "http://18.191.178.41:8442/critical-thinking/critical-thinking/ctData";
     axios.post(url, CAAnswers).then((response) => {
       console.log(response);
       let path = `/endScreen`;
