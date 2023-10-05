@@ -17,32 +17,31 @@ public class SituationQuestion {
     @Column(name = "Situation_Number")
     private Long SituationNumber;
 
-    @Column(name = "Situation_Text")
+    @Column(name = "Situation_Text", length = 4500)
     private String SituationText;
 
     @Column(name = "Prev_Situation_Number")
     private Long PrevSituationNumber;
 
-    @Column(name = "Prev_Situation_Text")
+    @Column(name = "Prev_Situation_Text", length = 4500)
     private String PrevSituationText;
 
-    @Column(name = "Rank1_Text")
+    @Column(name = "Rank1_Text", length = 1000)
     private String Rank1Text;
 
-    @Column(name = "Rank2_Text")
+    @Column(name = "Rank2_Text", length = 1000)
     private String Rank2Text;
 
-    @Column(name = "Rank3_Text")
+    @Column(name = "Rank3_Text", length = 1000)
     private String Rank3Text;
 
-    @Column(name = "Rank4_Text")
+    @Column(name = "Rank4_Text", length = 1000)
     private String Rank4Text;
 
-    @Column(name = "Rank5_Text")
+    @Column(name = "Rank5_Text", length = 1000)
     private String Rank5Text;
 
-    @Column(name = "Rank6_Text")
+    @Column(name = "Rank6_Text", length = 1000)
     private String Rank6Text;
-
 
 }

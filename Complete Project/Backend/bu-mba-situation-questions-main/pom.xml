@@ -8,13 +8,15 @@
 		<version>3.1.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>bu.som.assessment.situationQuestions</groupId>
+
+	<groupId>bu.som</groupId>
 	<artifactId>bu-mba-situation-questions</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+
 	<name>bu-mba-situation-questions</name>
 	<description>bu-mba-situation-questions</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>18</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -33,8 +35,9 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>com.mysql</groupId>
-			<artifactId>mysql-connector-j</artifactId>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.32</version>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
@@ -45,54 +48,44 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
+			<version>1.18.24</version>
 			<optional>true</optional>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-        <dependency>
-            <groupId>com.mastfrog.builder</groupId>
-            <artifactId>builder-builder-parent</artifactId>
-            <version>1.0.7</version>
-        </dependency>
-		<dependency>
-			<groupId>com.mastfrog.builder</groupId>
-			<artifactId>builder-builder-parent</artifactId>
-			<version>1.0.7</version>
-		</dependency>
-		<dependency>
-			<groupId>com.mastfrog.builder</groupId>
-			<artifactId>builder-builder-parent</artifactId>
-			<version>1.0.7</version>
-		</dependency>
-		<dependency>
-			<groupId>com.mastfrog.builder</groupId>
-			<artifactId>builder-builder-parent</artifactId>
-			<version>1.0.7</version>
-		</dependency>
-		<dependency>
-			<groupId>com.mastfrog.builder</groupId>
-			<artifactId>builder-builder-parent</artifactId>
-			<version>1.0.7</version>
-		</dependency>
+
 	</dependencies>
 
 	<build>
+		<finalName>bu-mba-situations</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<excludes>
-						<exclude>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</exclude>
-					</excludes>
-				</configuration>
+				<executions>
+					<execution>
+						<configuration>
+							<mainClass>org.example.bu.som.assessment.situationQuestions.BuMbaSituationQuestionsApplication</mainClass>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
+<!--			<plugin>-->
+<!--				<groupId>org.springframework.boot</groupId>-->
+<!--				<artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--				<configuration>-->
+<!--					<excludes>-->
+<!--						<exclude>-->
+<!--							<groupId>org.projectlombok</groupId>-->
+<!--							<artifactId>lombok</artifactId>-->
+<!--						</exclude>-->
+<!--					</excludes>-->
+<!--				</configuration>-->
+<!--			</plugin>-->
 		</plugins>
 	</build>
 
