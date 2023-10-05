@@ -13,7 +13,7 @@ export const AuthContext = React.createContext({
 });
 
 export const AuthContextProvider = (props) => {
-  const baseURL = "http://18.191.178.41:8080/login-register/";
+  const baseURL = "http://3.14.232.42:8080/login-register/";
 
   const [isLoggedIn, setLoggedIn] = useState(false);
 

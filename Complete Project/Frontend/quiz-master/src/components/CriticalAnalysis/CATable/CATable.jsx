@@ -8,7 +8,7 @@ const CATable = () => {
   let navigate = useNavigate();
   const [questions, setQuestions] = useState([]);
   const baseURL =
-    "http://18.191.178.41:8442/critical-thinking/critical-thinking/";
+    "http://3.14.232.42:8442/critical-thinking/critical-thinking/";
   const getQuestionsHandler = async () => {
     await axios
       .get(`${baseURL}getQuestions`)
