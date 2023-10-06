@@ -60,7 +60,7 @@ const Template = (props) => {
 
   const routeChange = (event) => {
     console.log(user.bingNumber);
-    const url = "http://3.14.232.42:8441/personal-beliefs/pb/pbData/";
+    const url = "http://3.13.110.40:8441/personal-beliefs/pb/pbData/";
     axios.post(url, pbAnswers).then((response) => {
       console.log(response);
       let path = `/endScreen`;

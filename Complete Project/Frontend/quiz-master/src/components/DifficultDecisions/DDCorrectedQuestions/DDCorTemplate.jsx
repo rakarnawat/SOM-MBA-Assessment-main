@@ -125,7 +125,7 @@ export const DDCorTemplate = (props) => {
   };
 
   const routeChange = (event) => {
-    const url = "http://localhost:8446/situation_q/sq/sqData";
+    const url = "http://3.14.159.174:8443/situation_q/sq/sqData";
     axios.post(url, DDAnswers).then((response) => {
       console.log(response);
       let path = `/endScreen`;

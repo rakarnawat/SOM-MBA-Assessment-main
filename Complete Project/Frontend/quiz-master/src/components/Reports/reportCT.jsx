@@ -35,7 +35,7 @@ export const ReportCT = () => {
   let cc = [["Analyses Score", "Connections Score", "Depth Score"]];
   const [isLoading, setLoading] = useState(false);
   const baseURL =
-    "http://localhost:8444/critical-thinking/critical-thinking/getScores";
+    "http://3.14.159.174:8442/critical-thinking/critical-thinking/getScores";
 
   const getDDScoreHandler = async () => {
     try {

@@ -23,7 +23,7 @@ const DDTemplate = (props) => {
 
   const routeChange = (event) => {
     const url =
-      "http://localhost:8444/critical-thinking/critical-thinking/ctData";
+      "http://3.14.159.174:8443/critical-thinking/critical-thinking/ctData";
     axios.post(url, DDAnswers).then((response) => {
       console.log(response);
       let path = `/endScreen`;

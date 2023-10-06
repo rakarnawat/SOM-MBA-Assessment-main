@@ -49,8 +49,8 @@ export const ReportDD = () => {
   const [commentsData, setCommentsData] = useState([]);
   const [rateComments, setRateComments] = useState([]);
   const [isLoading, setLoading] = useState(false);
-  const baseRankURL = "http://localhost:8446/situation_q/sq/getRankScores";
-  const baseRateURL = "http://localhost:8446/situation_q/sq/getRateScores";
+  const baseRankURL = "http://3.14.159.174:8443/situation_q/sq/getRankScores";
+  const baseRateURL = "http://3.14.159.174:8443/situation_q/sq/getRateScores";
 
   const getDDScoreHandler = async () => {
     try {

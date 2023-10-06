@@ -9,7 +9,7 @@ export default function DDInstructions() {
   const navigate = useNavigate();
 
   const [DDQuestions, setDDQuestions] = useState([]);
-  const baseURL = "http://localhost:8443/situation_q/sq";
+  const baseURL = "http://3.14.159.174:8443/situation_q/sq";
   const getQuestionsHandler = async () => {
     await axios
       .get(`${baseURL}/getSQuestions`)
