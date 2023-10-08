@@ -201,7 +201,7 @@ export default function Login() {
       <input
         className={`${login_styles.ForgotPasswordClass} custom-button`}
         type="submit"
-        value="Forgot your password? "
+        value="Forgot your password?  "
       />
     </div>
   </form>

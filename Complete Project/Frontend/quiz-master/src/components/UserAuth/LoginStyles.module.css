@@ -13,14 +13,15 @@
   position: absolute;
   width: 25%;
   height: 85%;
-  left: 72%;
-  top: 13.5%;
-  overflow: hidden;
+  left: 70%;
+  top: 11.5%;
+  overflow: auto;
+  margin: 1rem;
 }
 
 .headingTitle {
   position: relative;
-  width: 25%;
+  width: 50%;
   height: 20%;
   left: 0%;
   top: 0%;
@@ -60,7 +61,7 @@ input {
   background: #ffffff00;
   border: #ffffff00;
   text-indent: 5%;
-  border-radius: 16px;
+  border-radius: min(0.85vw,2rem);
 }
 input:focus {
   outline: solid 0px rgba(255, 255, 255, 0);
@@ -69,7 +70,6 @@ input:focus {
 
 .userName {
   position: relative;
-  width: 100%;
   height: 5%;
   left: 0%;
   top: 1%;
@@ -90,12 +90,11 @@ input:focus {
 .userNameInput {
   box-sizing: border-box;
   position: relative;
-  width: 95%;
   height: min(5vw,4rem);
 
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: min(16px,2rem);
+  border-radius: min(0.85vw,2rem);
 
   font-family: "Lato";
   font-style: normal;
@@ -115,7 +114,7 @@ input:focus {
   height: min(5vw,4rem);
   border-color: rgb(255, 150, 150);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 16px;
+  border-radius: 0.85vw;
 
   font-family: "Lato";
   font-style: normal;
@@ -129,7 +128,6 @@ input:focus {
 
 .password {
   position: relative;
-  width: 100%;
   height: 5%;
   left: 0%;
   font-family: "Lato";
@@ -151,7 +149,7 @@ input:focus {
   height: min(5vw,4rem);
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 16px;
+  border-radius: 0.85vw;
   font-family: "Lato";
   font-style: normal;
   font-weight: 600;
@@ -173,7 +171,7 @@ input:focus {
 
   background: #005941;
   border: 1px solid #000000;
-  border-radius: 16px;
+  border-radius: 0.85vw;
   margin-bottom: min(1rem,7%);
 }
 
@@ -241,10 +239,10 @@ input:focus {
 
 .ForgotPasswordContainer {
   position: relative;
-  width: 17rem;
+  width: auto;
   text-align: center;
   margin-top: 0.1rem;
-  
+  height: 1.5rem;
 }
 
 .ForgotPasswordClass {
