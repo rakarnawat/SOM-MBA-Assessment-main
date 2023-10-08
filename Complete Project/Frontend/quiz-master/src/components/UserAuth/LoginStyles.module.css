@@ -16,7 +16,8 @@
   left: 70%;
   top: 11.5%;
   overflow: auto;
-  margin: 1rem;
+  margin: 0.7rem;
+  padding: 0.7vw;
 }
 
 .headingTitle {
