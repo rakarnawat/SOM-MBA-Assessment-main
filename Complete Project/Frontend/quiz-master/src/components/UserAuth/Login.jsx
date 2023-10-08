@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useReducer, useState } from "react";
-import "../UserAuth/LoginStyles.css";
+import login_styles from"../UserAuth/LoginStyles.module.css";
 import Binghamton_University_pic from "../../images/Binghamton-University-pic.jpg";
 import { userNameReducer, passwordReducer } from "./AuthReducers";
 import { AuthContext } from "../../store/auth-context";
@@ -127,25 +127,25 @@ export default function Login() {
   };
 
   return (
-    <div className="LoginMainComponent">
-      <div className="ImageSlider">
+    <div className={login_styles.LoginMainComponent}>
+      <div className={login_styles.ImageSlider}>
         <img
           src={Binghamton_University_pic}
           alt="Binghamton_University"
-          className="BinghamtonUniversityImage"
+          className={login_styles.BinghamtonUniversityImage}
         />
       </div>
-      <div className="UserAuth">
+      <div className={login_styles.UserAuth}>
         <form id="loginForm" action="/SelectionScreen">
-          <h1 className="headingTitle">Login</h1>
-          <p className="headText">Welcome to Leadership Assesment Program</p>
-          <label htmlFor="email" className="userName">
+          <h1 className={login_styles.headingTitle}>Login</h1>
+          <p className={login_styles.headText}>Welcome to Leadership Assesment Program</p>
+          <label htmlFor="email" className={login_styles.userName}>
             B-mail
           </label>
-          <div className="userNameInput">
+          <div className={login_styles.userNameInput}>
             <input
               type={"email"}
-              //className="userNameInput"
+              //className={login_styles.userNameInput"
               placeholder="xyz@binghamton.edu"
               id="email"
               name="email"
@@ -155,13 +155,13 @@ export default function Login() {
               onBlur={validateUserNameHandler}
             />
           </div>
-          <label htmlFor="password" className="password">
+          <label htmlFor="password" className={login_styles.password}>
             Password
           </label>
-          <div className="passInput">
+          <div className={login_styles.passInput}>
             <input
               type={"password"}
-              //className="passInput"
+              //className={login_styles.passInput"
               placeholder="*************"
               id="password"
               name="password"
@@ -170,38 +170,44 @@ export default function Login() {
               onBlur={validatePasswordHandler}
             />
           </div>
-          <div className="LoginButton">
+          <div className={login_styles.LoginButton}>
             <input
-              className="LoginText"
+              className={login_styles.LoginText}
               type="submit"
               value="Login"
               onClick={loginSubmitHandler}
             ></input>
           </div>
         </form>
-        <div className="NewUserDiv" type="submit">
-          <input
-            type="button"
-            className="NewUserClass"
-            onClick={signUpSubmitHandler}
-            value="New User?"
-          ></input>
-          <input
-            type="button"
-            className="SignupClass"
-            onClick={signUpSubmitHandler}
-            value="Signup"
-          ></input>
-        </div>
-        <form id="ForgotPasswordForm" action="/ForgotPassword">
-          <div type="submit">
-            <input
-              className="ForgotPasswordClass"
-              type="submit"
-              value="Forgot your password?"
-            ></input>
-          </div>
-        </form>
+
+        <div className={login_styles.Signup_forgot_class}>
+  <div className={login_styles.ButtonsContainer}>
+    <input
+      type="button"
+      className={`${login_styles.NewUserClass} custom-button`}
+      onClick={signUpSubmitHandler}
+      value="New User? "
+    />
+    <input
+      type="button"
+      className={`${login_styles.SignupClass} custom-button`}
+      onClick={signUpSubmitHandler}
+      value="Signup "
+    />
+  </div>
+
+  <form id="ForgotPasswordForm" action="/ForgotPassword">
+    <div className={login_styles.ForgotPasswordContainer}>
+      <input
+        className={`${login_styles.ForgotPasswordClass} custom-button`}
+        type="submit"
+        value="Forgot your password? "
+      />
+    </div>
+  </form>
+</div>
+
+
       </div>
     </div>
   );

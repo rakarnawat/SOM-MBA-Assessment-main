@@ -16,8 +16,8 @@
   font-family: "Lato";
   font-style: normal;
   font-weight: 700;
-  font-size: 40px;
-  line-height: 48px;
+  font-size: 2.05vw;
+  line-height: 2vh;
   /* identical to box height */
 
   display: flex;
@@ -32,13 +32,13 @@
   width: auto;
   height: auto;
   left: 0%;
-  top: 13%;
+  top: 13.5%;
 
   font-family: "Lato";
   font-style: normal;
   font-weight: 600;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 1.05vw;
+  line-height: 1vh;
   display: flex;
   align-items: center;
   letter-spacing: 0.065em;
@@ -69,8 +69,8 @@ input:focus {
   font-family: "Lato";
   font-style: normal;
   font-weight: 600;
-  font-size: 24px;
-  line-height: 29px;
+  font-size: 1.25vw;
+  line-height: 1vh;
   display: flex;
   align-items: center;
   letter-spacing: 0.065em;
@@ -91,8 +91,8 @@ input:focus {
   font-family: "Lato";
   font-style: normal;
   font-weight: 600;
-  font-size: 24px;
-  line-height: 29px;
+  font-size: 1.25vw;
+  line-height: 1vh;
   display: flex;
   align-items: center;
   letter-spacing: 0.065em;
@@ -107,8 +107,8 @@ input:focus {
   font-family: "Lato";
   font-style: normal;
   font-weight: 600;
-  font-size: 24px;
-  line-height: 29px;
+  font-size: 1.25vw;
+  line-height: 1vh;
   display: flex;
   align-items: center;
   letter-spacing: 0.065em;
@@ -129,8 +129,8 @@ input:focus {
   font-family: "Lato";
   font-style: normal;
   font-weight: 600;
-  font-size: 24px;
-  line-height: 29px;
+  font-size: 1.25vw;
+  line-height: 1vh;
   display: flex;
   align-items: center;
   letter-spacing: 0.065em;
@@ -141,13 +141,13 @@ input:focus {
   width: 685px;
   height: 32px;
   left: 0%;
-  top: 31%;
+  top: 32%;
 
   font-family: "Lato";
   font-style: normal;
   font-weight: 600;
-  font-size: 24px;
-  line-height: 29px;
+  font-size: 1.25vw;
+  line-height: 1vh;
   display: flex;
   align-items: center;
   letter-spacing: 0.065em;
@@ -169,8 +169,8 @@ input:focus {
   font-family: "Lato";
   font-style: normal;
   font-weight: 600;
-  font-size: 24px;
-  line-height: 29px;
+  font-size: 1.25vw;
+  line-height: 1vh;
   display: flex;
   align-items: center;
   letter-spacing: 0.065em;
@@ -181,13 +181,13 @@ input:focus {
   width: auto;
   height: auto;
   left: 0;
-  top: 45%;
+  top: 46%;
 
   font-family: "Lato";
   font-style: normal;
   font-weight: 600;
-  font-size: 24px;
-  line-height: 29px;
+  font-size: 1.25vw;
+  line-height: 1vh;
   display: flex;
   align-items: center;
   letter-spacing: 0.065em;
@@ -211,8 +211,8 @@ input:focus {
   font-family: "Lato";
   font-style: normal;
   font-weight: 600;
-  font-size: 24px;
-  line-height: 29px;
+  font-size: 1.25vw;
+  line-height: 1vh;
   display: flex;
   align-items: center;
   letter-spacing: 0.065em;
@@ -228,8 +228,8 @@ input:focus {
   font-family: "Lato";
   font-style: normal;
   font-weight: 600;
-  font-size: 24px;
-  line-height: 29px;
+  font-size: 1.25vw;
+  line-height: 1vh;
   display: flex;
   align-items: center;
   letter-spacing: 0.065em;
@@ -251,8 +251,8 @@ input:focus {
   font-family: "Lato";
   font-style: normal;
   font-weight: 600;
-  font-size: 24px;
-  line-height: 29px;
+  font-size: 1.25vw;
+  line-height: 1vh;
   display: flex;
   align-items: center;
   letter-spacing: 0.065em;
@@ -268,8 +268,8 @@ input:focus {
   font-family: "Lato";
   font-style: normal;
   font-weight: 600;
-  font-size: 24px;
-  line-height: 29px;
+  font-size: 1.25vw;
+  line-height: 1vh;
   display: flex;
   align-items: center;
   letter-spacing: 0.065em;
@@ -291,8 +291,8 @@ input:focus {
   font-family: "Lato";
   font-style: normal;
   font-weight: 600;
-  font-size: 24px;
-  line-height: 29px;
+  font-size: 1.25vw;
+  line-height: 1vh;
   display: flex;
   align-items: center;
   letter-spacing: 0.065em;
@@ -313,18 +313,18 @@ input:focus {
 }
 
 .LoginText1 {
-  position: absolute;
+  position: relative;
   left: 0%;
   width: 100%;
-  text-indent: 140%;
   font-family: "Lato";
   font-style: normal;
   font-weight: 700;
-  font-size: 40px;
-  line-height: 48px;
+  font-size: 2vw;
+  line-height: 2vh;
   display: flex;
   align-items: center;
-  text-align: center;
+  justify-content: center;
+  vertical-align: middle;
   letter-spacing: 0.065em;
 
   color: #ffffff;
@@ -344,8 +344,8 @@ input:focus {
   font-family: "Lato";
   font-style: normal;
   font-weight: 600;
-  font-size: 20px;
-  line-height: 29px;
+  font-size: 1.05vw;
+  line-height: 1vh;
   display: flex;
   align-items: center;
   letter-spacing: 0.065em;
@@ -360,8 +360,8 @@ input:focus {
   font-family: "Lato";
   font-style: normal;
   font-weight: 600;
-  font-size: 20px;
-  line-height: 29px;
+  font-size: 1.05vw;
+  line-height: 1vh;
   display: flex;
   align-items: center;
   letter-spacing: 0.065em;
