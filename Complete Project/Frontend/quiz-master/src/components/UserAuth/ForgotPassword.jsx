@@ -171,12 +171,12 @@ export default function ForgotPassword() {
               onBlur={validateUserNameHandler}
             />
           </div>
-          <div className="GenerateTokenDiv">
+          <div>
             <button
               className="GenerateTokenButton"
               onClick={generateTokenHandler}
             >
-              <p>Generate Token</p>
+              <p className="GenerateTokenText">Generate Token</p>
             </button>
           </div>
         </form>
@@ -204,29 +204,31 @@ export default function ForgotPassword() {
             ></input>
           </div>
         </form>
-        <div className="NewUserDiv" type="submit">
-          <input
-            type="button"
-            className="NewUserClass"
-            onClick={signUpSubmitHandler}
-            value="New User?"
-          ></input>
-          <input
-            type="button"
-            className="SignupClass"
-            onClick={signUpSubmitHandler}
-            value="Signup"
-          ></input>
-        </div>
-        <form id="ForgotPasswordForm" action="/">
-          <div type="submit">
+        <div className="NusEul_CSS">
+          <div className="NewUserDiv" type="submit">
             <input
-              className="FPForgotPasswordClass"
-              type="submit"
-              value="Existing User? Login"
+              type="button"
+              className="NewUserClass"
+              onClick={signUpSubmitHandler}
+              value="New User? "
+            ></input>
+            <input
+              type="button"
+              className="SignupClass"
+              onClick={signUpSubmitHandler}
+              value="Signup  "
             ></input>
           </div>
-        </form>
+          <form className="EU_Css" id="ForgotPasswordForm" action="/">
+            <div type="submit">
+              <input
+                className="FPForgotPasswordClass"
+                type="submit"
+                value="Existing User? Login  "
+              ></input>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
