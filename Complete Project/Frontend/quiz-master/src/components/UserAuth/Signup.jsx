@@ -25,6 +25,17 @@ export default function Signup() {
   const location = useLocation();
   const userRole = location.state.role;
   console.log(userRole);
+  
+  const [AuthTokenShow,setAuthTokenShow] = useState(false)
+  const ShowAuthToken =()=>{
+    setAuthTokenShow(true);
+    setSignupPageShow(!setAuthTokenShow)
+  } 
+  const [SignupPageShow,setSignupPageShow] = useState(true)
+  const ShowSignupPage =()=>{
+    setSignupPageShow(true);
+    setAuthTokenShow(false);
+  } 
 
   const [fNameState, dispatchFName] = useReducer(firstNameReducer, {
     value: "",
@@ -195,6 +206,7 @@ export default function Signup() {
     }
   };
 
+
   return (
     <div className="LoginMainComponent">
       <div className="ImageSlider">
@@ -205,7 +217,8 @@ export default function Signup() {
         />
       </div>
       <div className="UserAuth">
-        <form id="loginForm" action="/SelectionScreen">
+        { SignupPageShow && (
+        <form id="loginForm">
           <h1 className="headingTitle">Signup</h1>
           <p className="headText">Welcome to Leadership Assesment Program</p>
           <div className="first_last_name_div">
@@ -298,21 +311,63 @@ export default function Signup() {
               className="LoginText1"
               type="submit"
               value="Sign Up"
-              onClick={submitHandler}
+              onClick={ShowAuthToken}
+              // onClick={submitHandler}
             ></input>
           </div>
         </form>
+        )}{
+          AuthTokenShow && (
+            <div>
+              <form id="loginForm" action="/SelectionScreen">
+                <h1 className="headingTitle">Verify</h1>
+                <p className="headText">Welcome to Leadership Assesment Program</p>
+                <label className="userName1">
+                  Verify Token      
+                </label>
+                <div className="userNameInput1">
+                  <input
+                    type={"text"}
+                    //className="userNameInput1"
+                    placeholder="Token (12-digit)"
+                    id="text"
+                    name="text"
+                    required
+                    onChange={userNameChangeHandler}
+                    onBlur={validatePassword}
+                  />
+                </div>
+                <div className="LoginButton1">
+                <input
+                  className="LoginText1"
+                  type="submit"
+                  value="Verify"
+                  onClick={submitHandler}
+                ></input>
+              </div>
+              </form>
+            </div>
+          )
+        }
+        
         <form id="LoginForm" action="/">
           <div className="LoginDiv" type="submit">
             <input
               className="AlreadyMemberClass"
               type="submit"
               value="Already a Member?   "
+              onClick={ShowSignupPage}
             ></input>
-            <input className="LoginClass" type="submit" value="Login  "></input>
+            <input 
+              className="LoginClass" 
+              type="submit" 
+              value="Login  "
+              onClick={ShowSignupPage}
+            ></input>
           </div>
         </form>
       </div>
     </div>
+      
   );
 }
