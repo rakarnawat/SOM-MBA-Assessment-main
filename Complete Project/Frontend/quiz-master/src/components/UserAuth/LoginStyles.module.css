@@ -11,7 +11,7 @@
 
 .UserAuth {
   position: absolute;
-  width: 25%;
+  width: 28%;
   height: 85%;
   left: 70%;
   top: 11.5%;
@@ -171,11 +171,12 @@ input:focus {
   
 
   background: #005941;
-  border: 1px solid #000000;
   border-radius: 0.85vw;
   margin-bottom: min(1rem,7%);
 }
-
+.LoginButton:hover{
+  background-color: #014a36;
+}
 .LoginText {
   position: relative;
   left: 0%;
@@ -252,8 +253,8 @@ input:focus {
   font-family: "Lato";
   font-style: normal;
   font-weight: 600;
-  font-size: min(1.3rem,2vw); /* Set your desired font size */
-  line-height: 1rem; /* Set your desired line height */
+  font-size: min(1.3rem,2vw);
+  line-height: 1rem; 
   word-wrap: break-word;
   color: #818181;
   letter-spacing: 0.065em;

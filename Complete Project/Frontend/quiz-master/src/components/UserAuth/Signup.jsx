@@ -208,28 +208,33 @@ export default function Signup() {
         <form id="loginForm" action="/SelectionScreen">
           <h1 className="headingTitle">Signup</h1>
           <p className="headText">Welcome to Leadership Assesment Program</p>
-
-          <label className="FirstName">First Name</label>
-          <div className="FirstNameInputText">
-            <input
-              ref={inputRef}
-              required
-              type="text"
-              placeholder="Enter First Name"
-              onChange={fNameChangeHandler}
-              onBlur={validateFNameHandler}
-            />
-          </div>
-          <label className="LastName">Last Name</label>
-          <div className="LastNameInputText">
-            <input
-              ref={inputRef}
-              required
-              type="text"
-              placeholder="Enter Last Name"
-              onChange={lNameChangeHandler}
-              onBlur={validateLNameHandler}
-            />
+          <div className="first_last_name_div">
+            <div className="fl_Label">
+              <label className="FirstName">First Name</label>
+              <label className="LastName">Last Name</label>
+            </div>
+            <div className="fl_input">
+              <div className="FirstNameInputText">
+                <input
+                  ref={inputRef}
+                  required
+                  type="text"
+                  placeholder="Enter First Name"
+                  onChange={fNameChangeHandler}
+                  onBlur={validateFNameHandler}
+                />
+              </div>
+              <div className="LastNameInputText">
+                <input
+                  ref={inputRef}
+                  required
+                  type="text"
+                  placeholder="Enter Last Name"
+                  onChange={lNameChangeHandler}
+                  onBlur={validateLNameHandler}
+                />
+              </div>
+            </div>
           </div>
           <label className="BNumber">B-Number</label>
           <div className="BNumberInputText">
@@ -302,9 +307,9 @@ export default function Signup() {
             <input
               className="AlreadyMemberClass"
               type="submit"
-              value="Already a Member?"
+              value="Already a Member?   "
             ></input>
-            <input className="LoginClass" type="submit" value="Login"></input>
+            <input className="LoginClass" type="submit" value="Login  "></input>
           </div>
         </form>
       </div>
