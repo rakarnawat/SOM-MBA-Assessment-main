@@ -25,17 +25,18 @@ export default function Signup() {
   const location = useLocation();
   const userRole = location.state.role;
   console.log(userRole);
-  
-  const [AuthTokenShow,setAuthTokenShow] = useState(false)
-  const ShowAuthToken =()=>{
+
+  const [AuthTokenShow, setAuthTokenShow] = useState(false);
+  const ShowAuthToken = () => {
+    console.log(userNameState.value, fNameState.value);
     setAuthTokenShow(true);
-    setSignupPageShow(!setAuthTokenShow)
-  } 
-  const [SignupPageShow,setSignupPageShow] = useState(true)
-  const ShowSignupPage =()=>{
+    setSignupPageShow(!setAuthTokenShow);
+  };
+  const [SignupPageShow, setSignupPageShow] = useState(true);
+  const ShowSignupPage = () => {
     setSignupPageShow(true);
     setAuthTokenShow(false);
-  } 
+  };
 
   const [fNameState, dispatchFName] = useReducer(firstNameReducer, {
     value: "",
@@ -206,7 +207,6 @@ export default function Signup() {
     }
   };
 
-
   return (
     <div className="LoginMainComponent">
       <div className="ImageSlider">
@@ -217,127 +217,127 @@ export default function Signup() {
         />
       </div>
       <div className="UserAuth">
-        { SignupPageShow && (
-        <form id="loginForm">
-          <h1 className="headingTitle">Signup</h1>
-          <p className="headText">Welcome to Leadership Assesment Program</p>
-          <div className="first_last_name_div">
-            <div className="fl_Label">
-              <label className="FirstName">First Name</label>
-              <label className="LastName">Last Name</label>
-            </div>
-            <div className="fl_input">
-              <div className="FirstNameInputText">
-                <input
-                  ref={inputRef}
-                  required
-                  type="text"
-                  placeholder="Enter First Name"
-                  onChange={fNameChangeHandler}
-                  onBlur={validateFNameHandler}
-                />
+        {SignupPageShow && (
+          <form id="loginForm">
+            <h1 className="headingTitle">Signup</h1>
+            <p className="headText">Welcome to Leadership Assesment Program</p>
+            <div className="first_last_name_div">
+              <div className="fl_Label">
+                <label className="FirstName">First Name</label>
+                <label className="LastName">Last Name</label>
               </div>
-              <div className="LastNameInputText">
-                <input
-                  ref={inputRef}
-                  required
-                  type="text"
-                  placeholder="Enter Last Name"
-                  onChange={lNameChangeHandler}
-                  onBlur={validateLNameHandler}
-                />
-              </div>
-            </div>
-          </div>
-          <label className="BNumber">B-Number</label>
-          <div className="BNumberInputText">
-            <input
-              ref={inputRef}
-              required
-              // pattern="[b,B]{1}[0-9]{8}"
-              type="text"
-              placeholder="Please enter your B-Number"
-              onChange={bNumChangeHandler}
-              onBlur={validateBNumHandler}
-            />
-          </div>
-          <label htmlFor="email" className="userName1">
-            B-mail
-          </label>
-          <div className="userNameInput1">
-            <input
-              type={"email"}
-              //className="userNameInput1"
-              placeholder="xyz@binghamton.edu"
-              id="email"
-              name="email"
-              required
-              // pattern="^[a-zA-Z0-9]+@binghamton\.edu$"
-              onChange={userNameChangeHandler}
-              onBlur={validateUserName}
-            />
-          </div>
-          <label htmlFor="password" className="password1">
-            Password
-          </label>
-          <div className="passInput1">
-            <input
-              type={"password"}
-              //className="passInput1"
-              placeholder="*************"
-              id="password"
-              name="password"
-              required
-              onChange={passwordChangehandler}
-              onBlur={validatePassword}
-            />
-          </div>
-          <label htmlFor="password" className="confirmPassword">
-            Confirm Password
-          </label>
-          <div className="confirmPassInput">
-            <input
-              type={"password"}
-              //className="confirmPassInput"
-              placeholder="*************"
-              id="confirmPassword"
-              name="confirmPassword"
-              required
-              onChange={confirmPasswordHandler}
-            />
-          </div>
-          <div className="LoginButton1">
-            <input
-              className="LoginText1"
-              type="submit"
-              value="Sign Up"
-              onClick={ShowAuthToken}
-              // onClick={submitHandler}
-            ></input>
-          </div>
-        </form>
-        )}{
-          AuthTokenShow && (
-            <div>
-              <form id="loginForm" action="/SelectionScreen">
-                <h1 className="headingTitle">Verify</h1>
-                <p className="headText">Welcome to Leadership Assesment Program</p>
-                <label className="userName1">
-                  Verify Token      
-                </label>
-                <div className="userNameInput1">
+              <div className="fl_input">
+                <div className="FirstNameInputText">
                   <input
-                    type={"text"}
-                    //className="userNameInput1"
-                    placeholder="Token (12-digit)"
-                    id="text"
-                    name="text"
+                    ref={inputRef}
                     required
-                    onChange={userNameChangeHandler}
-                    onBlur={validatePassword}
+                    type="text"
+                    placeholder="Enter First Name"
+                    onChange={fNameChangeHandler}
+                    onBlur={validateFNameHandler}
                   />
                 </div>
-                <div className="LoginButton1">
+                <div className="LastNameInputText">
+                  <input
+                    ref={inputRef}
+                    required
+                    type="text"
+                    placeholder="Enter Last Name"
+                    onChange={lNameChangeHandler}
+                    onBlur={validateLNameHandler}
+                  />
+                </div>
+              </div>
+            </div>
+            <label className="BNumber">B-Number</label>
+            <div className="BNumberInputText">
+              <input
+                ref={inputRef}
+                required
+                // pattern="[b,B]{1}[0-9]{8}"
+                type="text"
+                placeholder="Please enter your B-Number"
+                onChange={bNumChangeHandler}
+                onBlur={validateBNumHandler}
+              />
+            </div>
+            <label htmlFor="email" className="userName1">
+              B-mail
+            </label>
+            <div className="userNameInput1">
+              <input
+                type={"email"}
+                //className="userNameInput1"
+                placeholder="xyz@binghamton.edu"
+                id="email"
+                name="email"
+                required
+                // pattern="^[a-zA-Z0-9]+@binghamton\.edu$"
+                onChange={userNameChangeHandler}
+                onBlur={validateUserName}
+              />
+            </div>
+            <label htmlFor="password" className="password1">
+              Password
+            </label>
+            <div className="passInput1">
+              <input
+                type={"password"}
+                //className="passInput1"
+                placeholder="*************"
+                id="password"
+                name="password"
+                required
+                onChange={passwordChangehandler}
+                onBlur={validatePassword}
+              />
+            </div>
+            <label htmlFor="password" className="confirmPassword">
+              Confirm Password
+            </label>
+            <div className="confirmPassInput">
+              <input
+                type={"password"}
+                //className="confirmPassInput"
+                placeholder="*************"
+                id="confirmPassword"
+                name="confirmPassword"
+                required
+                onChange={confirmPasswordHandler}
+              />
+            </div>
+            <div className="LoginButton1">
+              <input
+                className="LoginText1"
+                type="submit"
+                value="Sign Up"
+                onClick={ShowAuthToken}
+                // onClick={submitHandler}
+              ></input>
+            </div>
+          </form>
+        )}
+        {AuthTokenShow && (
+          <div>
+            <form id="loginForm" action="/SelectionScreen">
+              <h1 className="headingTitle">Verify</h1>
+              <p className="headText">
+                Welcome to Leadership Assesment Program
+              </p>
+              <label className="userName1">Verify Token</label>
+              <div className="userNameInput1">
+                <input
+                  type={"text"}
+                  //className="userNameInput1"
+                  placeholder="Token (12-digit)"
+                  id="text"
+                  name="text"
+                  required
+                  onChange={userNameChangeHandler}
+                  onBlur={validatePassword}
+                />
+              </div>
+              <div className="LoginButton1">
                 <input
                   className="LoginText1"
                   type="submit"
@@ -345,11 +345,10 @@ export default function Signup() {
                   onClick={submitHandler}
                 ></input>
               </div>
-              </form>
-            </div>
-          )
-        }
-        
+            </form>
+          </div>
+        )}
+
         <form id="LoginForm" action="/">
           <div className="LoginDiv" type="submit">
             <input
@@ -358,9 +357,9 @@ export default function Signup() {
               value="Already a Member?   "
               onClick={ShowSignupPage}
             ></input>
-            <input 
-              className="LoginClass" 
-              type="submit" 
+            <input
+              className="LoginClass"
+              type="submit"
               value="Login  "
               onClick={ShowSignupPage}
             ></input>
@@ -368,6 +367,5 @@ export default function Signup() {
         </form>
       </div>
     </div>
-      
   );
 }
