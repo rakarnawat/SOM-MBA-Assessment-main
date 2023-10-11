@@ -1,13 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { USER_ROLE } from "../enums/role_enums";
+import { TOKEN_ENUMS } from "../enums/token_enums";
 
 export const AuthContext = React.createContext({
   isLoggedIn: false,
   onLogout: () => {},
   onLogin: (userName, password) => {},
   onSignup: (userName, password, fName, lName) => {},
-  onGenerateToken: (email) => {},
+  onGenerateToken: (email, access) => {},
   onTokenSubmit: (email, token) => {},
   onRegisterNewPassword: (email, newPass) => {},
 });
@@ -150,9 +151,18 @@ export const AuthContextProvider = (props) => {
     return islog;
   };
 
-  const generateTokenHandler = async (email) => {
+  const generateTokenHandler = async (email, access) => {
     console.log("CALLING");
-    const url = `${baseURL}login/generatetoken`;
+    // const url = `${baseURL}login/generatetoken`;
+    let url = "";
+    if (access === TOKEN_ENUMS.REGISTER) {
+      url = `http://localhost:8080/login-register/register/generatetoken`;
+    } else if (access === TOKEN_ENUMS.FORGOT) {
+      url = `http://localhost:8080/login-register/login/generatetoken`;
+    } else {
+      url = `http://localhost:8080/login-register/login/generatetoken`;
+    }
+
     const user = {
       email: email,
     };
@@ -163,7 +173,10 @@ export const AuthContextProvider = (props) => {
       .post(url, user)
       .then((res) => {
         // console.log(res.data);
-        if (res.data === "No Such email found") {
+        if (
+          res.data === "No Such email found" ||
+          res.data === "User already exists"
+        ) {
           throw new Error(res.data);
         } else {
           // console.log(res.data);
@@ -178,8 +191,17 @@ export const AuthContextProvider = (props) => {
     return token;
   };
 
-  const tokenSubmitHandler = async (email, token) => {
-    const url = `${baseURL}login/confirmtoken`;
+  const tokenSubmitHandler = async (email, token, access) => {
+    // const url = `${baseURL}login/confirmtoken`;
+    let url = "";
+    if (access === TOKEN_ENUMS.REGISTER) {
+      url = `http://localhost:8080/login-register/register/confirmtoken`;
+    } else if (access === TOKEN_ENUMS.FORGOT) {
+      url = `http://localhost:8080/login-register/login/confirmtoken`;
+    } else {
+      url = `http://localhost:8080/login-register/login/confirmtoken`;
+    }
+
     const user = {
       email: email,
       token: token,
