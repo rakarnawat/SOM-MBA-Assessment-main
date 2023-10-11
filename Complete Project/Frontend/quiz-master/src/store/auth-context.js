@@ -156,11 +156,11 @@ export const AuthContextProvider = (props) => {
     // const url = `${baseURL}login/generatetoken`;
     let url = "";
     if (access === TOKEN_ENUMS.REGISTER) {
-      url = `http://localhost:8080/login-register/register/generatetoken`;
+      url = `${baseURL}register/generatetoken`;
     } else if (access === TOKEN_ENUMS.FORGOT) {
-      url = `http://localhost:8080/login-register/login/generatetoken`;
+      url = `${baseURL}login/generatetoken`;
     } else {
-      url = `http://localhost:8080/login-register/login/generatetoken`;
+      url = `${baseURL}login/generatetoken`;
     }
 
     const user = {
@@ -195,11 +195,11 @@ export const AuthContextProvider = (props) => {
     // const url = `${baseURL}login/confirmtoken`;
     let url = "";
     if (access === TOKEN_ENUMS.REGISTER) {
-      url = `http://localhost:8080/login-register/register/confirmtoken`;
+      url = `${baseURL}register/confirmtoken`;
     } else if (access === TOKEN_ENUMS.FORGOT) {
-      url = `http://localhost:8080/login-register/login/confirmtoken`;
+      url = `${baseURL}login/confirmtoken`;
     } else {
-      url = `http://localhost:8080/login-register/login/confirmtoken`;
+      url = `${baseURL}login/confirmtoken`;
     }
 
     const user = {

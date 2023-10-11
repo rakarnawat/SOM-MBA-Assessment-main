@@ -30,12 +30,19 @@ export default function Signup() {
   console.log(userRole);
 
   const [AuthTokenShow, setAuthTokenShow] = useState(false);
-  const ShowAuthToken = () => {
+  const ShowAuthToken = (event) => {
     // console.log(userNameState.value, fNameState.value);
+    event.preventDefault();
     if (formIsValid) {
-      generateTokenHandler();
-      setAuthTokenShow(true);
-      setSignupPageShow(!setAuthTokenShow);
+      generateTokenHandler().then((res) => {
+        console.log("GEN : ", res);
+        if (res) {
+          setAuthTokenShow(true);
+          setSignupPageShow(!setAuthTokenShow);
+        } else {
+          console.log("SOME ISSUE");
+        }
+      });
     } else {
       alert("Please Fill the form completely");
     }
@@ -241,15 +248,19 @@ export default function Signup() {
   const navigate = useNavigate();
 
   const generateTokenHandler = async () => {
+    let ttv = false;
     if (formIsValid) {
-      authCtx
+      await authCtx
         .onGenerateToken(userNameState.value, TOKEN_ENUMS.REGISTER)
         .then((response) => {
           if (response !== "") {
-            console.log(response);
+            ttv = true;
+            console.log(response, ttv);
           }
         });
     }
+    console.log(ttv);
+    return ttv;
   };
 
   const confirmToken = async () => {
@@ -303,14 +314,19 @@ export default function Signup() {
     if (tokenFormIsValid) {
       console.log("TOKEN FORM IS VALID");
       const tokenValid = confirmToken();
-      if (tokenValid) {
-        console.log("TOKEN IS VALID");
-        alert("TOKEN IS VALID");
-        registerStudent();
-      } else {
-        console.log("TOKEN IS NOT VALID");
-        alert("TOKEN IS NOT VALID");
-      }
+      confirmToken().then((res) => {
+        if (res) {
+          console.log("TOKEN IS VALID");
+          // alert("TOKEN IS VALID");
+          registerStudent();
+        } else {
+          console.log("TOKEN IS NOT VALID");
+          alert("TOKEN IS NOT VALID");
+        }
+      });
+      // if (tokenValid) {
+
+      // }
     }
 
     // if (formIsValid) {

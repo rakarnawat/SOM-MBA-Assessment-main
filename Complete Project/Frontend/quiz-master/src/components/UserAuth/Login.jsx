@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useReducer, useState } from "react";
-import login_styles from"../UserAuth/LoginStyles.module.css";
+import login_styles from "../UserAuth/LoginStyles.module.css";
 import Binghamton_University_pic from "../../images/Binghamton-University-pic.jpg";
 import { userNameReducer, passwordReducer } from "./AuthReducers";
 import { AuthContext } from "../../store/auth-context";
@@ -138,7 +138,9 @@ export default function Login() {
       <div className={login_styles.UserAuth}>
         <form id="loginForm" action="/SelectionScreen">
           <h1 className={login_styles.headingTitle}>Login</h1>
-          <p className={login_styles.headText}>Welcome to Leadership Assesment Program</p>
+          <p className={login_styles.headText}>
+            Welcome to Leadership Assesment Program
+          </p>
           <label htmlFor="email" className={login_styles.userName}>
             B-mail
           </label>
@@ -181,33 +183,31 @@ export default function Login() {
         </form>
 
         <div className={login_styles.Signup_forgot_class}>
-  <div className={login_styles.ButtonsContainer}>
-    <input
-      type="button"
-      className={`${login_styles.NewUserClass} custom-button`}
-      onClick={signUpSubmitHandler}
-      value="New User? "
-    />
-    <input
-      type="button"
-      className={`${login_styles.SignupClass} custom-button`}
-      onClick={signUpSubmitHandler}
-      value="Signup "
-    />
-  </div>
+          <div className={login_styles.ButtonsContainer}>
+            <input
+              type="button"
+              className={`${login_styles.NewUserClass} custom-button`}
+              onClick={signUpSubmitHandler}
+              value="New User? "
+            />
+            <input
+              type="button"
+              className={`${login_styles.SignupClass} custom-button`}
+              onClick={signUpSubmitHandler}
+              value="Signup "
+            />
+          </div>
 
-  <form id="ForgotPasswordForm" action="/ForgotPassword">
-    <div className={login_styles.ForgotPasswordContainer}>
-      <input
-        className={`${login_styles.ForgotPasswordClass} custom-button`}
-        type="submit"
-        value="Forgot your password?  "
-      />
-    </div>
-  </form>
-</div>
-
-
+          <form id="ForgotPasswordForm" action="/ForgotPassword">
+            <div className={login_styles.ForgotPasswordContainer}>
+              <input
+                className={`${login_styles.ForgotPasswordClass} custom-button`}
+                type="submit"
+                value="Forgot your password?  "
+              />
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
