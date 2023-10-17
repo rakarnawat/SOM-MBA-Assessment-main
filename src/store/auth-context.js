@@ -1,16 +1,20 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { USER_ROLE } from "../enums/role_enums";
+import { TOKEN_ENUMS } from "../enums/token_enums";
 
 export const AuthContext = React.createContext({
   isLoggedIn: false,
   onLogout: () => {},
   onLogin: (userName, password) => {},
   onSignup: (userName, password, fName, lName, userRole) => {},
+  onGenerateToken: (email, access) => {},
+  onTokenSubmit: (email, token) => {},
+  onRegisterNewPassword: (email, newPass) => {},
 });
 
 export const AuthContextProvider = (props) => {
-  const baseURL = "http://localhost:8080/login-register/";
+  const baseURL = "http://3.13.110.40:8080/login-register/";
 
   const [isLoggedIn, setLoggedIn] = useState(false);
 
@@ -87,7 +91,6 @@ export const AuthContextProvider = (props) => {
             localStorage.setItem("userDetails", JSON.stringify(response.data));
             localStorage.setItem("isLoggedIn", "1");
             setLoggedIn(true);
-            islog = true;
           }
         }
       })
@@ -109,17 +112,17 @@ export const AuthContextProvider = (props) => {
   ) => {
     let url = `${baseURL}register/user`;
     if (userRole === USER_ROLE.ADMIN) {
-      // console.log("ADMIN Auth");
+      console.log("ADMIN Auth");
       url = url + `?role=${USER_ROLE.ADMIN}`;
     } else if (userRole === USER_ROLE.FACULTY) {
-      // console.log("Faculty Auth");
+      console.log("Faculty Auth");
       url = url + `?role=${USER_ROLE.FACULTY}`;
     } else if (userRole === USER_ROLE.STUDENT) {
-      // console.log("STUD Auth");
+      console.log("STUD Auth");
       url = url + `?role=${USER_ROLE.STUDENT}`;
     }
 
-    // console.log(url);
+    console.log(url);
 
     const user = {
       emailId: userName,
@@ -137,19 +140,118 @@ export const AuthContextProvider = (props) => {
       .then((response) => {
         console.log(response.data);
         user.role = userRole;
-        // console.log(response.data);
-        localStorage.setItem("userDetails", JSON.stringify(user));
-        localStorage.setItem("isLoggedIn", "1");
-        setLoggedIn(true);
-        islog = true;
+        // localStorage.setItem("userDetails", JSON.stringify(user));
+        // localStorage.setItem("isLoggedIn", "1");
+        setLoggedIn(false);
+        islog = false;
       })
       .catch((err) => {
-        // console.log(err);
+        console.log(err);
         alert(err.message);
         islog = false;
       });
 
     return islog;
+  };
+
+  const generateTokenHandler = async (email, access) => {
+    console.log("CALLING");
+    // const url = `${baseURL}login/generatetoken`;
+    let url = "";
+    if (access === TOKEN_ENUMS.REGISTER) {
+      url = `${baseURL}register/generatetoken`;
+    } else if (access === TOKEN_ENUMS.FORGOT) {
+      url = `${baseURL}login/generatetoken`;
+    } else {
+      url = `${baseURL}login/generatetoken`;
+    }
+
+    const user = {
+      email: email,
+    };
+
+    let token = "";
+
+    await axios
+      .post(url, user)
+      .then((res) => {
+        // console.log(res.data);
+        if (
+          res.data === "No Such email found" ||
+          res.data === "User already exists"
+        ) {
+          throw new Error(res.data);
+        } else {
+          // console.log(res.data);
+          token = res.data;
+        }
+      })
+      .catch((err) => {
+        console.log(err.message);
+        alert(err.message);
+      });
+
+    return token;
+  };
+
+  const tokenSubmitHandler = async (email, token, access) => {
+    // const url = `${baseURL}login/confirmtoken`;
+    let url = "";
+    if (access === TOKEN_ENUMS.REGISTER) {
+      url = `${baseURL}register/confirmtoken`;
+    } else if (access === TOKEN_ENUMS.FORGOT) {
+      url = `${baseURL}login/confirmtoken`;
+    } else {
+      url = `${baseURL}login/confirmtoken`;
+    }
+
+    const user = {
+      email: email,
+      token: token,
+    };
+
+    let tokenAuthValid = false;
+
+    await axios
+      .post(url, user)
+      .then((res) => {
+        console.log(res.data.isValid);
+        if (res.data.isValid) {
+          tokenAuthValid = res.data.isValid;
+        } else {
+          throw new Error(res.data.message);
+        }
+      })
+      .catch((err) => {
+        console.log(err.message);
+        alert(err.message);
+      });
+
+    return tokenAuthValid;
+  };
+
+  const registerNewPassword = async (email, password) => {
+    const url = `${baseURL}login/newPassword`;
+    const user = {
+      email: email,
+      newPassword: password,
+    };
+
+    let registeredValid = false;
+
+    await axios
+      .post(url, user)
+      .then((res) => {
+        if (res.data.isValid && res.data.status === 200) {
+          // navigate("/");
+          registeredValid = res.data.isValid;
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    return registeredValid;
   };
 
   return (
@@ -159,11 +261,12 @@ export const AuthContextProvider = (props) => {
         onLogout: logoutHandler,
         onLogin: loginHandler,
         onSignup: signUpHandler,
+        onGenerateToken: generateTokenHandler,
+        onTokenSubmit: tokenSubmitHandler,
+        onRegisterNewPassword: registerNewPassword,
       }}
     >
       {props.children}
     </AuthContext.Provider>
   );
 };
-
-// For merge purposes
