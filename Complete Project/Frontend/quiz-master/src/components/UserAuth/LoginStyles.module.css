@@ -8,7 +8,6 @@
   margin-left: 0%;
 }
 
-
 .UserAuth {
   position: absolute;
   width: 28%;
@@ -30,7 +29,7 @@
   font-style: normal;
   font-weight: 700;
   font-size: min(2.5rem, 42px, 4vw);
-  margin-bottom: min(1rem,5%);
+  margin-bottom: min(1rem, 5%);
   display: flex;
   align-items: center;
   letter-spacing: 0.065em;
@@ -47,11 +46,11 @@
   font-style: normal;
   font-weight: 600;
   font-size: min(1.5rem, 36px, 2vw);
-  line-height:min(24px, 4rem, 2vw);
+  line-height: min(24px, 4rem, 2vw);
   display: flex;
   align-items: center;
   letter-spacing: 0.065em;
-  margin-bottom: min(3rem,20%);
+  margin-bottom: min(3rem, 20%);
   color: #818181;
 }
 
@@ -62,7 +61,7 @@ input {
   background: #ffffff00;
   border: #ffffff00;
   text-indent: 5%;
-  border-radius: min(0.85vw,2rem);
+  border-radius: min(0.85vw, 2rem);
 }
 input:focus {
   outline: solid 0px rgba(255, 255, 255, 0);
@@ -78,7 +77,7 @@ input:focus {
   font-style: normal;
   font-weight: 600;
   font-size: min(2.7vw, 2rem);
-  margin-bottom: min(1.5rem,10%);
+  margin-bottom: min(1.5rem, 10%);
   line-height: 0%;
   display: flex;
   align-items: center;
@@ -87,32 +86,31 @@ input:focus {
   color: #818181;
 }
 
-
 .userNameInput {
   box-sizing: border-box;
   position: relative;
-  height: min(5vw,4rem);
+  height: min(5vw, 4rem);
 
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: min(0.85vw,2rem);
+  border-radius: min(0.85vw, 2rem);
 
   font-family: "Lato";
   font-style: normal;
   font-weight: 600;
   font-size: min(1.5rem, 36px, 2vw);
-  line-height:min(24px, 4rem, 2vw);
+  line-height: min(24px, 4rem, 2vw);
   display: flex;
   align-items: center;
   letter-spacing: 0.065em;
-  margin-bottom: min(3rem,20%);
+  margin-bottom: min(3rem, 20%);
 }
 
 .userNameInput.invalid {
   box-sizing: border-box;
   position: relative;
   width: 95%;
-  height: min(5vw,4rem);
+  height: min(5vw, 4rem);
   border-color: rgb(255, 150, 150);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 0.85vw;
@@ -120,7 +118,7 @@ input:focus {
   font-family: "Lato";
   font-style: normal;
   font-size: min(1.5rem, 36px, 2vw);
-  line-height:min(24px, 4rem, 2vw);
+  line-height: min(24px, 4rem, 2vw);
   line-height: 29px;
   display: flex;
   align-items: center;
@@ -135,7 +133,7 @@ input:focus {
   font-style: normal;
   font-weight: 600;
   font-size: min(2.7vw, 2rem);
-  margin-bottom: min(1.5rem,10%);
+  margin-bottom: min(1.5rem, 10%);
   line-height: 0%;
   display: flex;
   align-items: center;
@@ -147,7 +145,7 @@ input:focus {
 .passInput {
   position: relative;
   width: 95%;
-  height: min(5vw,4rem);
+  height: min(5vw, 4rem);
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 0.85vw;
@@ -155,11 +153,11 @@ input:focus {
   font-style: normal;
   font-weight: 600;
   font-size: min(1.5rem, 36px, 2vw);
-  line-height:min(24px, 4rem, 2vw);
+  line-height: min(24px, 4rem, 2vw);
   display: flex;
   align-items: center;
   letter-spacing: 0.065em;
-  margin-bottom: min(3rem,20%);
+  margin-bottom: min(3rem, 20%);
 }
 
 .LoginButton {
@@ -167,14 +165,13 @@ input:focus {
 
   position: relative;
   width: 95%;
-  height: min(5vw,4rem);
-  
+  height: min(5vw, 4rem);
 
   background: #005941;
   border-radius: 0.85vw;
-  margin-bottom: min(1rem,7%);
+  margin-bottom: min(1rem, 7%);
 }
-.LoginButton:hover{
+.LoginButton:hover {
   background-color: #014a36;
 }
 .LoginText {
@@ -222,8 +219,8 @@ input:focus {
   font-family: "Lato";
   font-style: normal;
   font-weight: 600;
-  font-size: min(1.3rem,2vw); /* Set your desired font size */
-  line-height: 2rem; 
+  font-size: min(1.3rem, 2vw); /* Set your desired font size */
+  line-height: 2rem;
   color: #818181;
 }
 
@@ -232,11 +229,10 @@ input:focus {
   font-family: "Lato";
   font-style: normal;
   font-weight: 600;
-  font-size: min(1.3rem,2vw); /* Set your desired font size */
-  line-height: 2rem; 
+  font-size: min(1.3rem, 2vw); /* Set your desired font size */
+  line-height: 2rem;
   color: #005941;
   width: auto;
-  
 }
 
 .ForgotPasswordContainer {
@@ -253,12 +249,11 @@ input:focus {
   font-family: "Lato";
   font-style: normal;
   font-weight: 600;
-  font-size: min(1.3rem,2vw);
-  line-height: 1rem; 
+  font-size: min(1.3rem, 2vw);
+  line-height: 1rem;
   word-wrap: break-word;
   color: #818181;
   letter-spacing: 0.065em;
-  
 }
 
 .ForgotPasswordClass:hover {
